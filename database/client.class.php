@@ -36,12 +36,12 @@ class Client
 
 
 
-    static function getClientWithPassword(PDO $db, string $username, string $password): ?Client
+    static function getClientWithPassword(PDO $db, string $email, string $password): ?Client
     {
         $stmt = $db->prepare(
-            'SELECT client_id, username, password, email FROM CLIENTS WHERE username = ? AND password = ?'
+            'SELECT client_id, username, password, email FROM CLIENTS WHERE email = ? AND password = ?'
         );
-        $stmt->execute(array($username, $password));
+        $stmt->execute(array($email, $password));
 
         if ($user = $stmt->fetch()) {
             return new Client(
@@ -81,7 +81,7 @@ class Client
     static function getClientById(PDO $db, int $id): ?Client
     {
         $stmt = $db->prepare(
-            'SELECT client_id, username, password, email FROM  CLIENTS WHERE idUser = ?'
+            'SELECT client_id, username, password, email FROM  CLIENTS WHERE client_id = ?'
         );
         $stmt->execute(array($id));
 

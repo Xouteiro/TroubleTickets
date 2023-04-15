@@ -28,4 +28,5 @@ if (empty($_POST['email']) || empty($_POST['password'])) {
   $session->addMessage('success', 'Login Successfull');
   die(header('Location: ../pages/index.php'));
 }
+
 ?>

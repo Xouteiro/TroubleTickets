@@ -19,4 +19,8 @@ if (isset($_SESSION['id'])) {
 }
 output_footer();
 
+foreach ($session->getMessages() as $message) {
+  echo '<div class="' . $message['type'] . '">' . $message['text'] . '</div>';
+}
+
 ?>
