@@ -13,8 +13,7 @@
 
 if (!valid_input_list(array(
     $_POST["email"],
-    $_POST["first_name"],
-    $_POST["last_name"],
+    $_POST["username"],
     $_POST["password"],
     $_POST["confirm_password"],
 ))) {
@@ -24,12 +23,11 @@ if (!valid_input_list(array(
 
 $db = getDatabaseConnection();
 $email = $_POST["email"];
-$fist_name = $_POST["first_name"];
-$last_name = $_POST["last_name"];
+$username = $_POST["username"];
 $password = $_POST["password"];
 $confirm_password = $_POST["confirm_password"];
 
-if (empty($_POST['email']) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['password']) || empty($_POST['confirm_password'])) {
+if (empty($_POST['email']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['confirm_password'])) {
     $session->addMessage('error', 'You have to fill in all fields.');
     die(header('Location: ' . $_SERVER['HTTP_REFERER']));
 } else if (User::emailInUse($db, $email)) {
@@ -38,7 +36,7 @@ if (empty($_POST['email']) || empty($_POST['first_name']) || empty($_POST['last_
 } else if ($confirm_password != $password) {
     $session->addMessage('error', "Passwords don't match");
     die(header('Location: ' . $_SERVER['HTTP_REFERER']));
-} else if (User::newUser($db, $fist_name, $last_name, $email, $password)) {
+} else if (User::newUser($db, $username, $email, $password)) {
     $session->addMessage('success', 'Register successfull!');
     die(header('Location: ../pages/login.php'));
 }

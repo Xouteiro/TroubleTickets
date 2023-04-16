@@ -27,7 +27,7 @@
     }
     else {
       $session->setId($user->id);
-      $session->setName($user->first_name);
+      $session->setUsername($user->username);
       $session->addMessage('success', 'Login Successfull');
       die(header('Location: ../pages/index.php'));
     }

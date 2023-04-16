@@ -7,8 +7,7 @@ declare(strict_types=1);
 class User
 {
     public int $id;
-    public string $first_name;
-    public string $last_name;
+    public string $username;
     public ?string $address;
     public ?string $city;
     public ?string $country;
@@ -16,11 +15,10 @@ class User
     public string $email;
     public string $password;
 
-    public function __construct(int $id, string $first_name, string $last_name, ?string $address, ?string $city, ?string $country, ?string $phone, string $email, string $password)
+    public function __construct(int $id, string $username, ?string $address, ?string $city, ?string $country, ?string $phone, string $email, string $password)
     {
         $this->id = $id;
-        $this->first_name = $first_name;
-        $this->last_name = $last_name;
+        $this->username = $username;
         $this->address = $address;
         $this->city = $city;
         $this->country = $country;
@@ -29,20 +27,17 @@ class User
         $this->password = $password;
     }
 
-    function name()
-    {
-        return $this->firstName . ' ' . $this->lastName;
-    }
+    
 
-    static function updateUser(PDO $db, string $email, string $first_name, string $last_name, string $address, string $city, string $country, string $phone, int $id)
+    static function updateUser(PDO $db, string $email, string $username, string $address, string $city, string $country, string $phone, int $id)
     {
         $stmt = $db->prepare('
-            UPDATE USER SET email = ?, firstName = ?, lastName = ?, address = ?, city = ?, country = ?, phone = ?
+            UPDATE USER SET email = ?, username = ?, address = ?, city = ?, country = ?, phone = ?
             WHERE idUser = ?
         ');
 
         try {
-            $stmt->execute(array($email, $first_name, $last_name, $address, $city, $country, $phone, $id));
+            $stmt->execute(array($email, $username, $address, $city, $country, $phone, $id));
             return true;
         } catch (PDOException $e) {
             return false;
@@ -54,15 +49,14 @@ class User
     static function getUserWithPassword(PDO $db, string $email, string $password): ?User
     {
         $stmt = $db->prepare(
-            'SELECT idUser, firstName, lastName, address, city, country, phone, email, password FROM USER WHERE email = ? AND password = ?'
+            'SELECT idUser, username, address, city, country, phone, email, password FROM USER WHERE email = ? AND password = ?'
         );
         $stmt->execute(array($email, $password));
 
         if ($user = $stmt->fetch()) {
             return new User(
                 intval($user['idUser']),
-                $user['firstName'],
-                $user['lastName'],
+                $user['username'],
                 $user['address'],
                 $user['city'],
                 $user['country'],
@@ -79,7 +73,7 @@ class User
     static function getUsers(PDO $db, int $count): array
     {
         $stmt = $db->prepare(
-            'SELECT idUser, firstName, lastName, address, city, country, phone, email, password
+            'SELECT idUser, username, address, city, country, phone, email, password
                  FROM User
                  LIMIT ?'
         );
@@ -89,8 +83,7 @@ class User
         while ($user = $stmt->fetch()) {
             $users = new User(
                 $user['idUser'],
-                $user['firstName'],
-                $user['lastName'],
+                $user['username'],
                 $user['address'],
                 $user['city'],
                 $user['country'],
@@ -106,7 +99,7 @@ class User
     static function getUserById(PDO $db, int $id): User
     {
         $stmt = $db->prepare(
-            'SELECT idUser, firstName, lastName, address, city, country, phone, email, password FROM  USER WHERE idUser = ?'
+            'SELECT idUser, username, address, city, country, phone, email, password FROM  USER WHERE idUser = ?'
         );
         $stmt->execute(array($id));
 
@@ -114,8 +107,7 @@ class User
 
         return new User(
             intval($user['idUser']),
-            $user['firstName'],
-            $user['lastName'],
+            $user['username'],
             $user['address'],
             $user['city'],
             $user['country'],
@@ -133,11 +125,11 @@ class User
     }
 
 
-    static function newUser($db, $first_name, $last_name, $email, $password)
+    static function newUser($db, $username, $email, $password)
     {
-        $stmt = $db->prepare('INSERT INTO User (firstName, lastName, email, password) values(?, ?, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO User (username, email, password) values( ?, ?, ?)');
         try {
-            $stmt->execute(array($first_name, $last_name, $email, $password));
+            $stmt->execute(array($username, $email, $password));
             return true;
         } catch (PDOException $e) {
             return false;

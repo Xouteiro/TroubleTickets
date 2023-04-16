@@ -1,5 +1,4 @@
-.mode column
-.headers on
+
 PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS HASHTAGS;

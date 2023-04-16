@@ -9,7 +9,7 @@
 
 
   $session = new Session();
-    
+     
 
   output_header($session);
   if (isset($_SESSION['id'])) { 

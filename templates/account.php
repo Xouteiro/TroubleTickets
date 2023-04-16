@@ -8,7 +8,7 @@ function output_profile_info(User $user)
   </button>
   <hr>
   <i class="material-symbols-rounded">person</i>
-  <p><?php echo $user->first_name . " " . $user->last_name ?></p>
+  <p><?php echo $user->username ?></p>
   <br>
   <p>Name</p>
   <br>
@@ -48,12 +48,12 @@ function output_profile_info(User $user)
 function output_login(Session $session)
 { ?>
   <div class="account">
+    <h2>Log In</h2>
     <form action="../actions/action_login.php" method="post">
       <input type="email" name="email" placeholder="Email">
       <input type="password" name="password" placeholder="Password">
-      <button type="submit" name="submit" class="login">Log In</button>
+      <button type="submit" name="submit" class="login">Enter</button>
     </form>
-    <hr>
     <a href="register.php">Create an account</a>
   </div>
 
@@ -63,15 +63,15 @@ function output_login(Session $session)
 function output_register(Session $session)
 { ?>
   <div class="account">
+    <h2>Register</h2>
     <form id="register" action="../actions/action_register.php" method="post">
-      <input type="text" name="first_name" placeholder="First Name">
-      <input type="text" name="last_name" placeholder="Last Name">
+      <input type="text" name="username" placeholder="Username">
       <input type="email" name="email" placeholder="Email">
       <input type="password" name="password" placeholder="Password">
       <input type="password" name="confirm_password" placeholder="Confirm Password">
-      <button type="submit" name="submit" class="login">Register</button>
+      <button type="submit" name="submit" class="login">Create account</button>
     </form>
-    <hr>
+
     <a href="login.php">I have an account</a>
   </div>
 <?php

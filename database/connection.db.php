@@ -6,6 +6,10 @@
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+
+    $sql = file_get_contents(__DIR__ . '/../database/script.sql');
+    $db->exec($sql);
+
     return $db;
   }
 ?>

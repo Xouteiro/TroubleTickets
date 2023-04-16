@@ -1,0 +1,17 @@
+*{
+    max-width: 100%;
+}
+
+html{
+    background-color: #535353;
+    ;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#menu li{
+    list-style-type: none;
+}
