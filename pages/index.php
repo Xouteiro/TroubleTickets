@@ -1,18 +1,18 @@
-<?php 
-  declare(strict_types = 1); 
+<?php
+declare(strict_types=1);
 
-  require_once(__DIR__ . '/../utils/session.php');
-  require_once(__DIR__ . '/../database/connection.db.php');
-  require_once(__DIR__ . '/../templates/normal.php');
-
-
-  $session = new Session();
-
-  $db = getDatabaseConnection();
+require_once(__DIR__ . '/../utils/session.php');
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../templates/normal.php');
 
 
-  output_header($session);
+$session = new Session();
+
+$db = getDatabaseConnection();
 
 
-  output_footer();
+output_header($session);
+
+
+output_footer();
 ?>

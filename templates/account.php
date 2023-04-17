@@ -1,4 +1,3 @@
-
 <?php
 function output_profile_info(User $user)
 { ?>
@@ -8,32 +7,42 @@ function output_profile_info(User $user)
   </button>
   <hr>
   <i class="material-symbols-rounded">person</i>
-  <p><?php echo $user->first_name . " " . $user->last_name ?></p>
+  <p>
+    <?php echo $user->first_name . " " . $user->last_name ?>
+  </p>
   <br>
   <p>Name</p>
   <br>
   <i class="material-symbols-rounded">mail</i>
-  <p><?php echo $user->email ?></p>
+  <p>
+    <?php echo $user->email ?>
+  </p>
   <br>
   <p>Email</p>
   <br>
-  <?php if ($user->phone != null) {?>
-  <i class="material-symbols-rounded">call</i>
-  <p><?php echo $user->phone ?></p>
-  <br>
-  <p>Phone Number</p>
-  <br>
+  <?php if ($user->phone != null) { ?>
+    <i class="material-symbols-rounded">call</i>
+    <p>
+      <?php echo $user->phone ?>
+    </p>
+    <br>
+    <p>Phone Number</p>
+    <br>
   <?php } ?>
-  <?php if ($user->address != null) {?>
-  <i class="material-symbols-rounded">home_pin</i>
-  <p><?php echo $user->address ?></p>
-  <br>
-  <p>Address</p>
+  <?php if ($user->address != null) { ?>
+    <i class="material-symbols-rounded">home_pin</i>
+    <p>
+      <?php echo $user->address ?>
+    </p>
+    <br>
+    <p>Address</p>
   <?php } ?>
   <?php if ($user->city != null and $user->country != null) { ?>
     <br>
     <i class="material-symbols-rounded">map</i>
-    <p><?= $user->city . ", " . $user->country; ?></p>
+    <p>
+      <?= $user->city . ", " . $user->country; ?>
+    </p>
     <br>
     <p>City</p>
   <?php } ?>
@@ -64,8 +73,7 @@ function output_register(Session $session)
 { ?>
   <div class="account">
     <form id="register" action="../actions/action_register.php" method="post">
-      <input type="text" name="first_name" placeholder="First Name">
-      <input type="text" name="last_name" placeholder="Last Name">
+      <input type="text" name="username" placeholder="Username">
       <input type="email" name="email" placeholder="Email">
       <input type="password" name="password" placeholder="Password">
       <input type="password" name="confirm_password" placeholder="Confirm Password">
@@ -74,5 +82,5 @@ function output_register(Session $session)
     <hr>
     <a href="login.php">I have an account</a>
   </div>
-<?php
+  <?php
 }
