@@ -35,7 +35,7 @@
       $_SESSION['id'] = $id;
     }
 
-    public function setUsername(string $username) {
+    public function setName(string $username) {
       $_SESSION['username'] = $username;
     }
 
