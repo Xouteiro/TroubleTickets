@@ -47,8 +47,8 @@ class Client
             return new Client(
                 intval($user['idUser']),
                 $user['username'],
-                $user['password'],
                 $user['email'],
+                $user['password'],
             );
         }
 
