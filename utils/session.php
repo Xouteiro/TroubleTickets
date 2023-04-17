@@ -27,16 +27,16 @@
     }
 
 
-    public function getName() : ?string {
-      return isset($_SESSION['name']) ? $_SESSION['name'] : null;
+    public function getUsername() : ?string {
+      return isset($_SESSION['username']) ? $_SESSION['username'] : null;
     }
 
     public function setId(int $id) {
       $_SESSION['id'] = $id;
     }
 
-    public function setName(string $name) {
-      $_SESSION['name'] = $name;
+    public function setUsername(string $username) {
+      $_SESSION['username'] = $username;
     }
 
     public function addMessage(string $type, string $text) {

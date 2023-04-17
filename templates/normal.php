@@ -23,28 +23,27 @@ function output_header(Session $session)
 
   <body>
     <header>
-      <h1><a href="../pages/index.php">TroubleTickets</a></h1>
-      <h3><a href="../pages/search.php">Search</a></h1>
-        <?php
+      <h1><a href="../pages/index.php">Trouble</a><a href="../pages/index.php">Tickets</a></h1>
+      <nav id="menu">
+      <input type="checkbox" id="sidebar"> 
+      <label class="sidebar" for="sidebar"></label>
+      <ul>
+      <?php
         if ($session->isLoggedIn()) { ?>
-          <h3><a href="../pages/newTicket.php">New Ticket</a></h1>
+          <li><a href="../pages/newTicket.php">New Ticket</a></li>
           <?php } else { ?>
-            <h3><a href="../pages/login.php">New Ticket</a></h1>
+            <li><a href="../pages/login.php">New Ticket</a></li>
             <?php } ?>
             <?php
             if ($session->isLoggedIn()) { ?>
-              <a href="../pages/tickets.php">
-                <i class="material-icons icon-4x">tickets</i>
-              </a>
-              <a href="../pages/profile.php">
-                <i class="material-icons icon-4x">account_circle</i>
-              </a>
+              <li><a href="../pages/tickets.php">Tickets</a></li>
+              <li><a href="../pages/profile.php">Profile</a></li>
             <?php } else { ?>
-              <a href="../pages/login.php">
-                <i class="material-icons icon-4x">account_circle</i>
-              </a>
+              <li><a href="../pages/login.php">Profile</a></li>
             <?php }
             ?>
+      </ul>
+    </nav>
     </header>
     
 
@@ -53,9 +52,8 @@ function output_header(Session $session)
   <?php
   function output_footer()
   { ?>
-    <div id="footer-prev"></div>
     <footer>
-      <p>&copy; TroubleTickets, 2022</p>
+      <p>&copy; TroubleTickets, 2023</p>
     </footer>
   </body>
 

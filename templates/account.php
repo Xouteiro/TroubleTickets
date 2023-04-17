@@ -8,7 +8,7 @@ function output_profile_info(User $user)
   <hr>
   <i class="material-symbols-rounded">person</i>
   <p>
-    <?php echo $user->first_name . " " . $user->last_name ?>
+    <?php echo $user->username ?>
   </p>
   <br>
   <p>Name</p>
@@ -57,13 +57,19 @@ function output_profile_info(User $user)
 function output_login(Session $session)
 { ?>
   <div class="account">
+    <h2>Log In</h2>
     <form action="../actions/action_login.php" method="post">
-      <input type="email" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password">
-      <button type="submit" name="submit" class="login">Log In</button>
+      <div class='full-input'>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="youremail@mail.com">
+      </div>
+      <div class='full-input'>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="pAsSw0rd">
+      </div>
+      <button type="submit" name="submit" class="login">Enter</button>
     </form>
-    <hr>
-    <a href="register.php">Create an account</a>
+    <p>Don't have an account?<a href="register.php">Sign Up</a></p>
   </div>
 
 <?php } ?>
@@ -72,15 +78,28 @@ function output_login(Session $session)
 function output_register(Session $session)
 { ?>
   <div class="account">
+    <h2>Create new account</h2>
     <form id="register" action="../actions/action_register.php" method="post">
-      <input type="text" name="username" placeholder="Username">
-      <input type="email" name="email" placeholder="Email">
-      <input type="password" name="password" placeholder="Password">
-      <input type="password" name="confirm_password" placeholder="Confirm Password">
-      <button type="submit" name="submit" class="login">Register</button>
+      <div class='full-input'>
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="User_name01">
+      </div>
+      <div class='full-input'>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="youremail@mail.com">
+      </div>
+      <div class='full-input'>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="pAsSw0rd">
+      </div>
+      <div class='full-input'>
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" name="confirm_password" placeholder="pAsSw0rd">
+      </div>
+      <button type="submit" name="submit" class="login">Create account</button>
     </form>
-    <hr>
-    <a href="login.php">I have an account</a>
+
+    <p>Already have an account?<a href="login.php">Log in</a></p>
   </div>
   <?php
 }

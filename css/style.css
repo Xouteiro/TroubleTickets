@@ -1,0 +1,97 @@
+* {
+    max-width: 100%;
+}
+
+html {
+    background-color: #535353;
+    ;
+}
+
+header>h1>a:first-child {
+    color: #ffffff;
+}
+
+header>h1>a:last-of-type {
+    color: #F47458;
+}
+
+.account>h2 {
+    color: #ffffff;
+}
+
+.account>p {
+    color: #ffffff;
+}
+
+.account>p>a {
+    color: #F47458;
+}
+
+a {
+    text-decoration: none;
+}
+
+.account form>input {
+    background: #CFCFCF;
+    border-radius: 4px;
+    border: none;
+}
+
+.account form>button[type="submit"] {
+    color: #ffffff;
+    background: #F47458;
+    border-radius: 4px;
+    box-shadow: none;
+    border: none;
+}
+
+.full-input{
+    border: 1px solid #CFCFCF;
+    background: #CFCFCF;
+    border-radius: 4px;
+}
+
+.account input{
+    background: #CFCFCF;
+    border: none;
+    outline: none;
+    width: 88%;
+}
+
+.account label{
+    opacity: 75%;
+}
+
+.account input::placeholder{
+    color: black;
+    opacity: 50%;
+}
+
+.sidebar::after{
+    content: "\2630";
+    color:white;
+    font-size: 30px;
+
+}
+
+#sidebar:checked ~ .sidebar::after{
+    content: "\2715";
+    color:white;
+}
+
+
+input#sidebar {
+    display: none;
+}
+
+
+
+#menu li {
+    list-style-type: none;
+}
+
+
+
+footer {
+    color: white;
+}

@@ -40,7 +40,11 @@ if (empty($_POST['email']) || empty($_POST['username']) || empty($_POST['passwor
 } else if ($confirm_password != $password) {
     $session->addMessage('error', "Passwords don't match");
     die(header('Location: ' . $_SERVER['HTTP_REFERER']));
+<<<<<<< HEAD
 } else if (Client::newClient($db, $username, $email, $password)) {
+=======
+} else if (User::newUser($db, $username, $email, $password)) {
+>>>>>>> login-register-page
     $session->addMessage('success', 'Register successfull!');
     die(header('Location: ../pages/login.php'));
 }
