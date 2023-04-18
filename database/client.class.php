@@ -117,7 +117,7 @@ class Client
         }
     }
 
-    static function GiveADmin(PDO $db, $id)
+    static function giveAdmin(PDO $db, $id)
     {
         $stmt = $db->prepare('INSERT INTO AGENTS (client_id) VALUES (?)');
         try {
@@ -147,5 +147,13 @@ class Client
             return false;
         }
     }
+
+    static function isAdmin(PDO $db, $id)
+    {
+        $stmt = $db->prepare('SELECT * FROM ADMINS WHERE client_id = ?');
+        $stmt->execute(array($id));
+        return ($stmt->fetch() !== false);
+    }
+
 
 } ?>

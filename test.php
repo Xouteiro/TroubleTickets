@@ -7,6 +7,6 @@ $db = getDatabaseConnection();
 
 $client = Client::getClientById($db, 2);
 
-Client::GiveADmin($db, $client->id);
+Client::giveAdmin($db, $client->id);
 
 ?>
