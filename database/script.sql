@@ -29,7 +29,7 @@ CREATE TABLE DEPARTMENTS (
 CREATE TABLE AGENTS (
     agent_id INTEGER PRIMARY KEY AUTOINCREMENT,
     client_id INTEGER NOT NULL,
-    department_id INTEGER NOT NULL,
+    department_id INTEGER ,
     FOREIGN KEY
 (client_id) REFERENCES CLIENTS
 (client_id),
@@ -97,5 +97,16 @@ CREATE TABLE HASHTAGS (
 (ticket_id)
 );
 
--- Inserting data into the database
-INSERT INTO CLIENTS (username, password, email) VALUES ('diogo', 'diogosilva', 'diogo@gmail.com');
+-- Inserting admin account into the database
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('admin', 'admin', 'admin@gmail.com');
+
+INSERT INTO AGENTS (client_id)
+VALUES (1);
+
+INSERT INTO ADMINS (client_id, agent_id)
+VALUES (1, 1);
+
+--Inserting data into the database
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('client1', 'client1', 'client1@gmail.com');

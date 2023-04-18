@@ -45,7 +45,7 @@ class Client
 
         if ($user = $stmt->fetch()) {
             return new Client(
-                intval($user['idUser']),
+                intval($user['client_id']),
                 $user['username'],
                 $user['email'],
                 $user['password'],
@@ -68,7 +68,7 @@ class Client
         $users = array();
         while ($user = $stmt->fetch()) {
             $users[] = new Client(
-                $user['idUser'],
+                $user['client_id'],
                 $user['username'],
                 $user['password'],
                 $user['email'],
@@ -88,7 +88,7 @@ class Client
         $user = $stmt->fetch();
         if ($user) {
             return new Client(
-                intval($user['idUser']),
+                intval($user['client_id']),
                 $user['username'],
                 $user['password'],
                 $user['email']
@@ -117,5 +117,29 @@ class Client
         }
     }
 
-}
-;
+    static function GiveADmin(PDO $db, $id)
+    {
+        $stmt = $db->prepare('INSERT INTO AGENTS (client_id) VALUES (?)');
+        try {
+            $stmt->execute(array($id));
+        } catch (PDOException $e) {
+            return false;
+        }
+
+        $stmt = $db->prepare('SELECT agent_id FROM AGENTS WHERE client_id = ?');
+        try {
+            $stmt->execute(array($id));
+            $user = $stmt->fetch();
+            if ($user) {
+                $agent_id = $user['agent_id'];
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+
+        $stmt = $db->prepare('INSERT INTO ADMINS (client_id, agent_id) VALUES (?,?)');
+    }
+
+} ?>
