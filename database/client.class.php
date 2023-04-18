@@ -140,6 +140,12 @@ class Client
         }
 
         $stmt = $db->prepare('INSERT INTO ADMINS (client_id, agent_id) VALUES (?,?)');
+        try {
+            $stmt->execute(array($id, $agent_id));
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
 } ?>
