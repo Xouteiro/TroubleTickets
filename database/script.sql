@@ -1,4 +1,3 @@
-
 PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS HASHTAGS;
@@ -82,9 +81,11 @@ CREATE TABLE MESSAGES(
     message_content VARCHAR
 (255) NOT NULL,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    client_id INTEGER NOT NULL,
     FOREIGN KEY
 (ticket_id) REFERENCES TICKETS
-(ticket_id)
+(ticket_id),
+    FOREIGN KEY (client_id) REFERENCES CLIENTS(client_id)
 );
 
 CREATE TABLE HASHTAGS (
