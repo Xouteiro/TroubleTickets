@@ -9,8 +9,10 @@ function output_header(Session $session)
   require_once(__DIR__ . '/../database/connection.db.php');
   require_once(__DIR__ . '/../database/client.class.php');
 
+  if($session->isLoggedIn()){
   $db = getDataBaseConnection();
   $client = Client::getClientById($db, $session->getId());
+  }
   ?>
   <!DOCTYPE html>
   <html lang="en-US">
@@ -35,10 +37,15 @@ function output_header(Session $session)
     
     <input type="checkbox" id="sidebar">
     <label class="sidebar" for="sidebar"></label>
+    <?php
+    if($session->isLoggedIn()) {?>
     <div class="username">
     <img src="https://picsum.photos/200" alt="profile photo">
     <h3><?php echo $client->username ?></h3>
     </div>
+    <?php } else { ?>
+    <div class="filler"></div>
+    <?php } ?>
 
     <nav id="menu">
       <ul>

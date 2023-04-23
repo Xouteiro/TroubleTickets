@@ -43,6 +43,7 @@ a {
     border-radius: 4px;
     box-shadow: none;
     border: none;
+    cursor: pointer;
 }
 
 .full-input {
@@ -79,11 +80,29 @@ a {
     color: #FFFFFF;
 }
 
+div.username{
+    background:#CFCFCF;
+    opacity: 78%;
+}
+
+.username h3{
+    opacity: 90%;
+    margin: 0px;
+
+}
+
+.username img
+
+div.filler{
+    background:#CFCFCF;
+    opacity: 78%;
+}
+
 
 body img {
     border-radius: 50%;
-    height:15%;
-    width: 15%;
+    height:20%;
+    width: 20%;
 }
 
 
@@ -104,6 +123,9 @@ input#sidebar:checked~.sidebar {
     border-top-left-radius: 5px;
 }
 
+label{
+    cursor: pointer;
+}
 
 #menu li {
 
@@ -126,6 +148,7 @@ form#login button {
     border: none;
     box-shadow: none;
     border: none;
+    cursor: pointer;
 }
 
 
