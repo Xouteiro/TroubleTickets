@@ -38,9 +38,10 @@ input#sidebar:checked~.sidebar {
 }
 
 input#sidebar:checked~.username {
-    display: flex;
+    display: grid;
     grid-row: 2/3;
     grid-column: 2/-1;
+    grid-template-columns: 30% 70%;
     justify-self: center;
     min-width: 100%;
     justify-content: center;
@@ -48,12 +49,20 @@ input#sidebar:checked~.username {
 }
 
 .username img{
-    padding-right: 10px;
+    grid-column: 1/2;
+    justify-self: start;
+    align-self: center;
+    margin-left: 35px;
 }
 
 .username h3{
+    grid-column: 2/-1;
+    justify-self: start;
+    align-self: center;
     padding-left: 10px;
+    margin:0px;
 }
+
 
 
 
