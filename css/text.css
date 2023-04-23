@@ -85,6 +85,15 @@ form#login button {
 
 }
 
+
+section#client-tickets>h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 84px;
+}
+
 footer {
     font-family: 'Poppins';
     font-style: normal;

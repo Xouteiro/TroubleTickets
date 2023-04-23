@@ -1,3 +1,4 @@
+
 body {
     display: grid;
     grid-template-columns: 75% 10% 15%;
@@ -6,8 +7,22 @@ body {
     min-width: 20em;
     margin: 0 auto;
     min-height: 100vh;
+    max-height: 10em;
     overflow-x: hidden;
+}
 
+header {
+    display: grid;
+    grid-row: 1/2;
+    grid-template-columns: 25% 75%;
+}
+
+header>h1 {
+    display: flex;
+    grid-column: 2/3;
+    justify-content: left;
+    align-items: end;
+    margin-bottom: 10px;
 }
 
 
@@ -22,9 +37,8 @@ input#sidebar:not(:checked)+.sidebar {
     grid-column: 2/-1;
     grid-row:1/2;
     justify-self: end;
-    justify-content: end;
+    align-self: end;
     padding-right: 30px;
-    padding-top: 25px;
 }
 
 
@@ -32,9 +46,8 @@ input#sidebar:checked~.sidebar {
     display: flex;
     grid-column: 2/-1;
     grid-row: 1/2;
-    padding-left: 35px;
-    padding-top: 25px;
-
+    padding-left: 45px;
+    padding-top: 45px;
 }
 
 input#sidebar:checked~.username {
@@ -83,48 +96,31 @@ input#sidebar:checked~#menu {
 
 nav#menu ul {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr  1fr;
     padding: 0px;
     margin: 0px;
 }
 
 ul li{
-    align-self: center;
-    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+
+
 #logout,#login {
-    grid-row: 5/-1;
+    grid-row: 4/-1;
     align-self: end;
     justify-self: start;
     padding-left: 35px;
     padding-bottom: 25px;
 }
 
-header {
-    display: grid;
-    grid-row: 1/4;
-    grid-template-columns: 25% 75%;
-    grid-template-rows: 1fr 1fr;
-}
-
-header>h1 {
-    display: flex;
-    grid-row: 2/-1;
-    grid-column: 2/3;
-}
-
-header>h1>a {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    height: 100%;
-}
-
 
 .account {
     display: grid;
-    grid-row: 4/5;
+    grid-row: 3/5;
     grid-column: 1/2;
     grid-template-columns: 25% 75%;
     grid-template-rows: 30% 50% 20%;
@@ -203,7 +199,50 @@ header>h1>a {
 }
 
 
+section#client-tickets{
+    display:grid;
+    grid-column: 1/-1;
+    grid-row:2/5;
+    grid-template-rows:16% 10% 32% 10% 32%;
+}
 
+
+input#sidebar:checked~section#client-tickets{
+    display:grid;
+    grid-column: 1/2;
+    grid-row:2/5;
+    grid-template-rows:16% 10% 32% 10% 32%;
+}
+
+
+section#client-tickets>h2{
+    display: flex;
+    grid-row: 1/2;
+    align-self: center;
+}
+section#client-tickets:nth-child(3){
+    display: flex;
+    grid-row: 2/3;
+    align-items: center;
+}
+div.open-tickets{
+    display: flex;
+    grid-row:3/4;
+    align-items: center;
+}
+section#client-tickets:nth-child(2){
+    display:flex;
+    grid-row: 4/5;
+    align-items: center;
+}
+div.solved-tickets{
+    display: flex;
+    grid-row:5/-1;
+    align-items: center;
+}
+
+
+  
 
 
 footer {

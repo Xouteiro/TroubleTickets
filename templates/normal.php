@@ -57,7 +57,7 @@ function output_header(Session $session)
         <?php } ?>
         <?php
         if ($session->isLoggedIn()) { ?>
-          <li><a href="../pages/tickets.php">Your</a><a href="../pages/tickets.php">Tickets</a></li>
+          <li><a href="../pages/tickets_client.php">My</a><a href="../pages/tickets_client.php">Tickets</a></li>
           <li><a href="../pages/faq.php">FAQ</a></li>
         <?php } else { ?>
           <li><a href="../pages/faq.php">FAQ</a></li>
