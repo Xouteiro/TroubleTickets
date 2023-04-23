@@ -41,7 +41,7 @@ input#sidebar:checked~.username {
     display: grid;
     grid-row: 2/3;
     grid-column: 2/-1;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 40% 60%;
     justify-self: center;
     min-width: 100%;
     justify-content: center;
@@ -50,7 +50,7 @@ input#sidebar:checked~.username {
 
 .username img{
     grid-column: 1/2;
-    justify-self: start;
+    justify-self: end;
     align-self: center;
     margin-left: 35px;
 }
@@ -59,7 +59,7 @@ input#sidebar:checked~.username {
     grid-column: 2/-1;
     justify-self: start;
     align-self: center;
-    padding-left: 10px;
+    padding-left: 15px;
     margin:0px;
 }
 
