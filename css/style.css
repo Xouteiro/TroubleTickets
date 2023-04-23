@@ -45,38 +45,45 @@ a {
     border: none;
 }
 
-.full-input{
+.full-input {
     border: 1px solid #CFCFCF;
     background: #CFCFCF;
     border-radius: 4px;
 }
 
-.account input{
+.account input {
     background: #CFCFCF;
     border: none;
     outline: none;
     width: 88%;
 }
 
-.account label{
+.account label {
     opacity: 75%;
 }
 
-.account input::placeholder{
+.account input::placeholder {
     color: black;
     opacity: 50%;
 }
 
-.sidebar::after{
+.sidebar::after {
     content: "\2630";
-    color:white;
-    font-size: 30px;
+    color: white;
+    font-size: 35px;
 
 }
 
-#sidebar:checked ~ .sidebar::after{
+#sidebar:checked~.sidebar::after {
     content: "\2715";
-    color:white;
+    color: #FFFFFF;
+}
+
+
+body img {
+    border-radius: 50%;
+    height:15%;
+    width: 15%;
 }
 
 
@@ -84,12 +91,42 @@ input#sidebar {
     display: none;
 }
 
+nav#menu {
+    background-color: #CFCFCF;
+    border-bottom-left-radius: 5px;
+    opacity: 78%;
+
+}
+
+input#sidebar:checked~.sidebar {
+    background-color: #CFCFCF;
+    opacity: 78%;
+    border-top-left-radius: 5px;
+}
 
 
 #menu li {
+
     list-style-type: none;
 }
 
+#menu li>a:nth-child(2) {
+    color: #F47458;
+}
+
+#menu li>a:first-child {
+    color: #FFFFFF;
+}
+
+
+form#logout button,
+form#login button {
+    color: #F47458;
+    background-color: #CFCFCF;
+    border: none;
+    box-shadow: none;
+    border: none;
+}
 
 
 footer {

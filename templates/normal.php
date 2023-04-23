@@ -5,6 +5,13 @@ declare(strict_types=1); ?>
 <?php
 function output_header(Session $session)
 { ?>
+  <?php
+  require_once(__DIR__ . '/../database/connection.db.php');
+  require_once(__DIR__ . '/../database/client.class.php');
+
+  $db = getDataBaseConnection();
+  $client = Client::getClientById($db, $session->getId());
+  ?>
   <!DOCTYPE html>
   <html lang="en-US">
 
@@ -24,28 +31,45 @@ function output_header(Session $session)
   <body>
     <header>
       <h1><a href="../pages/index.php">Trouble</a><a href="../pages/index.php">Tickets</a></h1>
-      <nav id="menu">
-      <input type="checkbox" id="sidebar"> 
-      <label class="sidebar" for="sidebar"></label>
-      <ul>
-      <?php
-        if ($session->isLoggedIn()) { ?>
-          <li><a href="../pages/newTicket.php">New Ticket</a></li>
-          <?php } else { ?>
-            <li><a href="../pages/login.php">New Ticket</a></li>
-            <?php } ?>
-            <?php
-            if ($session->isLoggedIn()) { ?>
-              <li><a href="../pages/tickets.php">Tickets</a></li>
-              <li><a href="../pages/profile.php">Profile</a></li>
-            <?php } else { ?>
-              <li><a href="../pages/login.php">Profile</a></li>
-            <?php }
-            ?>
-      </ul>
-    </nav>
     </header>
     
+    <input type="checkbox" id="sidebar">
+    <label class="sidebar" for="sidebar"></label>
+    <div class="username">
+    <img src="https://picsum.photos/200" alt="profile photo">
+    <h3><?php echo $client->username ?></h3>
+    </div>
+
+    <nav id="menu">
+      <ul>
+        <?php
+        if ($session->isLoggedIn()) { ?>
+          <li><a href="../pages/newTicket.php">New</a><a href="../pages/newTicket.php">Ticket</a></li>
+        <?php } else { ?>
+          <li><a href="../pages/newTicket.php">New</a><a href="../pages/newTicket.php">Ticket</a></li>
+        <?php } ?>
+        <?php
+        if ($session->isLoggedIn()) { ?>
+          <li><a href="../pages/tickets.php">Your</a><a href="../pages/tickets.php">Tickets</a></li>
+          <li><a href="../pages/faq.php">FAQ</a></li>
+        <?php } else { ?>
+          <li><a href="../pages/faq.php">FAQ</a></li>
+        <?php }
+        ?>
+        <?php
+        if ($session->isLoggedIn()) { ?>
+          <form action="../actions/action_logout.php" method="post" id="logout">
+            <button id="logout-button" class="logout">Logout</button>
+          </form>
+        <?php } else { ?>
+          <form action="../pages/login.php" method="post" id="login">
+            <button id="login-button" class="logout">Login</button>
+          </form>
+        <?php }
+        ?>
+      </ul>
+
+    </nav>
 
   <?php } ?>
 

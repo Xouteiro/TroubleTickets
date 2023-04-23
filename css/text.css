@@ -54,6 +54,27 @@ header>h1 {
     line-height: 22px;
 }
 
+nav#menu ul{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 22px;
+
+    /* or 61% */
+    letter-spacing: 0.03em;
+}
+
+form#logout button,form#login button{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    
+}
+
 footer {
     font-family: 'Poppins';
     font-style: normal;
