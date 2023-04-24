@@ -77,5 +77,23 @@ class Ticket
             return false;
         }
     }
+
+    static function getTicketsClient(PDO $db, int $client_id, int $count): array
+    {
+        $stmt = $db->prepare('SELECT ticket_id, agent_id, client_id, department_id, status FROM TICKETS WHERE client_id = ? LIMIT ?');
+        $stmt->execute(array($client_id, $count));
+
+        $tickets = array();
+        while ($ticket = $stmt->fetch()) {
+            $tickets[] = new Ticket(
+                $ticket['ticket_id'],
+                $ticket['agent_id'],
+                $ticket['client_id'],
+                $ticket['department_id'],
+                $ticket['status']
+            );
+        }
+        return $tickets;
+    }
 }
 ?>

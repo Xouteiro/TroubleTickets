@@ -88,3 +88,44 @@ VALUES (1);
 
 INSERT INTO ADMINS (client_id, agent_id)
 VALUES (1, 1);
+
+-- Populating database
+-- Populating the DEPARTMENTS table
+INSERT INTO DEPARTMENTS (department_name) VALUES ('Sales');
+INSERT INTO DEPARTMENTS (department_name) VALUES ('Customer Support');
+INSERT INTO DEPARTMENTS (department_name) VALUES ('Technical Support');
+
+-- Populating the CLIENTS table
+INSERT INTO CLIENTS (username, password, email) VALUES ('johndoe', 'password123', 'johndoe@gmail.com');
+INSERT INTO CLIENTS (username, password, email) VALUES ('janedoe', 'qwertyuiop', 'janedoe@gmail.com');
+
+-- Populating the AGENTS table
+INSERT INTO AGENTS (client_id, department_id) VALUES (2, 2);
+INSERT INTO AGENTS (client_id, department_id) VALUES (3, 3);
+
+-- Populating the ADMINS table
+INSERT INTO ADMINS (client_id, agent_id) VALUES (2, 2);
+
+-- Populating the FAQS table
+INSERT INTO FAQS (department_id, question, answer) VALUES (1, 'How can I place an order?', 'You can place an order through our website or by contacting our sales team.');
+INSERT INTO FAQS (department_id, question, answer) VALUES (2, 'How can I get technical support?', 'You can submit a support ticket through our website or by contacting our technical support team.');
+INSERT INTO FAQS (department_id, question, answer) VALUES (3, 'What do I do if I forget my password?', 'You can reset your password by clicking the "Forgot Password" link on our website login page.');
+
+-- Populating the TICKETS table
+INSERT INTO TICKETS (agent_id, client_id, department_id, status) VALUES (1, 1, 1, true);
+INSERT INTO TICKETS (agent_id, client_id, department_id, status) VALUES (2, 2, 2, false);
+
+-- Populating the MESSAGES table
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'I would like to place an order for 10 widgets.', 1);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'Sure, we can help you with that. What is your preferred payment method?', 1);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (2, 'I am having trouble with my software installation.', 2);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (2, 'We apologize for the inconvenience. Our technical support team will reach out to you shortly.', 2);
+
+-- Populating the HASHTAGS table
+INSERT INTO HASHTAGS (hashtag_name) VALUES ('#sales');
+INSERT INTO HASHTAGS (hashtag_name) VALUES ('#customer_support');
+INSERT INTO HASHTAGS (hashtag_name) VALUES ('#technical_support');
+
+-- Populating the TICKET_HASHTAGS table
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES (1, 1);
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES (2, 3);
