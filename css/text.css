@@ -2,11 +2,10 @@
 
 * {
     font-family: 'Poppins', sans-serif;
+    font-style: normal;
 }
 
 header>h1 {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 36px;
     line-height: 22px;
@@ -14,8 +13,6 @@ header>h1 {
 }
 
 .username h3 {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 550;
     font-size: 22px;
     line-height: 29px;
@@ -23,16 +20,12 @@ header>h1 {
 }
 
 .account>h2 {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 56px;
     line-height: 84px;
 }
 
 .account>p {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
@@ -40,44 +33,32 @@ header>h1 {
 }
 
 .account label {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 300;
     font-size: 13px;
     line-height: 14px;
 }
 
 .account input {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
 }
 
 .account button {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
 }
 
 nav#menu ul {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 24px;
     line-height: 22px;
-
-    /* or 61% */
     letter-spacing: 0.03em;
 }
 
 form#logout button,
 form#login button {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
@@ -86,17 +67,41 @@ form#login button {
 }
 
 
-section#client-tickets>h2{
-    font-family: 'Poppins';
-    font-style: normal;
+section>h2 {
     font-weight: 600;
     font-size: 56px;
     line-height: 84px;
 }
 
+section h3 {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+}
+
+h4{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em; 
+}
+
+div.questions p{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.03em; 
+}
+
+div.ticket p{
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.03em; 
+}
+
 footer {
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
