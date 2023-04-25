@@ -16,7 +16,7 @@ class Ticket
         $this->agent_id = $agent_id;
         $this->client_id = $client_id;
         $this->department_id = $department_id;
-        $this->status = $status;
+        $this->status = (bool) $status;
     }
 
     static function updateTicket(PDO $db, int $id, int $agent_id, int $client_id, int $department_id, bool $status): bool
@@ -42,7 +42,7 @@ class Ticket
                 $ticket['agent_id'],
                 $ticket['client_id'],
                 $ticket['department_id'],
-                $ticket['status']
+                (bool) $ticket['status']
             );
         }
         return $tickets;
