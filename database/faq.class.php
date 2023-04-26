@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 class FAQ
 {
@@ -29,7 +28,7 @@ class FAQ
         }
     }
 
-    public function getFAQS(PDO $db, int $count): array
+    public static function getFAQS(PDO $db, int $count): array
     {
         $stmt = $db->prepare('SELECT faq_id, department_id, question, answer FROM FAQS LIMIT ?');
         $stmt->execute(array($count));

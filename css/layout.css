@@ -244,8 +244,9 @@ div.solved-tickets{
 div.ticket{
     margin:8px;
     margin-left: 12px;
-    width: 13em;
+    width: 12em;
     height: 90%;
+    
 }
 
 section#faq{

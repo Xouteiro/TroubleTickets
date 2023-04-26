@@ -221,7 +221,7 @@ section#faq div.questions .question p {
 
 section#faq div.departments h3 {
     background-color: #cFcFcF;
-    color: #FFFFFF;
+    color: #F47458;
     padding-top: 25px;
     padding-bottom: 25px;
     margin: 3px;
@@ -235,15 +235,24 @@ section#faq div.departments h3:first-child {
 
 }
 
+section#faq div.questions div.question:first-child {
+    margin-top: 15px;
+
+}
+
+hr{
+    opacity: 70%;
+}
+
 section#faq div.departments :hover {
     background-color: grey;
-    color: #F47458;
+    color: white;
 
 }
 
 div.open-tickets,
 div.solved-tickets {
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #CFCFCF;
     opacity: 78%;
     margin-right: 10px;
@@ -253,6 +262,7 @@ div.solved-tickets {
 div.ticket{
     background-color: white;
     position: relative;
+    border-radius: 8px;
 }
 
 div.ticket h4{  

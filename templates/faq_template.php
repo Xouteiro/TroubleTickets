@@ -9,6 +9,7 @@ function output_faq_page(Session $session){
 ?>
 <?php
   require_once(__DIR__ . '/../database/connection.db.php');
+  require_once(__DIR__ . '/../database/department.class.php');
   $db = getDataBaseConnection(); ?>
   
         <section id="faq" class="faq">
@@ -27,14 +28,17 @@ function output_departments(Session $session){
 
 require_once(__DIR__ . '/../utils/session.php');
 require_once(__DIR__ . '/../database/connection.db.php');
-require_once(__DIR__ . '/../templates/normal.php');
+require_once(__DIR__ . '/../database/department.class.php');
 require_once(__DIR__ . '/../templates/faq_template.php');
 
 $db = getDatabaseConnection();
+$departments = Department::getDepartments($db,10);
 ?>
 <div class="departments">
-    <h3>Department1</h3>
-    <h3>Department2</h3>
+<?php
+foreach($departments as $department) {?>
+    <h3><?php echo $department->name?></h3>
+<?php } ?>
 </div>
 
 
@@ -51,32 +55,28 @@ $db = getDatabaseConnection();
 
 
 <?php
-function output_faq_by_department()
-{
+function output_faq_by_department() {
+  require_once(__DIR__ . '/../database/connection.db.php');
+  require_once(__DIR__ . '/../database/faq.class.php');
 
-?>
-<div class="questions">
-  <div class="question">
-    <h4>What do I do if I forget my password?</h4>
-    <p>You can reset your password by clicking the "Forgot Password" link on our website login page.You can reset your password by clicking the "Forgot Password" link on our website login page.You can reset your password by clicking the "Forgot Password" link on our website login page.</p>
-  </div>
-  <div class="question">
-    <h4>What do I do if I forget my password?</h4>
-    <p>You can reset your password by clicking the "Forgot Password" link on our website login page.</p>
-  </div>
-  
-</section>
+
+  $db = getDataBaseConnection();
+  $faqs = FAQ::getFAQS($db,20);
+  ?>
+  <div class='questions'>
 <?php
-/*for(faq as f){
-    if(faq->department = $department){
+foreach($faqs as $faq) {
+    /*if($faq->department != $department){*/   ?>
       <div class="question">
-        <h4>faq->question</h4>
-        <p> faq->answer <p>
+        <h4><?php echo $faq->question?></h4>
+        <p> <?php echo $faq->answer?> </p>
+        <hr>
       </div>
-    }
-    
-}
-*/
+
+   <?php /*} */  
+} ?>
+</div>
+<?php
 }
   ?>
 
