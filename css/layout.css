@@ -272,6 +272,8 @@ section#faq h2{
 section#faq div.departments{
     grid-column: 1/2;
     grid-row: 2/-1;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 input#sidebar:checked~section#faq div.questions{
     grid-column: 2/-1;

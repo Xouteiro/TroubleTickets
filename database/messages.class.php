@@ -7,23 +7,23 @@ class Message
     public int $ticket_id;
     public int $client_id;
     public string $message;
-    public DateTime $timestamp;
+    public DateTime $date_created;
 
-    public function __construct(int $id, int $ticket_id, int $client_id, string $message, DateTime $timestamp)
+    public function __construct(int $id, int $ticket_id, int $client_id, string $message, DateTime $date_created)
     {
         $this->id = $id;
         $this->ticket_id = $ticket_id;
         $this->client_id = $client_id;
         $this->message = $message;
-        $this->timestamp = $timestamp;
+        $this->date_created = $date_created;
     }
 
-    static function updateMessage(PDO $db, int $id, int $ticket_id, int $client_id, string $message, DateTime $timestamp)
+    static function updateMessage(PDO $db, int $id, int $ticket_id, int $client_id, string $message, DateTime $date_created)
     {
-        $stmt = $db->prepare('UPDATE MESSAGES SET ticket_id = ?, client_id = ?, message = ?, timestamp = ? WHERE message_id =
+        $stmt = $db->prepare('UPDATE MESSAGES SET ticket_id = ?, client_id = ?, message_content = ?, date_created = ? WHERE message_id =
 ?');
         try {
-            $stmt->execute(array($ticket_id, $client_id, $message, $timestamp->format('Y-m-d H:i:s'), $id));
+            $stmt->execute(array($ticket_id, $client_id, $message, $date_created->format('Y-m-d H:i:s'), $id));
             return true;
         } catch (PDOException $e) {
             return false;
@@ -33,7 +33,7 @@ class Message
     static function getMessages(PDO $db, int $count): array
     {
         $stmt = $db->prepare(
-            'SELECT message_id, ticket_id, client_id, message, timestamp FROM MESSAGES LIMIT ?'
+            'SELECT message_id, ticket_id, client_id, message_content, date_created FROM MESSAGES LIMIT ?'
         );
         $stmt->execute(array($count));
 
@@ -43,8 +43,8 @@ class Message
                 $message['message_id'],
                 $message['ticket_id'],
                 $message['client_id'],
-                $message['message'],
-                new DateTime($message['timestamp']),
+                $message['message_content'],
+                new DateTime($message['date_created']),
             );
         }
         return $messages;
@@ -53,7 +53,7 @@ class Message
     static function getMessageById(PDO $db, int $id): ?Message
     {
         $stmt = $db->prepare(
-            'SELECT message_id, ticket_id, client_id, message, timestamp FROM MESSAGES WHERE message_id = ?'
+            'SELECT message_id, ticket_id, client_id, message_content, date_created FROM MESSAGES WHERE message_id = ?'
         );
         $stmt->execute(array($id));
 
@@ -62,19 +62,19 @@ class Message
                 $message['message_id'],
                 $message['ticket_id'],
                 $message['client_id'],
-                $message['message'],
-                new DateTime($message['timestamp']),
+                $message['message_content'],
+                new DateTime($message['date_created']),
             );
         }
 
         return null;
     }
 
-    static function createMessage(PDO $db, int $ticket_id, int $client_id, string $message, DateTime $timestamp): ?Message
+    static function createMessage(PDO $db, int $ticket_id, int $client_id, string $message_content, DateTime $date_created): ?Message
     {
-        $stmt = $db->prepare('INSERT INTO MESSAGES (ticket_id, client_id, message, timestamp) VALUES (?, ?, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO MESSAGES (ticket_id, client_id, message_content, date_created) VALUES (?, ?, ?, ?)');
         try {
-            $stmt->execute(array($ticket_id, $client_id, $message, $timestamp->format('Y-m-d H:i:s')));
+            $stmt->execute(array($ticket_id, $client_id, $message_content, $date_created->format('Y-m-d H:i:s')));
             return self::getMessageById($db, $db->lastInsertId());
         } catch (PDOException $e) {
             return null;

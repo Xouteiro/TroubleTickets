@@ -222,8 +222,8 @@ section#faq div.questions .question p {
 section#faq div.departments h3 {
     background-color: #cFcFcF;
     color: #F47458;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     margin: 3px;
     text-align: center;
 
@@ -232,6 +232,7 @@ section#faq div.departments h3 {
 section#faq div.departments h3:first-child {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    padding-top: 20px;
 
 }
 

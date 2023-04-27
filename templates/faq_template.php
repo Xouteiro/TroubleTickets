@@ -38,6 +38,7 @@ $departments = Department::getDepartments($db,10);
 <?php
 foreach($departments as $department) {?>
     <h3><?php echo $department->name?></h3>
+    <hr>
 <?php } ?>
 </div>
 
