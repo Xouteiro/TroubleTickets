@@ -9,6 +9,8 @@ function output_yourtickets_page(Session $session)
   require_once(__DIR__ . '/../database/connection.db.php');
   require_once(__DIR__ . '/../database/client.class.php');
   require_once(__DIR__ . '/../database/ticket.class.php');
+  require_once(__DIR__ . '/../database/messages.class.php');
+
 
 
   $db = getDataBaseConnection();
@@ -38,6 +40,8 @@ function output_client_tickets(PDO $db, Session $session)
 {
 
   $client = Client::getClientById($db, $session->getId());
+  $messages = Message::getMessages($db,10);
+  $message_to_use = new Message(0,0,0,'0', new DateTime());
 
 ?>
   <h2>MyTickets</h2>
@@ -52,8 +56,14 @@ function output_client_tickets(PDO $db, Session $session)
   foreach ($tickets as $ticket) {
     if($ticket->status == 1) { ?>
     <div class="ticket">
-        <h4>#<?php echo $ticket->id ?> from <?php echo $ticket->client_id ?> to <?php echo $ticket->agent_id ?></h4>
-        <p>a little bit of the ticket message</p>
+        <h4>Ticket #<?php echo $ticket->id //ticket title ?>  </h4> 
+        <?php foreach($messages as $message){
+          if($message->ticket_id == $ticket->id){ ?>
+           <p> <?php echo substr($message->message,0,200);
+           $message_to_use = $message;?></p>
+        <?php break; }
+          }?>
+        <h5><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h5>
     </div>
     <?php
   }

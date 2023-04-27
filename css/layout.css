@@ -242,6 +242,8 @@ div.solved-tickets{
 }
 
 div.ticket{
+    display: flex;
+    flex-direction: column;
     margin:8px;
     margin-left: 12px;
     width: 12em;

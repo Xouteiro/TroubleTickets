@@ -262,28 +262,35 @@ div.solved-tickets {
 
 div.ticket{
     background-color: white;
-    position: relative;
     border-radius: 8px;
 }
 
 div.ticket h4{  
     margin: auto;
     text-align: center;
-    padding: 15px;
     color: #F47458;
 }
 
 div.ticket p{
-    position: absolute;
-    bottom: 15px;
-    padding: 5px;
     margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;;
     color:black;
     word-wrap: break-word;
     text-align: center;
-    align-self: flex-end;
 }
 
+div.ticket h5{
+    display:flex;
+    margin: auto;
+    margin-right: 5px;
+    margin-bottom: 4px;
+    color:black;
+    word-wrap: break-word;
+    align-self: flex-end;
+    justify-content: end;
+
+}
 
 
 
