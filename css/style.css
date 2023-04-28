@@ -230,10 +230,7 @@ section#faq div.departments h3 {
 }
 
 section#faq div.departments h3:first-child {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding-top: 20px;
-
+    margin-top: 10px;
 }
 
 section#faq div.questions div.question:first-child {
@@ -260,18 +257,18 @@ div.solved-tickets {
 }
 
 
-div.ticket{
+a.ticket{
     background-color: white;
     border-radius: 8px;
 }
 
-div.ticket h4{  
+a.ticket h4{  
     margin: auto;
     text-align: center;
     color: #F47458;
 }
 
-div.ticket p{
+a.ticket p{
     margin: auto;
     margin-left: 5px;
     margin-right: 5px;;
@@ -280,14 +277,12 @@ div.ticket p{
     text-align: center;
 }
 
-div.ticket h5{
+a.ticket h5{
     display:flex;
-    margin: auto;
     margin-right: 5px;
     margin-bottom: 4px;
     color:black;
     word-wrap: break-word;
-    align-self: flex-end;
     justify-content: end;
 
 }

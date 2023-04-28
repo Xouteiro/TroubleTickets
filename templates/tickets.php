@@ -55,7 +55,7 @@ function output_client_tickets(PDO $db, Session $session)
   }
   foreach ($tickets as $ticket) {
     if($ticket->status == 1) { ?>
-    <div class="ticket">
+    <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
         <h4>Ticket #<?php echo $ticket->id //ticket title ?>  </h4> 
         <?php foreach($messages as $message){
           if($message->ticket_id == $ticket->id){ ?>
@@ -63,8 +63,8 @@ function output_client_tickets(PDO $db, Session $session)
            $message_to_use = $message;?></p>
         <?php break; }
           }?>
-        <h5><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h5>
-    </div>
+        <h5><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h5> 
+    </a>
     <?php
   }
 }

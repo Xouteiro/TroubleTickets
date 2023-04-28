@@ -117,7 +117,7 @@ INSERT INTO TICKETS (agent_id, client_id, department_id, status) VALUES (2, 2, 2
 
 -- Populating the MESSAGES table
 INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'I would like to place an order for 10 widgets.', 1);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'Sure, we can help you with that. What is your preferred payment method?', 1);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'Sure, we can help you with that. What is your preferred payment method?', 2);
 INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (2, 'I am having trouble with my software installation.', 2);
 INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (2, 'We apologize for the inconvenience. Our technical support team will reach out to you shortly.', 2);
 
