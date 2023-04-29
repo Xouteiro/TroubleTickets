@@ -51,6 +51,7 @@ agent_id INTEGER NOT NULL,
 client_id INTEGER NOT NULL,
 department_id INTEGER NOT NULL,
 status BOOLEAN NOT NULL,
+title VARCHAR(255) NOT NULL,
 FOREIGN KEY(department_id) REFERENCES DEPARTMENTS(department_id),
 FOREIGN KEY(client_id) REFERENCES CLIENTS(client_id),
 FOREIGN KEY(agent_id) REFERENCES AGENTS(agent_id)
@@ -90,42 +91,69 @@ INSERT INTO ADMINS (client_id, agent_id)
 VALUES (1, 1);
 
 -- Populating database
--- Populating the DEPARTMENTS table
-INSERT INTO DEPARTMENTS (department_name) VALUES ('Sales');
-INSERT INTO DEPARTMENTS (department_name) VALUES ('Customer Support');
-INSERT INTO DEPARTMENTS (department_name) VALUES ('Technical Support');
+-- Populating clients
 
--- Populating the CLIENTS table
-INSERT INTO CLIENTS (username, password, email) VALUES ('johndoe', 'password123', 'johndoe@gmail.com');
-INSERT INTO CLIENTS (username, password, email) VALUES ('janedoe', 'qwertyuiop', 'janedoe@gmail.com');
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('joao', 'joao', 'joao@gmail.com');
 
--- Populating the AGENTS table
-INSERT INTO AGENTS (client_id, department_id) VALUES (2, 2);
-INSERT INTO AGENTS (client_id, department_id) VALUES (3, 3);
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('diogo', 'diogo', 'diogo@gmail.com');
 
--- Populating the ADMINS table
-INSERT INTO ADMINS (client_id, agent_id) VALUES (2, 2);
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('pedro', 'pedro', 'pedro@gmail.com');
 
--- Populating the FAQS table
-INSERT INTO FAQS (department_id, question, answer) VALUES (1, 'How can I place an order?', 'You can place an order through our website or by contacting our sales team.');
-INSERT INTO FAQS (department_id, question, answer) VALUES (2, 'How can I get technical support?', 'You can submit a support ticket through our website or by contacting our technical support team.');
-INSERT INTO FAQS (department_id, question, answer) VALUES (3, 'What do I do if I forget my password?', 'You can reset your password by clicking the "Forgot Password" link on our website login page.');
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('joel', 'joel', 'joel@gmail.com');
 
--- Populating the TICKETS table
-INSERT INTO TICKETS (agent_id, client_id, department_id, status) VALUES (1, 1, 1, true);
-INSERT INTO TICKETS (agent_id, client_id, department_id, status) VALUES (2, 2, 2, false);
+INSERT INTO CLIENTS (username, password, email)
+VALUES ('sara', 'sara', 'sara@gmail.com');
 
--- Populating the MESSAGES table
-INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'I would like to place an order for 10 widgets.', 1);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (1, 'Sure, we can help you with that. What is your preferred payment method?', 2);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (2, 'I am having trouble with my software installation.', 2);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES (2, 'We apologize for the inconvenience. Our technical support team will reach out to you shortly.', 2);
+-- Populating Agents 
 
--- Populating the HASHTAGS table
-INSERT INTO HASHTAGS (hashtag_name) VALUES ('#sales');
-INSERT INTO HASHTAGS (hashtag_name) VALUES ('#customer_support');
-INSERT INTO HASHTAGS (hashtag_name) VALUES ('#technical_support');
+INSERT INTO AGENTS (client_id, department_id)
+VALUES (2, 1);
+INSERT INTO AGENTS (client_id, department_id)
+VALUES (3, 2);
+INSERT INTO AGENTS (client_id, department_id)
 
--- Populating the TICKET_HASHTAGS table
-INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES (1, 1);
-INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES (2, 3);
+-- Populating Departments
+INSERT INTO DEPARTMENTS (department_name)
+VALUES ('Sales');
+INSERT INTO DEPARTMENTS (department_name)
+VALUES ('Support');
+
+-- Populating FAQs
+INSERT INTO FAQS (department_id, question, answer)
+VALUES (1, 'How to buy?', 'You can buy by clicking on the buy button.');
+INSERT INTO FAQS (department_id, question, answer)
+VALUES (2, 'How to pay?', 'You can pay by clicking on the pay button.');
+
+-- Populating Tickets
+INSERT INTO TICKETS (agent_id, client_id, department_id, status,title)
+VALUES (2, 4, 1, 1, 'How to buy?');
+
+INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
+VALUES (3, 5, 2, 1, 'How to pay?');
+
+-- Populating Messages
+INSERT INTO MESSAGES (ticket_id, message_content, client_id)
+VALUES (1, 'I want to buy this product.', 4);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id)
+VALUES (1, 'You need to click on the buy button.', 2);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id)
+VALUES (1, 'I want to buy this product.', 5);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id)
+VALUES (1, 'You need to click on the buy button.', 3);
+
+-- Populating Hashtags
+INSERT INTO HASHTAGS (hashtag_name)
+VALUES ('#buy');
+INSERT INTO HASHTAGS (hashtag_name)
+VALUES ('#pay');
+
+-- Populating Ticket_Hashtags
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
+VALUES (1, 1);
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
+VALUES (1, 2);
+

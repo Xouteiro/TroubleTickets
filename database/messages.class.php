@@ -81,5 +81,25 @@ class Message
         }
     }
 
+    static function getMessagebyTicketID(PDO $db, int $ticket_id): ?Message
+    {
+        $stmt = $db->prepare(
+            'SELECT message_id, ticket_id, client_id, message_content, date_created FROM MESSAGES WHERE ticket_id = ?'
+        );
+        $stmt->execute(array($ticket_id));
+
+        if ($message = $stmt->fetch()) {
+            return new Message(
+                $message['message_id'],
+                $message['ticket_id'],
+                $message['client_id'],
+                $message['message_content'],
+                new DateTime($message['date_created']),
+            );
+        }
+
+        return null;
+    }
+
 }
 ?>
