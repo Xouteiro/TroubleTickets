@@ -114,7 +114,6 @@ INSERT INTO AGENTS (client_id, department_id)
 VALUES (2, 1);
 INSERT INTO AGENTS (client_id, department_id)
 VALUES (3, 2);
-INSERT INTO AGENTS (client_id, department_id)
 
 -- Populating Departments
 INSERT INTO DEPARTMENTS (department_name)
