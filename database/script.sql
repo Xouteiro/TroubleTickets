@@ -108,18 +108,18 @@ VALUES ('joel', 'joel', 'joel@gmail.com');
 INSERT INTO CLIENTS (username, password, email)
 VALUES ('sara', 'sara', 'sara@gmail.com');
 
+-- Populating Departments
+INSERT INTO DEPARTMENTS (department_name)
+VALUES ('Sales');
+INSERT INTO DEPARTMENTS (department_name)
+VALUES ('Support');
+
 -- Populating Agents 
 
 INSERT INTO AGENTS (client_id, department_id)
 VALUES (2, 1);
 INSERT INTO AGENTS (client_id, department_id)
 VALUES (3, 2);
-
--- Populating Departments
-INSERT INTO DEPARTMENTS (department_name)
-VALUES ('Sales');
-INSERT INTO DEPARTMENTS (department_name)
-VALUES ('Support');
 
 -- Populating FAQs
 INSERT INTO FAQS (department_id, question, answer)
