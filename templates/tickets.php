@@ -48,7 +48,7 @@ function output_client_tickets(PDO $db, Session $session)
   <h3>Open</h3>
   <div class="open-tickets">
   <?php
-  $tickets = Ticket::getTicketsClient($db, $client->id, 5); ////é preciso uma função que dê os tickets por id de client e ccom o status
+  $tickets = Ticket::getTicketsClient($db, $client->id, 5); 
   if (count($tickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php
@@ -73,7 +73,7 @@ function output_client_tickets(PDO $db, Session $session)
   <h3>Solved</h3>
   <div class="solved-tickets">
   <?php
-  $tickets = Ticket::getTicketsClient($db, $client->id, 5); ////é preciso uma função que dê os tickets por id de client e ccom o status
+  $tickets = Ticket::getTicketsClient($db, $client->id, 5); ////é preciso uma função que dê os tickets por id de client e com o status
   if (count($tickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php

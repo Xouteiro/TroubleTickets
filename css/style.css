@@ -256,6 +256,11 @@ div.solved-tickets {
     margin-right: 10px;
 }
 
+div.open-tickets>p,
+div.solved-tickets>p {
+    padding-left: 15px;
+}
+
 
 a.ticket{
     background-color: white;
@@ -287,10 +292,58 @@ a.ticket h5{
 
 }
 
+section#chat div.client-message, section#chat div.agent-message{
+    background-color: #b3b3b3;
+    width:60%;
+    word-wrap: break-word;
+    margin-top: 15px;
+    border-radius: 8px;
+    
+}
+ section#chat div.messages{
+    background-color: #CFCFCF;
+    border-radius: 5px;
+ }
 
 
 
+ input#sidebar:checked~section#chat div.messages{
+    margin-right: 30px;
+}
 
+section#chat div.message-input input{
+    padding: 0px;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: #b3b3b3;
+    height: 100%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 8px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+section#chat div.message-input{
+    height: 30px; 
+    background: #b3b3b3;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+section#chat div.messages h4{
+    color:#F47458
+ }
+
+ section#chat h3{
+    margin: 0px;
+    color:#F47458;
+    padding:10px;
+}
+
+ 
 
 
 footer {
