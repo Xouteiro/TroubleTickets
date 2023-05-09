@@ -94,9 +94,9 @@ div.questions p{
     letter-spacing: 0.03em; 
 }
 
-div.ticket p{
+div.ticket p, div.messages p{
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.03em; 
 }
@@ -106,6 +106,19 @@ div.ticket h5{
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 0.03em; 
+}
+
+div.messages h4{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.03em; 
+}
+
+section#chat div.message-input input{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 footer {

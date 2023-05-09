@@ -17,25 +17,27 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   $messages = Message::getMessages($db,10);
  
   ?>
-  <section id='message' class='message'>
+  <section id='chat' class='chat'>
     <h2>TIcket #<?php echo $ticket->id //mudar para title ?> </h2>
-    <h3><?php if($ticket->status == 1){
+    <h3>Status: <?php if($ticket->status == 1){ //mudar a cor do Open para verde
                 echo "Open";
             }else{
                 echo "Closed";
             }?></h3>
+    <div class="messages">
+      <div class="text">
     <?php 
     foreach($messages as $message){
       if($message->ticket_id == $ticket->id)/*tirar quando tiver o getMessagesByTicketId*/{
         if($message->client_id == $ticket->client_id){?>
           <div class='client-message'>
-            <h4><?php echo $client->username?></h4>
+            <h4>Client: <?php echo $client->username //por Agent: a laranja?></h4>
             <p><?php echo $message->message?></p>
             <h5><?php echo $message->date_created->format('d/m/Y H:i:s')?></h5>
           </div>
         <?php } else if($message->client_id == $ticket->agent_id){?>
           <div class='agent-message'>
-          <h4><?php echo $agent->username?></h4>
+          <h4>Agent: <?php echo $agent->username //por Agent: a laranja?></h4>
           <p><?php echo $message->message?></p>
           <h5><?php echo $message->date_created->format('d/m/Y H:i:s')?></h5>
         </div>
@@ -44,7 +46,16 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
 
       }
     }
+    
     ?>
+      </div>
+    <div class="message-input">
+      <input type="text" placeholder="Enter your message">
+    </div>
+    </div>
+    
+    
+
     
   </section>
   
