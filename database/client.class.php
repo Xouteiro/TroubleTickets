@@ -148,6 +148,28 @@ class Client
         }
     }
 
+    static function getAgents(PDO $db, int $count): array
+    {
+        $stmt = $db->prepare(
+            'SELECT c.client_id AS t1, c.username, c.password, c.email
+            FROM CLIENTS c
+            INNER JOIN AGENTS a ON c.client_id = a.client_id
+            LIMIT ?'
+        );
+        $stmt->execute(array($count));
+
+        $users = array();
+        while ($user = $stmt->fetch()) {
+            $users[] = new Client(
+                $user['t1'],
+                $user['username'],
+                $user['password'],
+                $user['email'],
+            );
+        }
+        return $users;
+    }
+
     static function isAdmin(PDO $db, $id)
     {
         $stmt = $db->prepare('SELECT * FROM ADMINS WHERE client_id = ?');
