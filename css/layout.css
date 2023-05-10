@@ -202,25 +202,26 @@ ul li {
 
 
 section#client-tickets {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-column: 1/-1;
     grid-row: 2/5;
-    grid-template-rows: 16% 10% 32% 10% 32%;
 }
 
 
 input#sidebar:checked~section#client-tickets {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-column: 1/2;
     grid-row: 2/5;
-    grid-template-rows: 16% 10% 32% 10% 32%;
 }
 
 
 section#client-tickets>h2 {
     display: flex;
-    grid-row: 1/2;
     align-self: center;
+    margin-left: 0px;
+    margin-right: auto;
 }
 
 section#client-tickets:nth-child(3) {
@@ -229,9 +230,9 @@ section#client-tickets:nth-child(3) {
     align-items: center;
 }
 
-div.open-tickets {
+div.open-tickets,div.solved-tickets,div.unassigned-tickets {
     display: flex;
-    grid-row: 3/4;
+    min-height: 10em;
     align-items: center;
 }
 
@@ -241,18 +242,13 @@ section#client-tickets:nth-child(2) {
     align-items: center;
 }
 
-div.solved-tickets {
-    display: flex;
-    grid-row: 5/-1;
-    align-items: center;
-}
 
 a.ticket {
     display: flex;
     flex-direction: column;
     margin: 8px;
     margin-left: 12px;
-    width: 12em;
+    width: 13em;
     height: 90%;
 
 }

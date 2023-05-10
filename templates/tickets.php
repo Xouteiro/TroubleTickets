@@ -10,28 +10,19 @@ function output_yourtickets_page(Session $session)
   require_once(__DIR__ . '/../database/client.class.php');
   require_once(__DIR__ . '/../database/ticket.class.php');
   require_once(__DIR__ . '/../database/messages.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
+  require_once(__DIR__ . '/../database/agent.class.php'); 
 
 
 
   $db = getDataBaseConnection();
-  $client = Client::getClientById($db, $session->getId());
+
  
   ?>
-
-      <?php if ($client->isAdmin($db,$session->getId())) {//mudar para is Agent e mudar funcao de output ?>
-        <section id="client-tickets" class="client-tickets">
-      <?php output_client_tickets($db,$session); ?>
-         </section>
-      <?php } else if($client->isAdmin($db,$session->getId()))  { //mudar para is Agent e mudar funcao de output?>
-        <section id="client-tickets" class="client-tickets">
-      <?php output_client_tickets($db,$session); ?>
-         </section>
-      <?php } else { ?>
         <section id="client-tickets" class="client-tickets">
       <?php output_client_tickets($db,$session); ?>
          </section>
     <?php } 
-    }
     ?>
 
 
@@ -40,6 +31,8 @@ function output_client_tickets(PDO $db, Session $session)
 {
 
   $client = Client::getClientById($db, $session->getId());
+  $agent = Agent::getAgentByClientId($db,$client->id);
+
   $messages = Message::getMessages($db,10);
   $message_to_use = new Message(0,0,0,'0', new DateTime());
 
@@ -48,54 +41,84 @@ function output_client_tickets(PDO $db, Session $session)
   <h3>Open</h3>
   <div class="open-tickets">
   <?php
-  $tickets = Ticket::getTicketsClient($db, $client->id, 5); 
-  if (count($tickets) == 0) { //adicionar aqui opção de criar ticket?>
+  $OpenTickets = Ticket::getTicketsClientByStatus($db, $client->id, 'Open'); 
+  $ClosedTickets = Ticket::getTicketsClientByStatus($db, $client->id, 'Closed');
+  $UnassignedTickets = Ticket::getTicketsByStatus($db, 'Not Assigned');
+  if (count($OpenTickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php
   }
-  foreach ($tickets as $ticket) {
-    if($ticket->status == 'Open') { ?>
+  foreach ($OpenTickets as $ticket) { ?>
     <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
-        <h4>Ticket #<?php echo $ticket->id //ticket title ?>  </h4> 
+        <h4><?php echo $ticket->title //ticket title ?>  </h4> 
         <?php foreach($messages as $message){
           if($message->ticket_id == $ticket->id){ ?>
            <p> <?php echo substr($message->message,0,200);
            $message_to_use = $message;?></p>
         <?php break; }
           }?>
-        <h5><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h5> 
+        <h6><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h6> 
     </a>
     <?php
-  }
+
 }
   ?>
   </div>
   <h3>Solved</h3>
   <div class="solved-tickets">
   <?php
-  $tickets = Ticket::getTicketsClient($db, $client->id, 5); 
-  if (count($tickets) == 0) { //adicionar aqui opção de criar ticket?>
+  if (count($ClosedTickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php
   }
-  foreach ($tickets as $ticket) {
-    if($ticket->status == 'Closed') { ?>
+  foreach ($ClosedTickets as $ticket) { ?>
     <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
-        <h4>Ticket #<?php echo $ticket->id //ticket title ?>  </h4> 
+        <h4><?php echo $ticket->id //ticket title ?>  </h4> 
         <?php foreach($messages as $message){
           if($message->ticket_id == $ticket->id){ ?>
            <p> <?php echo substr($message->message,0,200);
            $message_to_use = $message;?></p>
         <?php break; }
           }?>
-        <h5><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h5> 
+        <h6><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h6> 
     </a>
     <?php
-  }
+  
 }
   ?>
   </div>
-<?php
+  <?php
+  if(Client::isAgent($db,$client->id)){ ?>
+  </div>
+  <h3>Unassigned - <?php echo Department::getDepartmentById($db,$agent->department_id)->name ?? 'Admin' ?></h3>
+
+  <div class="unassigned-tickets">
+  <?php
+  if (count($UnassignedTickets) == 0) { //adicionar aqui opção de criar ticket?>
+    <p>No tickets here yet!</p>
+  <?php
+  }
+  foreach ($UnassignedTickets as $ticket) {?>
+    <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
+        <h4><?php echo $ticket->title ?>  </h4> 
+        <h5><?php echo Department::getDepartmentById($db,$ticket->department_id)->name;?></h5>
+        <?php foreach($messages as $message){
+          if($message->ticket_id == $ticket->id){ ?>
+           <p> <?php echo substr($message->message,0,50);
+           $message_to_use = $message;?>...</p>
+        <?php break; }
+          }?>
+        <h6><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h6> 
+    </a>
+    <?php
+  
+}
+  ?>
+  </div>
+    
+
+<?php  }
+
 }
   ?>
 

@@ -80,75 +80,63 @@ FOREIGN KEY(ticket_id) REFERENCES TICKETS(ticket_id),
 FOREIGN KEY(hashtag_id) REFERENCES HASHTAGS(hashtag_id)
 );
 
--- Inserting admin account into the database
 INSERT INTO CLIENTS (username, password, email)
-VALUES ('admin', 'admin', 'admin@gmail.com');
+VALUES
+    ('John', 'john', 'john@example.com'),
+    ('Jane', 'jane', 'jane@example.com'),
+    ('Bob', 'bob', 'bob@example.com'),
+    ('Sara', 'sara', 'sara@example.com'),
+    ('Alice', 'alice', 'alice@example.com'),
+    ('Charlie', 'charlie', 'charlie@example.com'),
+    ('Dave', 'dave', 'dave@example.com'),
+    ('Emily', 'emily', 'emily@example.com'),
+    ('Frank', 'frank', 'frank@example.com'),
+    ('Grace', 'grace', 'grace@example.com');
 
-INSERT INTO AGENTS (client_id)
-VALUES (1);
+INSERT INTO DEPARTMENTS (department_name)
+VALUES
+    ('Sales'),
+    ('Customer Support'),
+    ('Billing'),
+    ('Technical Support'),
+    ('Marketing');
+
+INSERT INTO AGENTS (client_id, department_id)
+VALUES
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 2),
+    (6, 4),
+    (7, 1),
+    (8, 3),
+    (9, 4),
+    (10, 5);
 
 INSERT INTO ADMINS (client_id, agent_id)
-VALUES (1, 1);
+VALUES
+    (1, 1);
 
--- Populating database
--- Populating clients
+INSERT INTO FAQS (department_id, question, answer) VALUES 
+(1, 'How can I place an order?', 'You can place an order through our website or by calling our sales team.'),
+(2, 'What are your customer service hours?', 'Our customer service team is available 24/7.'),
+(3, 'How do I troubleshoot an issue with my product?', 'Please consult the user manual that came with your product or visit our support website for more information.'),
+(4, 'How can I sign up for your newsletter?', 'You can sign up for our newsletter on our website.'),
+(5, 'What forms of payment do you accept?', 'We accept credit cards, PayPal, and bank transfers.');
 
-INSERT INTO CLIENTS (username, password, email)
-VALUES ('joao', 'joao', 'joao@gmail.com');
+INSERT INTO TICKETS (agent_id, client_id, department_id, status, title) VALUES 
+(NULL, 1, 1, 'Open', 'Issue with product delivery'),
+(NULL, 2, 2, 'Open', 'Billing inquiry'),
+(NULL, 3, 3, 'Not Assigned', 'Technical issue with software'),
+(NULL, 4, 4, 'Not Assigned', 'Marketing campaign feedback'),
+(NULL, 5, 5, 'Not Assigned', 'Billing dispute');
 
-INSERT INTO CLIENTS (username, password, email)
-VALUES ('diogo', 'diogo', 'diogo@gmail.com');
-
-INSERT INTO CLIENTS (username, password, email)
-VALUES ('pedro', 'pedro', 'pedro@gmail.com');
-
-INSERT INTO CLIENTS (username, password, email)
-VALUES ('joel', 'joel', 'joel@gmail.com');
-
-INSERT INTO CLIENTS (username, password, email)
-VALUES ('sara', 'sara', 'sara@gmail.com');
-
--- Populating Departments
-INSERT INTO DEPARTMENTS (department_name)
-VALUES ('Sales');
-INSERT INTO DEPARTMENTS (department_name)
-VALUES ('Support');
-
--- Populating Agents 
-
-INSERT INTO AGENTS (client_id, department_id)
-VALUES (2, 1);
-INSERT INTO AGENTS (client_id, department_id)
-VALUES (3, 2);
-
--- Populating FAQs
-INSERT INTO FAQS (department_id, question, answer)
-VALUES (1, 'How to buy?', 'You can buy by clicking on the buy button.');
-INSERT INTO FAQS (department_id, question, answer)
-VALUES (2, 'How to pay?', 'You can pay by clicking on the pay button.');
-
--- Populating Tickets
-INSERT INTO TICKETS (agent_id, client_id, department_id, status,title)
-VALUES (2, 4, 1, 'Open', 'How to buy?');
-
-INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
-VALUES (3, 5, 2, 'Open', 'How to pay?');
-
-INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
-VALUES (2,5, 2, 'Not Assigned', 'How to pay?');
-
-INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
-VALUES (null,5, 2, 'Open', 'How to pay?');
-
--- Populating Messages
-INSERT INTO MESSAGES (ticket_id, message_content, client_id)
-VALUES (1, 'I want to buy this product.', 4);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id)
-VALUES (1, 'You need to click on the buy button.', 2);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id)
-VALUES (1, 'I want to buy this product.', 5);
-INSERT INTO MESSAGES (ticket_id, message_content, client_id)
-VALUES (1, 'You need to click on the buy button.', 3);
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES 
+(1, 'My product has not arrived yet. When can I expect delivery?', 1),
+(2, 'I received an incorrect charge on my bill. Can you help me resolve this?', 2),
+(3, 'I am having trouble with the software crashing. What can I do to fix this?', 3),
+(4, 'I did not find the marketing campaign engaging. Do you have any plans to change it?', 4),
+(5, 'I was charged for services I did not receive. How can I dispute this?', 5);
 
 -- Populating Hashtags
 INSERT INTO HASHTAGS (hashtag_name)
@@ -161,6 +149,8 @@ INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
 VALUES (1, 1);
 INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
 VALUES (1, 2);
+
+
 
 UPDATE tickets
 SET status = 'Not Assigned'

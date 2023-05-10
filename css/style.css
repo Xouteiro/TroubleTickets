@@ -249,7 +249,7 @@ section#faq div.departments :hover {
 }
 
 div.open-tickets,
-div.solved-tickets {
+div.solved-tickets,div.unassigned-tickets {
     border-radius: 8px;
     background-color: #CFCFCF;
     opacity: 78%;
@@ -257,7 +257,7 @@ div.solved-tickets {
 }
 
 div.open-tickets>p,
-div.solved-tickets>p {
+div.solved-tickets>p,div.unassigned-tickets>p {
     padding-left: 15px;
 }
 
@@ -274,7 +274,7 @@ a.ticket h4{
 }
 
 a.ticket p{
-    margin: auto;
+    margin:auto;
     margin-left: 5px;
     margin-right: 5px;;
     color:black;
@@ -283,9 +283,15 @@ a.ticket p{
 }
 
 a.ticket h5{
+    margin:auto;
+    text-align: center;
+    color: #000000;
+}
+a.ticket h6{
     display:flex;
     margin-right: 5px;
     margin-bottom: 4px;
+    margin-top:10px;
     color:black;
     word-wrap: break-word;
     justify-content: end;
