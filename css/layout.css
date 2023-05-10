@@ -299,7 +299,7 @@ section#faq div.questions {
 }
 
 
-section#chat {
+section#chat,section#new-ticket-form {
     display: flex;
     grid-column: 1/-1;
     grid-row: 2/5;
@@ -307,7 +307,7 @@ section#chat {
     
 }
 
-input#sidebar:checked~section#chat {
+input#sidebar:checked~section#chat,input#sidebar:checked~section#new-ticket-form {
     grid-column: 1/2;
     grid-row: 2/5;
 }
@@ -352,6 +352,10 @@ section#chat div.text {
 }
 
 
+form#new-ticket{
+    display: flex;
+    flex-direction: column;
+}
 
 
 footer {

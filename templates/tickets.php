@@ -54,7 +54,7 @@ function output_client_tickets(PDO $db, Session $session)
   <?php
   }
   foreach ($tickets as $ticket) {
-    if($ticket->status == 1) { ?>
+    if($ticket->status == 'Open') { ?>
     <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
         <h4>Ticket #<?php echo $ticket->id //ticket title ?>  </h4> 
         <?php foreach($messages as $message){
@@ -73,17 +73,23 @@ function output_client_tickets(PDO $db, Session $session)
   <h3>Solved</h3>
   <div class="solved-tickets">
   <?php
-  $tickets = Ticket::getTicketsClient($db, $client->id, 5); ////é preciso uma função que dê os tickets por id de client e com o status
+  $tickets = Ticket::getTicketsClient($db, $client->id, 5); 
   if (count($tickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php
   }
   foreach ($tickets as $ticket) {
-    if($ticket->status == 0) { ?>
-    <div class="ticket">
-        <h4>#<?php echo $ticket->id ?> from <?php echo $ticket->client_id ?> to <?php echo $ticket->agent_id ?></h4>
-        <p>a little bit of the ticket message</p>
-    </div>
+    if($ticket->status == 'Closed') { ?>
+    <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
+        <h4>Ticket #<?php echo $ticket->id //ticket title ?>  </h4> 
+        <?php foreach($messages as $message){
+          if($message->ticket_id == $ticket->id){ ?>
+           <p> <?php echo substr($message->message,0,200);
+           $message_to_use = $message;?></p>
+        <?php break; }
+          }?>
+        <h5><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s')?></h5> 
+    </a>
     <?php
   }
 }

@@ -19,7 +19,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   ?>
   <section id='chat' class='chat'>
     <h2>TIcket #<?php echo $ticket->id //mudar para title ?> </h2>
-    <h3>Status: <?php if($ticket->status == 1){ //mudar a cor do Open para verde
+    <h3>Status: <?php if($ticket->status == 1){ //mudar a cor do Open para verde  
                 echo "Open";
             }else{
                 echo "Closed";

@@ -47,10 +47,10 @@ FOREIGN KEY(department_id) REFERENCES DEPARTMENTS(department_id)
 
 CREATE TABLE TICKETS (
 ticket_id INTEGER PRIMARY KEY AUTOINCREMENT,
-agent_id INTEGER NOT NULL,
+agent_id INTEGER,
 client_id INTEGER NOT NULL,
 department_id INTEGER NOT NULL,
-status BOOLEAN NOT NULL,
+status VARCHAR(255) CHECK( status IN ('Open','Closed','Not Assigned') ) NOT NULL,
 title VARCHAR(255) NOT NULL,
 FOREIGN KEY(department_id) REFERENCES DEPARTMENTS(department_id),
 FOREIGN KEY(client_id) REFERENCES CLIENTS(client_id),
@@ -129,10 +129,16 @@ VALUES (2, 'How to pay?', 'You can pay by clicking on the pay button.');
 
 -- Populating Tickets
 INSERT INTO TICKETS (agent_id, client_id, department_id, status,title)
-VALUES (2, 4, 1, 1, 'How to buy?');
+VALUES (2, 4, 1, 'Open', 'How to buy?');
 
 INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
-VALUES (3, 5, 2, 1, 'How to pay?');
+VALUES (3, 5, 2, 'Open', 'How to pay?');
+
+INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
+VALUES (2,5, 2, 'Not Assigned', 'How to pay?');
+
+INSERT INTO TICKETS (agent_id, client_id, department_id, status, title)
+VALUES (null,5, 2, 'Open', 'How to pay?');
 
 -- Populating Messages
 INSERT INTO MESSAGES (ticket_id, message_content, client_id)
@@ -156,3 +162,10 @@ VALUES (1, 1);
 INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
 VALUES (1, 2);
 
+UPDATE tickets
+SET status = 'Not Assigned'
+WHERE agent_id IS NULL;
+
+UPDATE tickets
+SET agent_id = NULL
+WHERE status IS 'Not Assigned';
