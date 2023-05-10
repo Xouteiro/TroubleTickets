@@ -97,9 +97,8 @@ input#sidebar:checked~#menu {
 
 nav#menu ul {
     display: grid;
-    <<<<<<< HEAD grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    =======grid-template-rows: 1fr 1fr 1fr 1fr;
-    >>>>>>>2062bed828b3899c4f5c077ff52853a765c65d45 padding: 0px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    padding: 0px;
     margin: 0px;
 }
 
@@ -113,9 +112,8 @@ ul li {
 
 #logout,
 #login {
-    <<<<<<< HEAD grid-row: 5/-1;
-    =======grid-row: 4/-1;
-    >>>>>>>2062bed828b3899c4f5c077ff52853a765c65d45 align-self: end;
+    grid-row: 5/-1;
+    align-self: end;
     justify-self: start;
     padding-left: 35px;
     padding-bottom: 25px;
