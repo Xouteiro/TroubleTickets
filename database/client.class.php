@@ -59,7 +59,7 @@ class Client
     static function getClients(PDO $db, int $count): array
     {
         $stmt = $db->prepare(
-            'SELECT client_id, username, password, email
+            'SELECT client_id, username, email, password
                  FROM CLIENTS
                  LIMIT ?'
         );
@@ -70,8 +70,8 @@ class Client
             $users[] = new Client(
                 $user['client_id'],
                 $user['username'],
-                $user['password'],
                 $user['email'],
+                $user['password'],
             );
         }
         return $users;
@@ -90,8 +90,8 @@ class Client
             return new Client(
                 intval($user['client_id']),
                 $user['username'],
-                $user['password'],
-                $user['email']
+                $user['email'],
+                $user['password']
             );
         } else {
             return null;
@@ -151,7 +151,7 @@ class Client
     static function getAgents(PDO $db, int $count): array
     {
         $stmt = $db->prepare(
-            'SELECT c.client_id AS t1, c.username, c.password, c.email
+            'SELECT c.client_id AS t1, c.username, c.email, c.password
             FROM CLIENTS c
             INNER JOIN AGENTS a ON c.client_id = a.client_id
             LIMIT ?'
@@ -163,8 +163,8 @@ class Client
             $users[] = new Client(
                 $user['t1'],
                 $user['username'],
-                $user['password'],
                 $user['email'],
+                $user['password'],
             );
         }
         return $users;
@@ -183,5 +183,37 @@ class Client
         return ($stmt->fetch() !== false);
     }
 
+    static function deleteClient(PDO $db, $id)
+    {
+        $stmt = $db->prepare('DELETE FROM CLIENTS WHERE client_id = ?');
+        try {
+            $stmt->execute(array($id));
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    static function getAdmins(PDO $db, int $count): array
+    {
+        $stmt = $db->prepare(
+            'SELECT c.client_id AS t1, c.username, c.email, c.password
+            FROM CLIENTS c
+            INNER JOIN ADMINS a ON c.client_id = a.client_id
+            LIMIT ?'
+        );
+        $stmt->execute(array($count));
+
+        $users = array();
+        while ($user = $stmt->fetch()) {
+            $users[] = new Client(
+                $user['t1'],
+                $user['username'],
+                $user['email'],
+                $user['password'],
+            );
+        }
+        return $users;
+    }
 
 } ?>

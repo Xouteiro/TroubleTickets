@@ -14,6 +14,7 @@ function output_admin(PDO $db, Session $session)
     }
     $clients = Client::getClients($db, 10);
     $agents = Client::getAgents($db, 10);
+    $admins = Client::getAdmins($db, 10);
 
     // Output the HTML for managing users
     ?>
@@ -40,7 +41,7 @@ function output_admin(PDO $db, Session $session)
                             </td>
                             <td>
                                 <a href="edit_client.php?id=<?= $client->id ?>">Edit</a>
-                                <a href="action_delete_client.php?id=<?= $client->id ?>">Delete</a>
+                                <a href="../actions/action_delete_client.php?id=<?= $client->id ?>">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -69,7 +70,36 @@ function output_admin(PDO $db, Session $session)
                             </td>
                             <td>
                                 <a href="edit_agent.php?id=<?= $agent->id ?>">Edit</a>
-                                <a href="delete_agent.php?id=<?= $agent->id ?>">Delete</a>
+                                <a href="../actions/action_delete_client.php?id=<?= $agent->id ?>">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </section>
+        <section id="admin_manager">
+            <h2>Manage Admins</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($admins as $admin): ?>
+                        <tr>
+                            <td>
+                                <?= $admin->username ?>
+                            </td>
+                            <td>
+                                <?= $admin->email ?>
+                            </td>
+                            <td>
+                                <a href="edit_agent.php?id=<?= $agent->id ?>">Edit</a>
+                                <a href="../actions/action_delete_client.php?id=<?= $admin->id ?>">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
