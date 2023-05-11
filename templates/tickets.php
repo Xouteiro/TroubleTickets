@@ -90,7 +90,7 @@ function output_client_tickets(PDO $db, Session $session)
   <?php
   if(Client::isAgent($db,$client->id)){ ?>
   </div>
-  <h3>Unassigned - <?php echo Department::getDepartmentById($db,$agent->department_id)->name ?? 'Admin' ?></h3>
+  <div class='full-line'><h3>Unassigned</h3><h3><?php echo '&nbsp;-&nbsp;'; echo Department::getDepartmentById($db,$agent->department_id)->name ?? 'Admin' ?></h3></div>
 
   <div class="unassigned-tickets">
   <?php

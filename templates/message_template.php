@@ -21,7 +21,26 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   ?>
   <section id='chat' class='chat'>
     <h2><?php echo $ticket->title ?> </h2>
-    <h3>Status: <?php echo $ticket->status //mudar a cor do Open para verde  ?></h3>
+    <?php 
+    if($ticket->status=='Open'){?>
+      <div class='full-line' id='green'> <h3>Status: </h3>
+      <h3><?php echo $ticket->status?></h3>
+      <span class="dot"></span>
+      </div>
+    <?php }
+    if($ticket->status == 'Not Assigned'){?>
+    <div class='full-line' id='yellow'> <h3>Status: </h3>
+      <h3><?php echo $ticket->status  ?></h3>
+      <span class="dot"></span>
+      </div>
+    <?php } 
+    if($ticket->status == 'Closed'){?> 
+    <div class='full-line' id='green'> <h3>Status: </h3>
+      <h3><?php echo $ticket->status ?></h3>
+      <span class="dot"></span>
+      </div>
+    <?php }?>
+    
     <div class="messages">
       <div class="text">
     <?php 
@@ -29,7 +48,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
       if($message->ticket_id == $ticket->id){
         if($message->client_id == $ticket->client_id){?>
           <div class='client-message'>
-            <h4>Client: <?php echo $client->username //por Agent: a laranja?></h4>
+            <div class='full-line'><h4>Client:</h4><h4><?php echo '&nbsp;';echo $client->username //por Agent: a laranja?></h4></div>
             <p><?php echo $message->message?></p>
             <h5><?php echo $message->date_created->format('d/m/Y H:i:s')?></h5>
           </div>
@@ -37,7 +56,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         if($ticket->status != 'Not Assigned'){
           if($message->client_id == $ticket->agent_id){?>
           <div class='agent-message'>
-          <h4>Agent: <?php echo $agent->username //por Agent: a laranja?></h4>
+          <div class='full-line'><h4>Agent:</h4><h4><?php echo '&nbsp;'; echo $agent->username //por Agent: a laranja?></h4></div>
           <p><?php echo $message->message?></p>
           <h5><?php echo $message->date_created->format('d/m/Y H:i:s')?></h5>
         </div>

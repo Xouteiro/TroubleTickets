@@ -1,5 +1,6 @@
 * {
     max-width: 100%;
+    max-height: 100%;
 }
 
 html {
@@ -181,27 +182,29 @@ section {
 section h2 {
     color: #FFFFFF;
     margin: 0px;
+    
 }
 
 section h3 {
     color: #FFFFFF;
 }
 
-section#faq div.departments {
+section#full-faq div.departments {
     background-color: #CFCFCF;
     border-radius: 10px;
 }
 
-section#faq div.questions {
+section#full-faq div.questions {
     background-color: #CFCFCF;
     border-radius: 10px;
     padding-left: 15px;
     padding-right: 15px;
+    width: 75%;
 
 }
 
 
-section#faq div.questions .question h4 {
+section#full-faq div.questions .question h4 {
     word-wrap: break-word;
     margin: 0px;
     padding-top: 10px;
@@ -210,7 +213,7 @@ section#faq div.questions .question h4 {
 
 }
 
-section#faq div.questions .question p {
+section#full-faq div.questions .question p {
     word-wrap: break-word;
     margin: 0px;
     padding-bottom: 15px;
@@ -219,7 +222,7 @@ section#faq div.questions .question p {
 
 
 
-section#faq div.departments h3 {
+section#full-faq div.departments h3 {
     background-color: #cFcFcF;
     color: #F47458;
     padding-top: 15px;
@@ -229,27 +232,38 @@ section#faq div.departments h3 {
 
 }
 
-section#faq div.departments h3:first-child {
+section#full-faq div.departments h3:first-child {
     margin-top: 10px;
 }
 
-section#faq div.questions div.question:first-child {
+section#full-faq div.questions div.question:first-child {
     margin-top: 15px;
 
 }
 
-hr{
+hr {
     opacity: 70%;
 }
 
-section#faq div.departments :hover {
+section#full-faq div.departments :hover {
     background-color: grey;
     color: white;
+}
 
+section#client-tickets>h3:nth-of-type(1)::before{
+        content: '\1F9D0';
+}
+
+section#client-tickets>h3:nth-of-type(2)::before{
+    content: '\1F510';
+}
+section#client-tickets div.full-line h3:nth-of-type(1)::after{
+    content: '\231B';
 }
 
 div.open-tickets,
-div.solved-tickets,div.unassigned-tickets {
+div.solved-tickets,
+div.unassigned-tickets {
     border-radius: 8px;
     background-color: #CFCFCF;
     opacity: 78%;
@@ -257,67 +271,72 @@ div.solved-tickets,div.unassigned-tickets {
 }
 
 div.open-tickets>p,
-div.solved-tickets>p,div.unassigned-tickets>p {
+div.solved-tickets>p,
+div.unassigned-tickets>p {
     padding-left: 15px;
 }
 
 
-a.ticket{
+a.ticket {
     background-color: white;
     border-radius: 8px;
 }
 
-a.ticket h4{  
+a.ticket h4 {
     margin: auto;
     text-align: center;
     color: #F47458;
 }
 
-a.ticket p{
-    margin:auto;
+a.ticket p {
+    margin: auto;
     margin-left: 5px;
-    margin-right: 5px;;
-    color:black;
+    margin-right: 5px;
+    ;
+    color: black;
     word-wrap: break-word;
     text-align: center;
 }
 
-a.ticket h5{
-    margin:auto;
+a.ticket h5 {
+    margin: auto;
     text-align: center;
     color: #000000;
 }
-a.ticket h6{
-    display:flex;
+
+a.ticket h6 {
+    display: flex;
     margin-right: 5px;
     margin-bottom: 4px;
-    margin-top:10px;
-    color:black;
+    margin-top: 10px;
+    color: black;
     word-wrap: break-word;
     justify-content: end;
 
 }
 
-section#chat div.client-message, section#chat div.agent-message{
+section#chat div.client-message,
+section#chat div.agent-message {
     background-color: #b3b3b3;
-    width:60%;
+    width: 60%;
     word-wrap: break-word;
     margin-top: 15px;
     border-radius: 8px;
-    
+
 }
- section#chat div.messages{
+
+section#chat div.messages {
     background-color: #CFCFCF;
     border-radius: 5px;
- }
+}
 
 
 
- input#sidebar:checked~section#chat div.messages{
+input#sidebar:checked~section#chat div.messages {
     margin-right: 30px;
 }
 
-section#chat div.message-input input{
+section#chat div.message-input input {
     padding: 0px;
     border: none;
     outline: none;
@@ -331,25 +350,64 @@ section#chat div.message-input input{
     border-bottom-right-radius: 5px;
 }
 
-section#chat div.message-input{
-    height: 30px; 
+section#chat div.message-input {
+    height: 30px;
     background: #b3b3b3;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 
 }
 
-section#chat div.messages h4{
-    color:#F47458
- }
 
- section#chat h3{
-    margin: 0px;
-    color:#F47458;
-    padding:10px;
+div.full-line {
+    display: flex;
+    flex-direction: row;
 }
 
- 
+
+
+
+span.dot {
+    align-self: center;
+
+}
+
+div.full-line#yellow span.dot::after {
+    content: '\231B';
+}
+div.full-line#red span.dot::after {
+    content: '\1F9D0';
+}
+div.full-line#green span.dot::after {
+    content: '\1F510';
+}
+
+
+section#chat div.messages h4:last-child {
+    color: black;
+    font-weight: 500;
+}
+
+div.messages h5{
+    margin-bottom: 10px;
+}
+
+section#chat h3 {
+    margin: 0px;
+    color: #F47458;
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+
+}
+section#chat h3:nth-child(2) {
+    color:white;
+
+}
+
+
+
 
 
 footer {

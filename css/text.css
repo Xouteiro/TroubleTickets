@@ -147,11 +147,25 @@ div.messages h4{
     letter-spacing: 0.03em; 
 }
 
+div.messages h5{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.03em; 
+}
+
 section#chat div.message-input input{
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
 }
+span.dot::after {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+}
+
 
 footer {
     font-weight: 400;
