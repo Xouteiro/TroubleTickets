@@ -103,6 +103,7 @@ VALUES
 
 INSERT INTO AGENTS (client_id, department_id)
 VALUES
+    (1,null),
     (2, 2),
     (3, 3),
     (4, 4),
