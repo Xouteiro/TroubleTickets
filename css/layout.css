@@ -339,6 +339,8 @@ section#chat div.messages {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow-y: auto;
+    max-height: 32em;
 }
 
 section#chat div.message-input {

@@ -16,7 +16,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   if ($ticket->status != 'Not Assigned') {
     $agent = Client::getClientById($db, $ticket->agent_id);
   }
-  $messages = Message::getMessages($db, 10);
+  $messages = Message::getMessages($db, 100);
 
   ?>
   <section id='chat' class='chat'>
@@ -122,7 +122,12 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
       </div>
 
       <div class="message-input">
-        <input type="text" placeholder="Enter your message">
+        <form action="../actions/action_send_message.php" method="post">
+          <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
+          <input type="hidden" name="user_id" value="<?php echo $user->id ?>">
+          <input type="text" name="message" id="message" placeholder="Enter your message here">
+          <input type="submit" id='send' value="Send">
+        </form>
       </div>
 
     </div>
