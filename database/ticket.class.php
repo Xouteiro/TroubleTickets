@@ -149,6 +149,28 @@ class Ticket
         return $tickets;
     }
 
+    static function getTicketsAgentByStatus(PDO $db, int $agent_id, string $status): array
+    {
+        $stmt = $db->prepare('SELECT ticket_id, agent_id, client_id, department_id, status, title FROM TICKETS WHERE (agent_id = ? OR client_id = ?) AND status = ?');
+        $stmt->execute(array($agent_id, $agent_id, $status));
+    
+        $tickets = array();
+        while ($ticket = $stmt->fetch()) {
+            $tickets[] = new Ticket(
+                $ticket['ticket_id'],
+                $ticket['agent_id'] ?? null,
+                $ticket['client_id'],
+                $ticket['department_id'],
+                $ticket['status'],
+                $ticket['title']
+            );
+        }
+        return $tickets;
+    }
+    
+
+
+
     static function getTicketsByStatus(PDO $db, string $status): array
     {
         $stmt = $db->prepare('SELECT ticket_id, agent_id, client_id, department_id, status, title FROM TICKETS WHERE status = ?');

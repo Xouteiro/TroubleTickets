@@ -30,20 +30,25 @@ function output_yourtickets_page(Session $session)
 function output_client_tickets(PDO $db, Session $session)
 {
 
-  $client = Client::getClientById($db, $session->getId());
-  $agent = Agent::getAgentByClientId($db,$client->id);
+  $user = Client::getClientById($db, $session->getId());
+  $agent = Agent::getAgentByClientId($db,$user->id);
 
   $messages = Message::getMessages($db,10);
   $message_to_use = new Message(0,0,0,'0', new DateTime());
+  $OpenTickets = Ticket::getTicketsClientByStatus($db, $user->id, 'Open'); 
+  $ClosedTickets = Ticket::getTicketsClientByStatus($db, $user->id, 'Closed');
+  $OpenAgentTickets = Ticket::getTicketsAgentByStatus($db, $user->id, 'Open'); 
+  $ClosedAgentTickets = Ticket::getTicketsAgentByStatus($db, $user->id, 'Closed');
+  $UnassignedTickets = Ticket::getTicketsByStatus($db, 'Not Assigned');
 
 ?>
-  <h2>MyTickets</h2>
+  <div class='full-line'><h2>MyTickets</h2><h3><?php echo '&nbsp;-&nbsp;'; echo Department::getDepartmentById($db,$agent->department_id)->name ?? 'Administrator' ?></h3></div>
   <h3>Open</h3>
   <div class="open-tickets">
   <?php
-  $OpenTickets = Ticket::getTicketsClientByStatus($db, $client->id, 'Open'); 
-  $ClosedTickets = Ticket::getTicketsClientByStatus($db, $client->id, 'Closed');
-  $UnassignedTickets = Ticket::getTicketsByStatus($db, 'Not Assigned');
+  if(Client::isAgent($db,$user->id)) {
+    $OpenTickets = $OpenAgentTickets;
+   } 
   if (count($OpenTickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php
@@ -67,13 +72,17 @@ function output_client_tickets(PDO $db, Session $session)
   <h3>Solved</h3>
   <div class="solved-tickets">
   <?php
+   if(Client::isAgent($db,$user->id)) {
+    $ClosedTickets = $ClosedAgentTickets;
+   } 
   if (count($ClosedTickets) == 0) { //adicionar aqui opção de criar ticket?>
     <p>No tickets here yet!</p>
   <?php
   }
+ 
   foreach ($ClosedTickets as $ticket) { ?>
     <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
-        <h4><?php echo $ticket->id //ticket title ?>  </h4> 
+        <h4><?php echo $ticket->title ?>  </h4> 
         <?php foreach($messages as $message){
           if($message->ticket_id == $ticket->id){ ?>
            <p> <?php echo substr($message->message,0,200);
@@ -88,9 +97,9 @@ function output_client_tickets(PDO $db, Session $session)
   ?>
   </div>
   <?php
-  if(Client::isAgent($db,$client->id) ){ ?>
+  if(Client::isAgent($db,$user->id) ){ ?>
   </div>
-  <div class='full-line'><h3>Unassigned</h3><h3><?php echo '&nbsp;-&nbsp;'; echo Department::getDepartmentById($db,$agent->department_id)->name ?? 'Administrator' ?></h3></div>
+  <div class='full-line'><h3>Unassigned</h3></div>
 
   <div class="unassigned-tickets">
   <?php

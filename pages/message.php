@@ -19,7 +19,16 @@
   $id = $_GET['id'];
   $ticket = Ticket::getTicketById($db, intval($id));
 
+
   output_header($session);
   output_message($db, $ticket, $session); 
+
+  foreach ($session->getMessages() as $message) {
+    echo '<div class="' . $message['type'] . '">' . $message['text'] . '</div>';
+    echo 'aqui';
+  }
+
   output_footer();
+
+
 ?>

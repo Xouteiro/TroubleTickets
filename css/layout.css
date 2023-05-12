@@ -218,7 +218,7 @@ input#sidebar:checked~section#client-tickets {
 }
 
 
-section#client-tickets>h2 {
+section#client-tickets h2 {
     display: flex;
     align-self: center;
     margin-left: 0px;

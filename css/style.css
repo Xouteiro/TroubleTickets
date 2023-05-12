@@ -250,11 +250,11 @@ section#full-faq div.departments :hover {
     color: white;
 }
 
-section#client-tickets>h3:nth-of-type(1)::before{
+section#client-tickets>h3:nth-of-type(1)::after{
         content: '\1F9D0';
 }
 
-section#client-tickets>h3:nth-of-type(2)::before{
+section#client-tickets>h3:nth-of-type(2)::after{
     content: '\1F510';
 }
 section#client-tickets div.full-line h3:nth-of-type(1)::after{

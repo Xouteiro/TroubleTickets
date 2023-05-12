@@ -56,14 +56,13 @@ class Client
     }
 
 
-    static function getClients(PDO $db, int $count): array
+    static function getClients(PDO $db): array
     {
         $stmt = $db->prepare(
             'SELECT client_id, username, email, password
-                 FROM CLIENTS
-                 LIMIT ?'
+                 FROM CLIENTS'
         );
-        $stmt->execute(array($count));
+        $stmt->execute(array());
 
         $users = array();
         while ($user = $stmt->fetch()) {
