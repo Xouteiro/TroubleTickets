@@ -53,15 +53,14 @@ function output_client_tickets(PDO $db, Session $session)
   if(Client::isAgent($db,$user->id)) {
     $OpenTickets = $OpenAgentTickets;
    } 
-  if (count($OpenTickets) == 0) { //adicionar aqui opção de criar ticket?>
-    <p>No tickets here yet!</p>
-  <?php
-  }
+  
   foreach ($OpenTickets as $ticket) { ?>
     <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
         <h4><?php echo $ticket->title //ticket title ?>  </h4> 
+        <h5><?php echo Department::getDepartmentById($db,$ticket->department_id)->name;?></h5>
         <?php foreach($messages as $message){
           if($message->ticket_id == $ticket->id){ ?>
+          
            <p> <?php echo substr($message->message,0,200);
            $message_to_use = $message;?></p>
         <?php break; }
@@ -72,6 +71,15 @@ function output_client_tickets(PDO $db, Session $session)
 
 }
   ?>
+  
+    <a href="../pages/newTicket.php" class='ticket'>
+        <h4>New Ticket</h4> 
+        <h5>Need help?</h5>
+           <p>Click here to solve your problem </p>
+        <h6>24hours 7 days a week</h6> 
+    </a>
+  
+
   </div>
   <h3>Solved</h3>
   <div class="solved-tickets">
@@ -87,6 +95,7 @@ function output_client_tickets(PDO $db, Session $session)
   foreach ($ClosedTickets as $ticket) { ?>
     <a href="../pages/message.php?id=<?=urlencode(strval($ticket->id))?>" class='ticket'>
         <h4><?php echo $ticket->title ?>  </h4> 
+        <h5><?php echo Department::getDepartmentById($db,$ticket->department_id)->name;?></h5>
         <?php foreach($messages as $message){
           if($message->ticket_id == $ticket->id){ ?>
            <p> <?php echo substr($message->message,0,200);
