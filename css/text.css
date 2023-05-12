@@ -154,11 +154,10 @@ div.messages h5{
     letter-spacing: 0.03em; 
 }
 
-section#chat div.message-input input{
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+section#chat div.change-status select, section#chat div.change-status input{
+    font-size: 16px;
 }
+
 span.dot::after {
     font-weight: 600;
     font-size: 25px;

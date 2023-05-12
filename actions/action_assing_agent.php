@@ -26,7 +26,7 @@ $ticket = Ticket::getTicketById($db, intval($ticket_id));
 
 
 if (Ticket::updateTicket($db, intval($ticket_id), intval($new_agent_id),$ticket->client_id, $ticket->department_id, 'Open', $ticket->title)) {
-    if(Message::createMessage($db, intval($ticket_id), intval($new_agent_id), "Hello, I am $agent->username, this ticket is now open and I got assigned to solve it and I will do it as soon as possible! See you soon! ", new DateTime('now')))
+    if(Message::createMessage($db, intval($ticket_id), intval($new_agent_id), "Hello, I am $agent->username, this ticket is now open and I got assigned to solve it. I will do it as soon as possible! See you soon! ", new DateTime('now')))
     $session->addMessage('success', 'Ticket updated with success!');
     header('Location: ../pages/tickets_client.php');
 } else {

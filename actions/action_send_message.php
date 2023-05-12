@@ -25,7 +25,28 @@ $ticket = Ticket::getTicketById($db, intval($ticket_id));
 $message = $_POST["message"];
 
 
-if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now'))) {
+if($ticket->status=='Closed'){
+    if (Ticket::updateTicket($db, intval($ticket_id), $ticket->agent_id, $ticket->client_id, $ticket->department_id, 'Open', $ticket->title)) {
+        if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now')))
+            $session->addMessage('success', 'Message sent and ticket updated with success!');
+            header('Location: ../pages/tickets_client.php');
+    } else {
+        $session->addMessage('error', 'Ticket update failed!');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+}
+else if(Client::isAgent($db, $user->id) && $ticket->status == 'Not Assigned'){
+    if (Ticket::updateTicket($db, intval($ticket_id), $user->id, $ticket->client_id, $ticket->department_id, 'Open', $ticket->title)) {
+        if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now')))
+            $session->addMessage('success', 'Message sent,ticket updated with success and assigned');
+            header('Location: ../pages/tickets_client.php');
+    } else {
+        $session->addMessage('error', 'Ticket update failed!');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
+}
+else if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now'))) {
     $session->addMessage('success', 'Message sent with success!');
     header('Location: ../pages/message.php?id=' . $ticket_id . '');
 } else {

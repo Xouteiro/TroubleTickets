@@ -27,11 +27,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-        <h4>Assigned to: <?php echo $agent->username ?></h4>
-        <?php if (!Client::isAgent($db, $user->id) && $ticket->status == 'Open') { ?>
-          <p>Is your problem already solved?</p>
-        <?php } ?>
-          <div class= 'close-ticket'>
+          <div class= 'change-status'>
             <form action="../actions/action_close_ticket.php" method="post">
               <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
               <input type="submit" value="Close Ticket">
@@ -45,7 +41,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3><?php echo $ticket->status  ?></h3>
         <span class="dot"></span>
         <?php if (Client::isAgent($db, $user->id) && $ticket->status == 'Not Assigned') { ?>
-          <div class='assign-agent'>
+          <div class='change-status'>
             <form action="../actions/action_assing_agent.php" method="post">
               <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
               <select name="agent_id" id="agent_id">
@@ -70,10 +66,8 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-        <?php if (!Client::isAgent($db, $user->id) && $ticket->status == 'Closed') { ?>
-          <p>Do you have another related to this?</p>
-        <?php } ?>
-          <div class= 'close-ticket'>
+
+          <div class= 'change-status  '>
             <form action="../actions/action_reopen_ticket.php" method="post">
               <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
               <input type="submit" value="Reopen this ticket">

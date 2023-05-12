@@ -42,7 +42,11 @@ function output_client_tickets(PDO $db, Session $session)
   $UnassignedTickets = Ticket::getTicketsByStatus($db, 'Not Assigned');
 
 ?>
-  <div class='full-line'><h2>MyTickets</h2><h3><?php echo '&nbsp;-&nbsp;'; echo Department::getDepartmentById($db,$agent->department_id)->name ?? 'Administrator' ?></h3></div>
+  <h2>MyTickets</h2>
+  <?php if(Client::isAgent($db,$user->id)) { ?>
+    <div class='department'>
+  <h3><?php echo '&nbsp'; echo (Department::getDepartmentById($db,$agent->department_id)->name  ?? 'Administrator\'s') . ' Department' ?></h3></div>
+  <?php } ?>  
   <h3>Open</h3>
   <div class="open-tickets">
   <?php
@@ -99,7 +103,7 @@ function output_client_tickets(PDO $db, Session $session)
   <?php
   if(Client::isAgent($db,$user->id) ){ ?>
   </div>
-  <div class='full-line'><h3>Unassigned</h3></div>
+  <h3>Unassigned</h3>
 
   <div class="unassigned-tickets">
   <?php

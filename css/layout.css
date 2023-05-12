@@ -243,6 +243,16 @@ section#client-tickets:nth-child(2) {
     align-items: center;
 }
 
+section#chat div.change-status{
+    display: flex;
+    margin-right: 65px;
+    margin-left: auto;
+    align-self: center;
+}
+
+
+
+
 
 a.ticket {
     display: flex;

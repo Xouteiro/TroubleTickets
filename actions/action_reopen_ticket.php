@@ -30,6 +30,10 @@ if (Ticket::updateTicket($db, intval($ticket_id), $ticket->agent_id, $ticket->cl
             $session->addMessage('success', 'Ticket updated with success!');
         header('Location: ../pages/tickets_client.php');
     }
+    else{
+        $session->addMessage('success', 'Ticket updated with success!');
+        header('Location: ../pages/tickets_client.php');
+    }
 } else {
     $session->addMessage('error', 'Ticket update failed!');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
