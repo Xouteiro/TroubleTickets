@@ -76,7 +76,7 @@ function output_client_tickets(PDO $db, Session $session)
         <h4>New Ticket</h4> 
         <h5>Need help?</h5>
            <p>Click here to solve your problem </p>
-        <h6>24hours 7 days a week</h6> 
+        <h6>24 hours 7 days a week</h6> 
     </a>
   
 

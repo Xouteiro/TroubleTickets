@@ -10,6 +10,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   require_once(__DIR__ . '/../database/client.class.php');
   require_once(__DIR__ . '/../database/ticket.class.php');
   require_once(__DIR__ . '/../database/messages.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
 
   $user = Client::getClientById($db, $session->getId());
   $client = Client::getClientById($db, $ticket->client_id);
@@ -20,19 +21,46 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
 
   ?>
   <section id='chat' class='chat'>
-    <h2><?php echo $ticket->title ?> </h2>
+    <?php
+    if (!Client::isAgent($db, $user->id)) { ?>
+      <h2><?php echo $ticket->title ?> </h2>
+    <?php }
+    if (Client::isAgent($db, $user->id)) { ?>
+      <div class='full-line'>
+        <h2><?php echo $ticket->title . ' -&nbsp' ?> </h2>
+        <div class='change-status' id='department'>
+          <form action="../actions/action_change_department.php" method="post">
+            <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
+            <select name="department_id" id="department_id">
+              <option value="<?php echo $ticket->department_id ?>"><?php echo Department::getDepartmentById($db, $ticket->department_id)->name ?></option>
+              <?php
+              $departments = Department::getDepartments($db, 50);
+              foreach ($departments as $department) {
+                if ($ticket->department_id != $department->id) { ?>
+                  <option value="<?php echo $department->id ?>"><?php echo $department->name ?></option>
+              <?php }
+              } ?>
+
+
+            </select>
+            <input type="submit" value="Change department">
+          </form>
+        </div>
+      </div>
+    <?php } ?>
+
     <?php
     if ($ticket->status == 'Open') { ?>
       <div class='full-line' id='red'>
         <h3>Status: </h3>
         <h3><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-          <div class= 'change-status'>
-            <form action="../actions/action_close_ticket.php" method="post">
-              <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
-              <input type="submit" value="Close Ticket">
-            </form> 
-          </div>
+        <div class='change-status'>
+          <form action="../actions/action_close_ticket.php" method="post">
+            <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
+            <input type="submit" value="Close Ticket">
+          </form>
+        </div>
       </div>
     <?php }
     if ($ticket->status == 'Not Assigned') { ?>
@@ -67,12 +95,12 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
 
-          <div class= 'change-status  '>
-            <form action="../actions/action_reopen_ticket.php" method="post">
-              <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
-              <input type="submit" value="Reopen this ticket">
-            </form> 
-          </div>
+        <div class='change-status  '>
+          <form action="../actions/action_reopen_ticket.php" method="post">
+            <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
+            <input type="submit" value="Reopen this ticket">
+          </form>
+        </div>
       </div>
     <?php } ?>
 

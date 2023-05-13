@@ -1,7 +1,7 @@
 body {
     display: grid;
     grid-template-columns: 75% 10% 15%;
-    grid-template-rows: 1fr 1fr 1fr 5fr 1fr;
+    grid-template-rows: 0.7fr 1fr 1fr 5.5fr 0.8fr;
     max-width: 120em;
     min-width: 20em;
     margin: 0 auto;
@@ -12,17 +12,16 @@ body {
 }
 
 header {
-    display: grid;
+    display: flex;
     grid-row: 1/2;
-    grid-template-columns: 25% 75%;
 }
 
 header>h1 {
     display: flex;
-    grid-column: 2/3;
     justify-content: left;
     align-items: end;
     margin-bottom: 10px;
+    margin-left:25px;   
 }
 
 
@@ -111,13 +110,8 @@ ul li {
 
 
 
-#logout,
-#login {
+nav#menu li:last-child {
     grid-row: 5/-1;
-    align-self: end;
-    justify-self: start;
-    padding-left: 35px;
-    padding-bottom: 25px;
 }
 
 
@@ -250,6 +244,13 @@ section#chat div.change-status{
     align-self: center;
 }
 
+section#chat div.change-status#department{
+    display: flex;
+    margin-right: auto;
+    margin-left: 5px;
+    align-self: center;
+}
+
 
 
 
@@ -292,8 +293,7 @@ section#full-faq div.departments {
     padding-right: 10px;
 }
 
-input#sidebar:checked~section#full-faq div.questions {
-
+input#sidebar:checked~section#full-faq div.questions, input#sidebar:checked~section#chat div.change-status{
     margin-right: 30px;
 }
 

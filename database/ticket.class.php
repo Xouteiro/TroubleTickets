@@ -19,7 +19,7 @@ class Ticket
         $this->title = $title;
     }
 
-    static function updateTicket(PDO $db, int $id, int $agent_id, int $client_id, int $department_id, string $status, string $title): bool
+    static function updateTicket(PDO $db, int $id, ?int $agent_id, int $client_id, int $department_id, string $status, string $title): bool
     {
         $stmt = $db->prepare('UPDATE TICKETS SET agent_id = ?, client_id = ?, department_id = ?, status = ?, title = ? WHERE ticket_id = ?');
         try {

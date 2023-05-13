@@ -33,8 +33,8 @@ foreach($tickets as $ticket){
 }
 
 
-if (empty($_POST['departments']) || empty($_POST['title']) || empty($_POST['message']) ) {
-    $session->addMessage('error', 'All fields must be filled');
+if (empty($_POST['departments']) || empty($_POST['title']) || empty($_POST['message']) || strlen($_POST['message'])>30) {
+    $session->addMessage('error', 'All fields must be filled or message is too long!');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
     if (Ticket::createTicket($db, $session->getId(), $departmentObj->id,'Not Assigned', $title)) {

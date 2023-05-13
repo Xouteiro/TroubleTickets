@@ -22,9 +22,9 @@ function output_new_ticket_page(Session $session)
         ?>
     </select>
     <label for="ticket-title">Title:</label>
-    <input type="text" id="title" name="title" placeholder="Small description of the problem">
+    <input type="text" id="title" name="title" placeholder="Small description of the problem (Max: 30 characters)">
     <label for="ticket-message">Message:</label>
-    <textarea id="message" name="message" placeholder="Detailed description of the problem" rows="10" cols="30"></textarea>
+    <textarea id="message" name="message" placeholder="Detailed description of the problem." rows="10" cols="30"></textarea>
     <button type="submit" name="submit" class="ticket">Create Ticket</button>
     </section>
     </form>

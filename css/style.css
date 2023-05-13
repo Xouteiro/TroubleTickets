@@ -157,32 +157,43 @@ label {
     color: #FFFFFF;
 }
 
+#menu li label {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu li form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
 
 form#logout button,
 form#login button {
-    color: #000000;
-    background-color: #CFCFCF;
+    height: 100%;
+    width: 100%;
     opacity: 78%;
     border: none;
     box-shadow: none;
     cursor: pointer;
 }
 
-form#logout button:hover,
-form#login button:hover {
-    background-color: grey;
-    border-radius: 10px;
-}
+
 
 section {
     padding-left: 25px;
+    padding-top: 15px;
 
 }
 
 section h2 {
     color: #212121;
     margin: 0px;
-    
+
 }
 
 section h3 {
@@ -251,28 +262,32 @@ section#full-faq div.departments :hover {
 }
 
 
-section#client-tickets div.department h3::after{
+section#client-tickets div.department h3::after {
     content: '\1F3EC';
 }
-section#client-tickets div.department h3{
-    color: #F47458;
+
+section#client-tickets div.department h3 {
+    color: #FFFFFF;
     font-size: 24px;
+    margin-left: 0px;
+    margin-right: auto;
 }
 
-section#client-tickets>h3:nth-of-type(1)::after{
-        content: '\1F9D0';
+section#client-tickets>h3:nth-of-type(1)::after {
+    content: '\1F9D0';
 }
 
-section#client-tickets>h3:nth-of-type(2)::after{
+section#client-tickets>h3:nth-of-type(2)::after {
     content: '\1F510';
 }
-section#client-tickets>h3:nth-of-type(3):after{
+
+section#client-tickets>h3:nth-of-type(3):after {
     content: '\231B';
 }
 
-    
 
-section#client-tickets div.full-line h3:nth-child(2){
+
+section#client-tickets div.full-line h3:nth-child(2) {
     margin-left: 10px;
     margin-right: auto;
     align-self: center;
@@ -351,21 +366,22 @@ section#chat div.messages {
     border-radius: 5px;
 }
 
- section#chat div.change-status input{
-    background-color:#F47458;
+section#chat div.change-status input {
+    background-color: #F47458;
     border: none;
     border-radius: 5px;
     padding: 5px;
 }
 
-section#chat div.change-status select{
-    background-color:#cFcFcF;
+section#chat div.change-status select {
+    background-color: #cFcFcF;
     border: none;
     border-radius: 5px;
     padding: 5px;
 }
-section#chat div.change-status select:hover option:hover{
-    background-color:#F47458;
+
+section#chat div.change-status select:hover option:hover {
+    background-color: #F47458;
     border: none;
     border-radius: 5px;
     padding: 5px;
@@ -403,7 +419,8 @@ section#chat div.message-input form {
     flex-direction: row;
     width: 100%;
 }
-section#chat div.message-input form input#send{
+
+section#chat div.message-input form input#send {
     flex-basis: 15%;
     align-self: center;
     margin: auto;
@@ -432,9 +449,11 @@ span.dot {
 div.full-line#yellow span.dot::after {
     content: '\231B';
 }
+
 div.full-line#red span.dot::after {
     content: '\1F9D0';
 }
+
 div.full-line#green span.dot::after {
     content: '\1F510';
 }
@@ -445,7 +464,7 @@ section#chat div.messages h4:last-child {
     font-weight: 500;
 }
 
-div.messages h5{
+div.messages h5 {
     margin-bottom: 10px;
 }
 
@@ -458,8 +477,9 @@ section#chat h3 {
     padding-right: 10px;
 
 }
+
 section#chat h3:nth-child(2) {
-    color:white;
+    color: white;
 
 }
 

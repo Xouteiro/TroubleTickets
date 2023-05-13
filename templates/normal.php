@@ -22,8 +22,7 @@ function output_header(Session $session)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" >
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/text.css" rel="stylesheet">
     <link href="../css/layout.css" rel="stylesheet">
@@ -35,11 +34,7 @@ function output_header(Session $session)
     <header>
       <h1><a href="../pages/index.php">Trouble</a><a href="../pages/index.php">Tickets</a></h1>
     </header>
-<?php /*
-    <form id="delete" action="../actions/action_delete_ticket.php" method="post">
-      <button type="submit" name="submit">delete ticket</button>
-    </form>
-    */?>
+    
 
     <input type="checkbox" id="sidebar">
     <label class="sidebar" for="sidebar"></label>
@@ -77,13 +72,23 @@ function output_header(Session $session)
         ?>
         <?php
         if ($session->isLoggedIn()) { ?>
-          <form action="../actions/action_logout.php" method="post" id="logout">
-            <button id="logout-button" class="logout">Logout</button>
-          </form>
+          <li>
+            <form action="../actions/action_logout.php" method="post" id="logout">
+            <label>
+                Logout
+                <input type="submit" style="display: none;">
+              </label>
+            </form>
+          </li>
         <?php } else { ?>
-          <form action="../pages/login.php" method="post" id="login">
-            <button id="login-button" class="logout">Login</button>
-          </form>
+          <li>
+            <form action="../pages/login.php" method="post" id="login">
+              <label>
+                Login
+                <input type="submit" style="display: none;">
+              </label>
+            </form>
+          </li>
         <?php }
         ?>
       </ul>
