@@ -27,7 +27,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
     <?php }
     if (Client::isAgent($db, $user->id)) { ?>
       <div class='full-line'>
-        <h2><?php echo $ticket->title . ' -&nbsp' ?> </h2>
+        <h2><?php echo $ticket->title . ' -&nbsp;' ?> </h2>
         <div class='change-status' id='department'>
           <form action="../actions/action_change_department.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">

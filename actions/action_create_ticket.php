@@ -19,8 +19,8 @@ $session = new Session();
 
 $db = getDatabaseConnection();
 $department = $_POST["departments"];
-$title = $_POST["title"];
-$message = $_POST["message"];
+$title = $_POST["ticket-title"];
+$message = $_POST["ticket-message"];
 
 $tickets = Ticket::getTickets($db,500);
 $departmentObj = Department::getDepartmentByName($db, $department);

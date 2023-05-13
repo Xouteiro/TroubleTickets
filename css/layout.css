@@ -337,7 +337,7 @@ section#chat div.agent-message {
     margin-bottom: 40px;
 }
 
-section#user_manager {
+div#user_manager {
     display: flex;
     grid-column: 1/-1;
     grid-row: 2/5;
