@@ -166,6 +166,19 @@ span.dot::after {
 }
 
 
+div.full-line label{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+}
+
+section#chat div.hashtags input {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
 footer {
     font-weight: 400;
     font-size: 16px;

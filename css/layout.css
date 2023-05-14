@@ -240,9 +240,22 @@ section#client-tickets:nth-child(2) {
 section#chat div.change-status{
     display: flex;
     margin-right: 65px;
-    margin-left: auto;
+    margin-left: 0px;
     align-self: center;
 }
+
+section#chat div.hashtags{
+    display: flex;
+    margin-right: 30px;
+    margin-left: auto;
+    align-self: center;
+    justify-content: space-between;
+}
+section#chat div.hashtags input{
+    margin: 2px;
+}
+
+
 
 section#chat div.change-status#department{
     display: flex;
@@ -369,7 +382,6 @@ form#new-ticket{
     flex-direction: column;
 }
 
-
 footer {
     display: inline-flex;
     width: 100%;
@@ -380,6 +392,16 @@ footer {
     padding-left: 25px;
 }
 
+
+div.full-line label{
+    margin-right: 30px;
+margin-left: auto;
+display: flex;
+align-self: end;
+margin-top: auto;
+margin-bottom: 5px;
+
+}
 
 
 footer p {

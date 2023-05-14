@@ -281,7 +281,7 @@ section#client-tickets>h3:nth-of-type(2)::after {
     content: '\1F510';
 }
 
-section#client-tickets>h3:nth-of-type(3):after {
+section#client-tickets>div:nth-of-type(4)>h3::after{
     content: '\231B';
 }
 
@@ -387,6 +387,18 @@ section#chat div.change-status select:hover option:hover {
     padding: 5px;
 }
 
+input#new-hashtag{
+    max-width: 15ch;
+}
+
+section#chat div.hashtags input{
+    color:#000000;
+    background-color: #b3b3b3;
+    border: none;
+    border-radius: 3px;
+    
+}
+
 
 
 input#sidebar:checked~section#chat div.messages {
@@ -483,7 +495,26 @@ section#chat h3:nth-child(2) {
 
 }
 
+div.full-line label{
+    color:#FFFFFF;
+}
 
+
+     
+label.show-department-tickets::before {
+    content: "\2610";
+    color: #F47458;
+    font-size: 25px;
+}
+
+input#show-department-tickets:checked ~ label.show-department-tickets::before {
+    content: "\2611";
+    color: #F47458;
+}
+
+input#show-department-tickets {
+    display: none;
+}
 
 
 

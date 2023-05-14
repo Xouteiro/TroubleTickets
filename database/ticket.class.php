@@ -189,4 +189,15 @@ class Ticket
         }
         return $tickets;
     }
+
+    static function getTicketHashtags($db, $ticket_id) {
+        $stmt = $db->prepare('SELECT hashtag_name FROM HASHTAGS INNER JOIN TICKET_HASHTAGS ON HASHTAGS.hashtag_id = TICKET_HASHTAGS.hashtag_id WHERE ticket_id = ?');
+        $stmt->execute([$ticket_id]);
+        $hashtags = array();
+        while ($row = $stmt->fetch()) {
+            $hashtags[] = $row['hashtag_name'];
+        }
+        return $hashtags;
+    }
+    
 }

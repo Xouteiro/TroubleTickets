@@ -11,6 +11,8 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   require_once(__DIR__ . '/../database/ticket.class.php');
   require_once(__DIR__ . '/../database/messages.class.php');
   require_once(__DIR__ . '/../database/department.class.php');
+  require_once(__DIR__ . '/../database/hashtag.class.php');
+
 
   $user = Client::getClientById($db, $session->getId());
   $client = Client::getClientById($db, $ticket->client_id);
@@ -18,6 +20,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
     $agent = Client::getClientById($db, $ticket->agent_id);
   }
   $messages = Message::getMessages($db, 100);
+  $hashtags = Hashtag::getTicketHashtags($db, $ticket->id);
 
   ?>
   <section id='chat' class='chat'>
@@ -40,8 +43,6 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
                   <option value="<?php echo $department->id ?>"><?php echo $department->name ?></option>
               <?php }
               } ?>
-
-
             </select>
             <input type="submit" value="Change department">
           </form>
@@ -53,8 +54,16 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
     if ($ticket->status == 'Open') { ?>
       <div class='full-line' id='red'>
         <h3>Status: </h3>
-        <h3><?php echo $ticket->status ?></h3>
+        <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
+        <?php if(Client::isAgent($db, $user->id)){ ?>
+        <div class='hashtags'>      
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+          <?php } ?>
+        </div>
+        <?php } ?>
         <div class='change-status'>
           <form action="../actions/action_close_ticket.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
@@ -66,8 +75,16 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
     if ($ticket->status == 'Not Assigned') { ?>
       <div class='full-line' id='yellow'>
         <h3>Status: </h3>
-        <h3><?php echo $ticket->status  ?></h3>
+        <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
+        <?php if(Client::isAgent($db, $user->id)){ ?>
+        <div class='hashtags'>      
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+          <?php } ?>
+        </div>
+        <?php } ?>
         <?php if (Client::isAgent($db, $user->id) && $ticket->status == 'Not Assigned') { ?>
           <div class='change-status'>
             <form action="../actions/action_assing_agent.php" method="post">
@@ -92,9 +109,16 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
     if ($ticket->status == 'Closed') { ?>
       <div class='full-line' id='green'>
         <h3>Status: </h3>
-        <h3><?php echo $ticket->status ?></h3>
+        <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-
+        <?php if(Client::isAgent($db, $user->id)){ ?>
+        <div class='hashtags'>      
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+          <?php } ?>
+        </div>
+        <?php } ?>
         <div class='change-status  '>
           <form action="../actions/action_reopen_ticket.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
