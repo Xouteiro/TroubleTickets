@@ -26,7 +26,7 @@ $ticket = Ticket::getTicketById($db, intval($ticket_id));
 
 if (Ticket::updateTicket($db, intval($ticket_id), $ticket->agent_id, $ticket->client_id, $ticket->department_id, 'Open', $ticket->title)) {
     if (Client::isAgent($db, $user->id)) {
-        if (Message::createMessage($db, intval($ticket_id), $user->id, "We apologize for any inconvenience this may have caused, we have reopened your ticket regarding $ticket->title and we assure you that we will work diligently to resolve the issue as soon as possible. Best regards, $user->username ", new DateTime('now')))
+        if (Message::createMessage($db, intval($ticket_id), $user->id, "We apologize for any inconvenience this may have caused, we have reopened your ticket regarding $ticket->title and we assure you that we will work diligently to resolve the issue as soon as possible. Best regards, $user->username ", new DateTime('now', new DateTimeZone('Europe/Lisbon'))))
             $session->addMessage('success', 'Ticket updated with success!');
         header('Location: ../pages/tickets_client.php');
     }

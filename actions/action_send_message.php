@@ -27,7 +27,7 @@ $message = $_POST["message"];
 
 if($ticket->status=='Closed'){
     if (Ticket::updateTicket($db, intval($ticket_id), $ticket->agent_id, $ticket->client_id, $ticket->department_id, 'Open', $ticket->title)) {
-        if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now')))
+        if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now', new DateTimeZone('Europe/Lisbon'))))
             $session->addMessage('success', 'Message sent and ticket updated with success!');
             header('Location: ../pages/tickets_client.php');
     } else {
@@ -37,7 +37,7 @@ if($ticket->status=='Closed'){
 }
 else if(Client::isAgent($db, $user->id) && $ticket->status == 'Not Assigned'){
     if (Ticket::updateTicket($db, intval($ticket_id), $user->id, $ticket->client_id, $ticket->department_id, 'Open', $ticket->title)) {
-        if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now')))
+        if (Message::createMessage($db, intval($ticket_id), $user->id, $message , new DateTime('now', new DateTimeZone('Europe/Lisbon'))))
             $session->addMessage('success', 'Message sent,ticket updated with success and assigned');
             header('Location: ../pages/tickets_client.php');
     } else {

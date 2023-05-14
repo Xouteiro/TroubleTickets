@@ -42,7 +42,7 @@ if (empty($_POST['departments']) || empty($_POST['title']) || empty($_POST['mess
         foreach($afterTickets as $afterTicket){
             if($afterTicket->title == $title && $afterTicket->department_id == $departmentObj->id && $afterTicket->client_id==$session->getId()){
                 $lastTicket = $afterTicket;
-                if(Message::createMessage($db,$lastTicket->id,$session->getId(),$message, new DateTime('now'))){
+                if(Message::createMessage($db,$lastTicket->id,$session->getId(),$message, new DateTime('now', new DateTimeZone('Europe/Lisbon')))){
                     $session->addMessage('success', 'Message created with success!');
                 }
                 else{
