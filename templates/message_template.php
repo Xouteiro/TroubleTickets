@@ -118,10 +118,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
             <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
           <?php } ?>
         </div>
-<<<<<<< HEAD
         <?php } ?>
-=======
->>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
         <div class='change-status  '>
           <form action="../actions/action_reopen_ticket.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
