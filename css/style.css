@@ -390,7 +390,9 @@ section#chat div.change-status select:hover option:hover {
 input#new-hashtag{
     max-width: 15ch;
 }
-
+input#new-hashtag:focus{
+   outline:  none;
+}
 section#chat div.hashtags input{
     color:#000000;
     background-color: #b3b3b3;
