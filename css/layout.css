@@ -246,8 +246,8 @@ section#chat div.change-status{
 
 section#chat div.hashtags{
     display: flex;
-    margin-right: 30px;
-    margin-left: auto;
+    margin-right: auto;
+    margin-left: 50px;
     align-self: center;
     justify-content: space-between;
 }

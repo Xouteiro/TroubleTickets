@@ -60,7 +60,11 @@ const newHashtag = document.getElementById('new-hashtag');
 if (newHashtag) {
   newHashtag.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
-      const hashtagName = newHashtag.value;
+      let hashtagName = newHashtag.value;
+      hashtagName = hashtagName.replace(/#/g, ''); // remove any "#" symbols except for the first one
+      if (!hashtagName.startsWith('#')) {
+        hashtagName = '#' + hashtagName; // add the "#" symbol
+      }
       const ticketId = document.querySelector('h3[data-ticketid]').getAttribute('data-ticketid');
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '../actions/action_add_hashtag.php', true);
@@ -96,6 +100,7 @@ if (newHashtag) {
     }
   })
 }
+
 
 
 
