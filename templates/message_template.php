@@ -56,14 +56,24 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
+<<<<<<< HEAD
         <?php if(Client::isAgent($db, $user->id)){ ?>
         <div class='hashtags'>      
             <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
+=======
+        <div class='hashtags'>      
+            <input type="text" id="new-hashtag" name="new-hashtag" placeholder="Type #">
+            <button type="submit" name="submit" id="add-hashtag">Add Hashtag</button>
+
+>>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
           <?php foreach ($hashtags as $hashtag) { ?>
             <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
           <?php } ?>
         </div>
+<<<<<<< HEAD
         <?php } ?>
+=======
+>>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
         <div class='change-status'>
           <form action="../actions/action_close_ticket.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
@@ -77,14 +87,24 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
+<<<<<<< HEAD
         <?php if(Client::isAgent($db, $user->id)){ ?>
         <div class='hashtags'>      
             <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
+=======
+        <div class='hashtags'>      
+            <input type="text" id="new-hashtag" name="new-hashtag" placeholder="Type #">
+            <button type="submit" name="submit" id="add-hashtag">Add Hashtag</button>
+
+>>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
           <?php foreach ($hashtags as $hashtag) { ?>
             <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
           <?php } ?>
         </div>
+<<<<<<< HEAD
         <?php } ?>
+=======
+>>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
         <?php if (Client::isAgent($db, $user->id) && $ticket->status == 'Not Assigned') { ?>
           <div class='change-status'>
             <form action="../actions/action_assing_agent.php" method="post">
@@ -111,14 +131,24 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
+<<<<<<< HEAD
         <?php if(Client::isAgent($db, $user->id)){ ?>
         <div class='hashtags'>      
             <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
+=======
+        <div class='hashtags'>      
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="Type #">
+            <button type="submit" name="submit" id="add-hashtag">Add Hashtag</button>
+
+>>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
           <?php foreach ($hashtags as $hashtag) { ?>
             <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
           <?php } ?>
         </div>
+<<<<<<< HEAD
         <?php } ?>
+=======
+>>>>>>> bea363284d7b7c41ce28f6660173c332277075fb
         <div class='change-status  '>
           <form action="../actions/action_reopen_ticket.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">

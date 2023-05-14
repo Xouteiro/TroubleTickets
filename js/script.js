@@ -98,6 +98,7 @@ if (newHashtag) {
 }
 
 
+
 function resizeInput(input) {
   input.style.width = 7 + input.value.length + "ch";
 }

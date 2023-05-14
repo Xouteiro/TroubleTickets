@@ -51,7 +51,7 @@
                 if ($count == 0) {
                     $stmt = $db->prepare("INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES (?, ?)");
                     $stmt->execute([$ticket_id, $hashtag_id]);
-                    $number = $stmt->fetchColumn();                
+
                 }
             
                 // Return the Hashtag object
