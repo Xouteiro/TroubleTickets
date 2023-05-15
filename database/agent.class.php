@@ -31,5 +31,13 @@ class Agent
             return null;
         }
     }
+
+    static function updateAgent(PDO $db, int $id, int $departmentId): void
+    {
+        $stmt = $db->prepare(
+            'UPDATE AGENTS SET department_id = ? WHERE client_id = ?'
+        );
+        $stmt->execute(array($departmentId, $id));
+    }
 }
 ?>

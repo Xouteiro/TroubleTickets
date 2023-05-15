@@ -24,7 +24,7 @@ class Client
     {
         $stmt = $db->prepare('
     UPDATE CLIENTS SET username = ?, password = ?, email = ?
-    WHERE idUser = ?
+    WHERE client_id = ?
     ');
         try {
             $stmt->execute(array($username, $password, $email, $id));
@@ -287,5 +287,34 @@ class Client
             );
         }
         return $users;
+    }
+
+    static function giveAgent(PDO $db, $id)
+    {
+        $stmt = $db->prepare('INSERT INTO AGENTS (client_id) VALUES (?)');
+        try {
+            $stmt->execute(array($id));
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    static function RemoveAgentAndAdmin(PDO $db, $id)
+    {
+        $stmt = $db->prepare('DELETE FROM AGENTS WHERE client_id = ?');
+        try {
+            $stmt->execute(array($id));
+        } catch (PDOException $e) {
+            return false;
+        }
+
+        $stmt = $db->prepare('DELETE FROM ADMINS WHERE client_id = ?');
+        try {
+            $stmt->execute(array($id));
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 } ?>

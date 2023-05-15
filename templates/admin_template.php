@@ -12,9 +12,9 @@ function output_admin(PDO $db, Session $session)
         header('HTTP/1.1 403 Forbidden');
         exit('Access denied. You must be an admin to access this page.');
     }
-    $clients = Client::getOnlyClients($db, 10);
-    $agents = Client::getOnlyAgents($db, 10);
-    $admins = Client::getOnlyAdmins($db, 10);
+    $clients = Client::getOnlyClients($db, 20);
+    $agents = Client::getOnlyAgents($db, 20);
+    $admins = Client::getOnlyAdmins($db, 20);
 
     // Output the HTML for managing users
     ?>
