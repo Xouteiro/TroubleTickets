@@ -39,5 +39,6 @@ class Agent
         );
         $stmt->execute(array($departmentId, $id));
     }
+
 }
 ?>

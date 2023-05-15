@@ -14,7 +14,7 @@ function output_new_ticket_page(Session $session)
     <section id='new-ticket-form' class='new-ticket-form'>
     <h2>New Ticket</h2>
     <form id="new-ticket" action="../actions/action_create_ticket.php" method="post">
-    <label for="department">Department:</label>
+    <label for="departments">Department:</label>
     <select id="departments" name="departments">
         <?php foreach($departments as $department){?>
             <option value="<?php echo $department->name?>"><?php echo $department->name?></option>
@@ -22,12 +22,13 @@ function output_new_ticket_page(Session $session)
         ?>
     </select>
     <label for="ticket-title">Title:</label>
-    <input type="text" id="title" name="title" placeholder="Small description of the problem">
+    <input type="text" id="ticket-title" name="ticket-title" placeholder="Small description of the problem (Max: 30 characters)">
     <label for="ticket-message">Message:</label>
-    <textarea id="message" name="message" placeholder="Detailed description of the problem" rows="10" cols="30"></textarea>
+    <textarea id="ticket-message" name="ticket-message" placeholder="Detailed description of the problem." rows="10" cols="30"></textarea>
     <button type="submit" name="submit" class="ticket">Create Ticket</button>
-    </section>
     </form>
+    </section>
+    
 
 <?php
 }

@@ -103,12 +103,9 @@ VALUES
 
 INSERT INTO AGENTS (client_id, department_id)
 VALUES
+    (1,null),
     (2, 2),
     (3, 3),
-    (4, 4),
-    (5, 2),
-    (6, 4),
-    (7, 1),
     (8, 3),
     (9, 4),
     (10, 5);
@@ -125,17 +122,17 @@ INSERT INTO FAQS (department_id, question, answer) VALUES
 (5, 'What forms of payment do you accept?', 'We accept credit cards, PayPal, and bank transfers.');
 
 INSERT INTO TICKETS (agent_id, client_id, department_id, status, title) VALUES 
-(NULL, 1, 1, 'Open', 'Issue with product delivery'),
-(NULL, 2, 2, 'Open', 'Billing inquiry'),
-(NULL, 3, 3, 'Not Assigned', 'Technical issue with software'),
-(NULL, 4, 4, 'Not Assigned', 'Marketing campaign feedback'),
+(NULL, 5, 1, 'Open', 'Issue with product delivery'),
+(NULL, 6, 2, 'Open', 'Billing inquiry'),
+(NULL, 7, 3, 'Not Assigned', 'Technical issue with software'),
+(NULL, 6, 4, 'Not Assigned', 'Marketing campaign feedback'),
 (NULL, 5, 5, 'Not Assigned', 'Billing dispute');
 
 INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES 
-(1, 'My product has not arrived yet. When can I expect delivery?', 1),
-(2, 'I received an incorrect charge on my bill. Can you help me resolve this?', 2),
-(3, 'I am having trouble with the software crashing. What can I do to fix this?', 3),
-(4, 'I did not find the marketing campaign engaging. Do you have any plans to change it?', 4),
+(1, 'My product has not arrived yet. When can I expect delivery?', 5),
+(2, 'I received an incorrect charge on my bill. Can you help me resolve this?', 6),
+(3, 'I am having trouble with the software crashing. What can I do to fix this?', 7),
+(4, 'I did not find the marketing campaign engaging. Do you have any plans to change it?', 6),
 (5, 'I was charged for services I did not receive. How can I dispute this?', 5);
 
 -- Populating Hashtags

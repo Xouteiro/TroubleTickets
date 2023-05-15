@@ -1,2 +1,0 @@
--- SQLite
-Select * from CLIENTS;

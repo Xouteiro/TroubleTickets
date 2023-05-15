@@ -67,9 +67,9 @@ form#login button {
 }
 
 
-section>h2 {
+section h2 {
     font-weight: 600;
-    font-size: 56px;
+    font-size: 45px;
     line-height: 84px;
 }
 
@@ -78,6 +78,13 @@ section h3 {
     font-size: 21px;
     line-height: 22px;
     letter-spacing: 0.03em;
+}
+
+section p{
+    font-weight: 600;
+font-size: 17px;
+line-height: 20px;
+letter-spacing: 0.03em;
 }
 
 
@@ -147,11 +154,37 @@ div.messages h4{
     letter-spacing: 0.03em; 
 }
 
-section#chat div.message-input input{
+div.messages h5{
     font-weight: 400;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 20px;
+    letter-spacing: 0.03em; 
 }
+
+section#chat div.change-status select, section#chat div.change-status input{
+    font-size: 16px;
+}
+
+span.dot::after {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+}
+
+
+div.full-line label{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+}
+
+section#chat div.hashtags input {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+  }
 
 footer {
     font-weight: 400;

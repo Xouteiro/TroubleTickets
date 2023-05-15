@@ -19,8 +19,8 @@ $session = new Session();
 
 $db = getDatabaseConnection();
 $department = $_POST["departments"];
-$title = $_POST["title"];
-$message = $_POST["message"];
+$title = $_POST["ticket-title"];
+$message = $_POST["ticket-message"];
 
 $tickets = Ticket::getTickets($db,500);
 $departmentObj = Department::getDepartmentByName($db, $department);
@@ -33,8 +33,8 @@ foreach($tickets as $ticket){
 }
 
 
-if (empty($_POST['departments']) || empty($_POST['title']) || empty($_POST['message']) ) {
-    $session->addMessage('error', 'All fields must be filled');
+if (empty($_POST['departments']) || empty($_POST['ticket-title']) || empty($_POST['ticket-message']) || strlen($_POST['ticket-message'])>30) {
+    $session->addMessage('error', 'All fields must be filled or message is too long!');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
     if (Ticket::createTicket($db, $session->getId(), $departmentObj->id,'Not Assigned', $title)) {
@@ -42,7 +42,7 @@ if (empty($_POST['departments']) || empty($_POST['title']) || empty($_POST['mess
         foreach($afterTickets as $afterTicket){
             if($afterTicket->title == $title && $afterTicket->department_id == $departmentObj->id && $afterTicket->client_id==$session->getId()){
                 $lastTicket = $afterTicket;
-                if(Message::createMessage($db,$lastTicket->id,$session->getId(),$message, new DateTime('now'))){
+                if(Message::createMessage($db,$lastTicket->id,$session->getId(),$message, new DateTime('now', new DateTimeZone('Europe/Lisbon')))){
                     $session->addMessage('success', 'Message created with success!');
                 }
                 else{

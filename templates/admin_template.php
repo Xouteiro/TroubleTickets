@@ -18,7 +18,7 @@ function output_admin(PDO $db, Session $session)
 
     // Output the HTML for managing users
     ?>
-    <section id="user_manager">
+    <div id="user_manager">
         <section id="client_manager">
             <h3>Manage Clients</h3>
 
@@ -103,7 +103,7 @@ function output_admin(PDO $db, Session $session)
                 </tbody>
             </table>
         </section>
-    </section>
+                    </div>
     <?php
 }
 

@@ -7,11 +7,11 @@ function output_login(Session $session)
     <form action="../actions/action_login.php" method="post">
       <div class='full-input'>
         <label for="email">Email</label>
-        <input type="email" name="email" placeholder="youremail@mail.com">
+        <input type="email" name="email" id='email' autocomplete='off' placeholder="youremail@mail.com">
       </div>
       <div class='full-input'>
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="pAsSw0rd">
+        <input type="password" name="password" id='password' placeholder="pAsSw0rd">
       </div>
       <button type="submit" name="submit" class="login">Enter</button>
     </form>
@@ -28,19 +28,19 @@ function output_register(Session $session)
     <form id="register" action="../actions/action_register.php" method="post">
       <div class='full-input'>
         <label for="username">Username</label>
-        <input type="text" name="username" placeholder="User_name01">
+        <input type="text" name="username" id='username' autocomplete='off' placeholder="User_name01">
       </div>
       <div class='full-input'>
         <label for="email">Email</label>
-        <input type="email" name="email" placeholder="youremail@mail.com">
+        <input type="email" name="email" id='email'  autocomplete='off' placeholder="youremail@mail.com">
       </div>
       <div class='full-input'>
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="pAsSw0rd">
+        <input type="password" name="password" id='password'  placeholder="pAsSw0rd">
       </div>
       <div class='full-input'>
         <label for="confirm_password">Confirm Password</label>
-        <input type="password" name="confirm_password" placeholder="pAsSw0rd">
+        <input type="password" name="confirm_password" id='confirm_password' placeholder="pAsSw0rd">
       </div>
       <button type="submit" name="submit" class="login">Create account</button>
     </form>

@@ -19,7 +19,7 @@ class Ticket
         $this->title = $title;
     }
 
-    static function updateTicket(PDO $db, int $id, int $agent_id, int $client_id, int $department_id, string $status, string $title): bool
+    static function updateTicket(PDO $db, int $id, ?int $agent_id, int $client_id, int $department_id, string $status, string $title): bool
     {
         $stmt = $db->prepare('UPDATE TICKETS SET agent_id = ?, client_id = ?, department_id = ?, status = ?, title = ? WHERE ticket_id = ?');
         try {
@@ -149,6 +149,28 @@ class Ticket
         return $tickets;
     }
 
+    static function getTicketsAgentByStatus(PDO $db, int $agent_id, string $status): array
+    {
+        $stmt = $db->prepare('SELECT ticket_id, agent_id, client_id, department_id, status, title FROM TICKETS WHERE (agent_id = ? OR client_id = ?) AND status = ?');
+        $stmt->execute(array($agent_id, $agent_id, $status));
+    
+        $tickets = array();
+        while ($ticket = $stmt->fetch()) {
+            $tickets[] = new Ticket(
+                $ticket['ticket_id'],
+                $ticket['agent_id'] ?? null,
+                $ticket['client_id'],
+                $ticket['department_id'],
+                $ticket['status'],
+                $ticket['title']
+            );
+        }
+        return $tickets;
+    }
+    
+
+
+
     static function getTicketsByStatus(PDO $db, string $status): array
     {
         $stmt = $db->prepare('SELECT ticket_id, agent_id, client_id, department_id, status, title FROM TICKETS WHERE status = ?');
@@ -167,4 +189,15 @@ class Ticket
         }
         return $tickets;
     }
+
+    static function getTicketHashtags($db, $ticket_id) {
+        $stmt = $db->prepare('SELECT hashtag_name FROM HASHTAGS INNER JOIN TICKET_HASHTAGS ON HASHTAGS.hashtag_id = TICKET_HASHTAGS.hashtag_id WHERE ticket_id = ?');
+        $stmt->execute([$ticket_id]);
+        $hashtags = array();
+        while ($row = $stmt->fetch()) {
+            $hashtags[] = $row['hashtag_name'];
+        }
+        return $hashtags;
+    }
+    
 }
