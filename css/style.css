@@ -563,7 +563,42 @@ input#show-department-tickets {
     display: none;
 }
 
+.selectdepartment {
+    color: white;
+    background-color: #CFCFCF;
+    border-radius: 5px;
+    border-color: #CFCFCF;
+    width: 657px;
+    height: 30px;
+}
 
+.input-ticket-title {
+    color: white;
+    background-color: #CFCFCF;
+    border-radius: 5px;
+    border-color: #CFCFCF;
+    width: 650px;
+    height: 30px;
+  }
+
+.textarea-ticket-message {
+    color: white;
+    background-color: #CFCFCF;
+    border-radius: 5px;
+    border-color: #CFCFCF;
+    width: 650px;
+    height: 150px;
+  }
+
+.button-create-ticket {
+    color: white;
+    background-color: #F47458;
+    border-radius: 5px;
+    border-color: #F47458;
+    width: 657px;
+    height: 30px;
+    margin-top: 10px;
+  }
 
 footer {
     color: white;
