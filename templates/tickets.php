@@ -51,7 +51,7 @@ function output_client_tickets(PDO $db, Session $session)
     </div>
   <?php } ?>
   <h3>Open</h3>
-  <div class="open-tickets">
+  <div class="tickets">
     <?php
     if (Client::isAgent($db, $user->id)) {
       $OpenTickets = $OpenAgentTickets;
@@ -87,7 +87,7 @@ function output_client_tickets(PDO $db, Session $session)
 
   </div>
   <h3>Solved</h3>
-  <div class="solved-tickets">
+  <div class="tickets">
     <?php
     if (Client::isAgent($db, $user->id)) {
       $ClosedTickets = $ClosedAgentTickets;
@@ -127,7 +127,7 @@ function output_client_tickets(PDO $db, Session $session)
     </label>
     <?php } ?>
     </div>
-    <div class="unassigned-tickets" data-unassigned-tickets="<?php $UnassignedTickets;?>">
+    <div class="tickets" id='unassigned-tickets' data-unassigned-tickets="<?php $UnassignedTickets;?>">
     <?php
     if (!Client::isAgent($db, $user->id)) {
       $UnassignedTickets = $UnassignedClientTickets;

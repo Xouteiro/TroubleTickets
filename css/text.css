@@ -80,6 +80,13 @@ section h3 {
     letter-spacing: 0.03em;
 }
 
+section p{
+    font-weight: 600;
+font-size: 17px;
+line-height: 20px;
+letter-spacing: 0.03em;
+}
+
 
 h4{
     font-weight: 600;

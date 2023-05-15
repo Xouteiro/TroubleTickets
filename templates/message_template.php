@@ -56,13 +56,13 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-        <?php if(Client::isAgent($db, $user->id)){ ?>
-        <div class='hashtags'>      
-            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
-          <?php foreach ($hashtags as $hashtag) { ?>
-            <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
-          <?php } ?>
-        </div>
+        <?php if (Client::isAgent($db, $user->id)) { ?>
+          <div class='hashtags'>
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;' ?> Type #">
+            <?php foreach ($hashtags as $hashtag) { ?>
+              <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+            <?php } ?>
+          </div>
         <?php } ?>
         <div class='change-status'>
           <form action="../actions/action_close_ticket.php" method="post">
@@ -77,13 +77,13 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-        <?php if(Client::isAgent($db, $user->id)){ ?>
-        <div class='hashtags'>      
-            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
-          <?php foreach ($hashtags as $hashtag) { ?>
-            <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
-          <?php } ?>
-        </div>
+        <?php if (Client::isAgent($db, $user->id)) { ?>
+          <div class='hashtags'>
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;' ?> Type #">
+            <?php foreach ($hashtags as $hashtag) { ?>
+              <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+            <?php } ?>
+          </div>
         <?php } ?>
         <?php if (Client::isAgent($db, $user->id) && $ticket->status == 'Not Assigned') { ?>
           <div class='change-status'>
@@ -111,13 +111,13 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
         <h3>Status: </h3>
         <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
         <span class="dot"></span>
-        <?php if(Client::isAgent($db, $user->id)){ ?>
-        <div class='hashtags'>      
-            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;'?> Type #">
-          <?php foreach ($hashtags as $hashtag) { ?>
-            <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
-          <?php } ?>
-        </div>
+        <?php if (Client::isAgent($db, $user->id)) { ?>
+          <div class='hashtags'>
+            <input type="text" id="new-hashtag" name="new-hashtag" autocomplete='on' placeholder="<?php echo '&nbsp;' ?> Type #">
+            <?php foreach ($hashtags as $hashtag) { ?>
+              <input type="button" class="remove-hashtag" data-name="<?php echo $hashtag->hashtag_id ?>" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+            <?php } ?>
+          </div>
         <?php } ?>
         <div class='change-status  '>
           <form action="../actions/action_reopen_ticket.php" method="post">
@@ -186,6 +186,110 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
 
 
 
+<?php
+}
+?>
+
+<?php
+function output_watch_message(PDO $db, Ticket $ticket, Session $session)
+{ ?>
+  <?php
+  require_once(__DIR__ . '/../database/connection.db.php');
+  require_once(__DIR__ . '/../database/client.class.php');
+  require_once(__DIR__ . '/../database/ticket.class.php');
+  require_once(__DIR__ . '/../database/messages.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
+  require_once(__DIR__ . '/../database/hashtag.class.php');
+
+
+  $user = Client::getClientById($db, $session->getId());
+  $client = Client::getClientById($db, $ticket->client_id);
+  if ($ticket->status != 'Not Assigned') {
+    $agent = Client::getClientById($db, $ticket->agent_id);
+  }
+  $messages = Message::getMessages($db, 100);
+  $hashtags = Hashtag::getTicketHashtags($db, $ticket->id);
+
+  ?>
+  <section id='chat' class='chat'>
+    <h2><?php echo $ticket->title ?> </h2>
+    <?php
+    if ($ticket->status == 'Open') { ?>
+      <div class='full-line' id='red'>
+        <h3>Status: </h3>
+        <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
+        <span class="dot"></span>
+        <div class='hashtags'>
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <input type="button" class="watch-hashtag" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+          <?php } ?>
+        </div>
+      </div>
+    <?php }
+    if ($ticket->status == 'Not Assigned') { ?>
+      <div class='full-line' id='yellow'>
+        <h3>Status: </h3>
+        <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
+        <span class="dot"></span>
+        <div class='hashtags'>
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <input type="button" class="watch-hashtag" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+          <?php } ?>
+        </div>
+      </div>
+    <?php }
+    if ($ticket->status == 'Closed') { ?>
+      <div class='full-line' id='green'>
+        <h3>Status: </h3>
+        <h3 data-ticketid='<?php echo $ticket->id ?>'><?php echo $ticket->status ?></h3>
+        <span class="dot"></span>
+        <div class='hashtags'>
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <input type="button" class="watch-hashtag" value='<?php echo $hashtag->hashtag_name . ' &#10006;' ?>'></input>
+          <?php } ?>
+        </div>
+      </div>
+    <?php } ?>
+
+
+    <div class="messages">
+      <div class="text">
+        <?php
+        foreach ($messages as $message) {
+          if ($message->ticket_id == $ticket->id) {
+            if ($message->client_id == $ticket->client_id) { ?>
+              <div class='client-message'>
+                <div class='full-line'>
+                  <h4>Client:</h4>
+                  <h4><?php echo '&nbsp;';
+                      echo $client->username
+                      ?></h4>
+                </div>
+                <p><?php echo $message->message ?></p>
+                <h5><?php echo $message->date_created->format('d/m/Y H:i:s') ?></h5>
+              </div>
+              <?php }
+            if ($ticket->status != 'Not Assigned') {
+              if ($message->client_id == $ticket->agent_id) { ?>
+                <div class='agent-message'>
+                  <div class='full-line'>
+                    <h4>Agent:</h4>
+                    <h4><?php echo '&nbsp;';
+                        echo $agent->username
+                        ?></h4>
+                  </div>
+                  <p><?php echo $message->message ?></p>
+                  <h5><?php echo $message->date_created->format('d/m/Y H:i:s') ?></h5>
+                </div>
+
+        <?php }
+            }
+          }
+        }
+        ?>
+      </div>
+    </div>
+  </section>
 <?php
 }
 ?>

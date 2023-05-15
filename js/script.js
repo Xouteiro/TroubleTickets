@@ -1,5 +1,5 @@
 const checkbox = document.getElementById('show-department-tickets');
-const tickets = document.querySelectorAll('.unassigned-tickets .ticket');
+const tickets = document.querySelectorAll('#unassigned-tickets .ticket');
 const p = document.createElement('p');
 p.textContent = 'No tickets here yet!';
 
@@ -32,7 +32,7 @@ if (checkbox && tickets && p) {
         }
 
         if (flag === 0) {
-            document.querySelector('.unassigned-tickets').appendChild(p);
+            document.getElementById('unassigned-tickets').appendChild(p);
         }
     })
 }

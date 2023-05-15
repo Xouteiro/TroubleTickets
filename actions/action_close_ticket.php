@@ -26,7 +26,7 @@ $ticket = Ticket::getTicketById($db, intval($ticket_id));
 
 if (Ticket::updateTicket($db, intval($ticket_id), $ticket->agent_id, $ticket->client_id, $ticket->department_id, 'Closed', $ticket->title)) {
     if (Client::isAgent($db, $user->id)) {
-        if (Message::createMessage($db, intval($ticket_id), $user->id, "Since the problem appears to have been resolved, I am closing this ticket. Please do not hesitate to reopen it or contact us if you need any further assistance. Thank you for contacting us! ", new DateTime('now', new DateTimeZone('Europe/Lisbon'))))
+        Message::createMessage($db, intval($ticket_id), $user->id, "Since the problem appears to have been resolved, I am closing this ticket. Please do not hesitate to reopen it or contact us if you need any further assistance. Thank you for contacting us! ", new DateTime('now', new DateTimeZone('Europe/Lisbon')));
         $session->addMessage('success', 'Ticket updated with success!');
         header('Location: ../pages/tickets_client.php');
     }

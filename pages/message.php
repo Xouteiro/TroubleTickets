@@ -16,12 +16,18 @@
 
   $db = getDatabaseConnection();
 
+  $user = Client::getClientById($db, $session->getId());
   $id = $_GET['id'];
   $ticket = Ticket::getTicketById($db, intval($id));
 
 
   output_header($session);
-  output_message($db, $ticket, $session); 
+  if($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAdmin($db, $user->id)){
+    output_message($db, $ticket, $session); 
+  }
+  else{
+    output_watch_message($db,$ticket,$session);
+  }
   output_footer();
 
 
