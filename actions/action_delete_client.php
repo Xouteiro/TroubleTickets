@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../database/client.class.php');
 
 $db = getDatabaseConnection();
 
-Client::deleteClient($db, $_GET['id']);
+Client::deleteClient($db, $_POST['id']);
 
 header('Location: ../pages/admin.php');
 
