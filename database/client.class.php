@@ -216,4 +216,76 @@ class Client
         return $users;
     }
 
+    static function getOnlyClients(PDO $db, int $count): array
+    {
+        $stmt = $db->prepare(
+            'SELECT C.client_id, C.username, C.email, C.password
+         FROM CLIENTS C
+         LEFT JOIN AGENTS A ON C.client_id = A.client_id
+         LEFT JOIN ADMINS ADM ON C.client_id = ADM.client_id
+         WHERE A.client_id IS NULL AND ADM.client_id IS NULL
+         LIMIT :count'
+        );
+        $stmt->bindValue(':count', $count, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $users = array();
+        while ($user = $stmt->fetch()) {
+            $users[] = new Client(
+                $user['client_id'],
+                $user['username'],
+                $user['email'],
+                $user['password'],
+            );
+        }
+        return $users;
+    }
+
+    static function getOnlyAgents(PDO $db, int $count): array
+    {
+        $stmt = $db->prepare(
+            'SELECT C.client_id, C.username, C.email, C.password
+         FROM CLIENTS C
+         INNER JOIN AGENTS A ON C.client_id = A.client_id
+         LEFT JOIN ADMINS ADM ON C.client_id = ADM.client_id
+         WHERE ADM.client_id IS NULL
+         LIMIT :count'
+        );
+        $stmt->bindValue(':count', $count, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $users = array();
+        while ($user = $stmt->fetch()) {
+            $users[] = new Client(
+                $user['client_id'],
+                $user['username'],
+                $user['email'],
+                $user['password'],
+            );
+        }
+        return $users;
+    }
+
+    static function getOnlyAdmins(PDO $db, int $count): array
+    {
+        $stmt = $db->prepare(
+            'SELECT C.client_id, C.username, C.email, C.password
+         FROM CLIENTS C
+         INNER JOIN ADMINS ADM ON C.client_id = ADM.client_id
+         LIMIT :count'
+        );
+        $stmt->bindValue(':count', $count, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $users = array();
+        while ($user = $stmt->fetch()) {
+            $users[] = new Client(
+                $user['client_id'],
+                $user['username'],
+                $user['email'],
+                $user['password'],
+            );
+        }
+        return $users;
+    }
 } ?>

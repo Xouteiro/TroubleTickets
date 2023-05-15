@@ -12,15 +12,15 @@ function output_admin(PDO $db, Session $session)
         header('HTTP/1.1 403 Forbidden');
         exit('Access denied. You must be an admin to access this page.');
     }
-    $clients = Client::getClients($db, 10);
-    $agents = Client::getAgents($db, 10);
-    $admins = Client::getAdmins($db, 10);
+    $clients = Client::getOnlyClients($db, 10);
+    $agents = Client::getOnlyAgents($db, 10);
+    $admins = Client::getOnlyAdmins($db, 10);
 
     // Output the HTML for managing users
     ?>
     <section id="user_manager">
         <section id="client_manager">
-            <h2>Manage Clients</h2>
+            <h3>Manage Clients</h3>
 
             <table>
                 <thead>
@@ -40,8 +40,7 @@ function output_admin(PDO $db, Session $session)
                                 <?= $client->email ?>
                             </td>
                             <td>
-                                <a href="edit_client.php?id=<?= $client->id ?>">Edit</a>
-                                <a href="../actions/action_delete_client.php?id=<?= $client->id ?>">Delete</a>
+                                <a href="edit.php?id=<?= $client->id ?>">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -49,7 +48,7 @@ function output_admin(PDO $db, Session $session)
             </table>
         </section>
         <section id="agent_manager">
-            <h2>Manage Agents</h2>
+            <h3>Manage Agents</h3>
 
             <table>
                 <thead>
@@ -69,8 +68,7 @@ function output_admin(PDO $db, Session $session)
                                 <?= $agent->email ?>
                             </td>
                             <td>
-                                <a href="edit_agent.php?id=<?= $agent->id ?>">Edit</a>
-                                <a href="../actions/action_delete_client.php?id=<?= $agent->id ?>">Delete</a>
+                                <a href="edit.php?id=<?= $agent->id ?>">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -78,7 +76,7 @@ function output_admin(PDO $db, Session $session)
             </table>
         </section>
         <section id="admin_manager">
-            <h2>Manage Admins</h2>
+            <h3>Manage Admins</h3>
 
             <table>
                 <thead>
@@ -98,8 +96,7 @@ function output_admin(PDO $db, Session $session)
                                 <?= $admin->email ?>
                             </td>
                             <td>
-                                <a href="edit_agent.php?id=<?= $agent->id ?>">Edit</a>
-                                <a href="../actions/action_delete_client.php?id=<?= $admin->id ?>">Delete</a>
+                                <a href="edit.php?id=<?= $admin->id ?>">Edit</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
