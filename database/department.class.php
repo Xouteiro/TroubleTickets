@@ -53,7 +53,26 @@ class Department
         }
     }
 
-    static function newDepartment(PDO $db, string $name): bool
+        
+    static function getDepartmentByName(PDO $db, string $name): ?Department
+    {
+        $stmt = $db->prepare('SELECT department_id, department_name FROM DEPARTMENTS WHERE department_name = ?');
+        $stmt->execute(array($name));
+    
+        $department = $stmt->fetch();
+        if ($department) {
+            return new Department(
+                intval($department['department_id']),
+                $department['department_name']
+            );
+        } else {
+            return null;
+        }
+    }
+
+    
+
+    static function newDepartment(PDO $db, int $name): bool
     {
         $stmt = $db->prepare('INSERT INTO DEPARTMENTS (department_name) VALUES (?)');
         try {

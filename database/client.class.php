@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+
 
 
 
@@ -173,6 +173,12 @@ class Client
     static function isAdmin(PDO $db, $id)
     {
         $stmt = $db->prepare('SELECT * FROM ADMINS WHERE client_id = ?');
+        $stmt->execute(array($id));
+        return ($stmt->fetch() !== false);
+    }
+    static function isAgent(PDO $db, $id)
+    {
+        $stmt = $db->prepare('SELECT * FROM AGENTS WHERE client_id = ?');
         $stmt->execute(array($id));
         return ($stmt->fetch() !== false);
     }

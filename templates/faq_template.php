@@ -33,6 +33,7 @@ require_once(__DIR__ . '/../templates/faq_template.php');
 
 $db = getDatabaseConnection();
 $departments = Department::getDepartments($db,10);
+
 ?>
 <div class="departments">
 <?php

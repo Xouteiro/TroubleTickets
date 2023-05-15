@@ -80,10 +80,40 @@ section h3 {
     letter-spacing: 0.03em;
 }
 
+
 h4{
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
+    letter-spacing: 0.03em; 
+}
+
+
+a.ticket h4{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0.03em; 
+}
+
+a.ticket h5{
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: 0.03em; 
+}
+
+a.ticket p{
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 20px;
+    letter-spacing: 0.03em; 
+}
+
+a.ticket h6{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
     letter-spacing: 0.03em; 
 }
 
@@ -94,19 +124,21 @@ div.questions p{
     letter-spacing: 0.03em; 
 }
 
-div.ticket p, div.messages p{
+section.chat>h2 {
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 84px;
+}
+
+ div.messages p{
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.03em; 
 }
 
-div.ticket h5{
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.03em; 
-}
+
+
 
 div.messages h4{
     font-weight: 600;

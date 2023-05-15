@@ -70,14 +70,14 @@ class Message
         return null;
     }
 
-    static function createMessage(PDO $db, int $ticket_id, int $client_id, string $message_content, DateTime $date_created): ?Message
+    static function createMessage(PDO $db, int $ticket_id, int $client_id, string $message_content, DateTime $date_created): bool
     {
         $stmt = $db->prepare('INSERT INTO MESSAGES (ticket_id, client_id, message_content, date_created) VALUES (?, ?, ?, ?)');
         try {
             $stmt->execute(array($ticket_id, $client_id, $message_content, $date_created->format('Y-m-d H:i:s')));
-            return self::getMessageById($db, $db->lastInsertId());
+            return true;
         } catch (PDOException $e) {
-            return null;
+            return false;
         }
     }
 

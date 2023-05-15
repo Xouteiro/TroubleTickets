@@ -35,6 +35,11 @@ function output_header(Session $session)
     <header>
       <h1><a href="../pages/index.php">Trouble</a><a href="../pages/index.php">Tickets</a></h1>
     </header>
+<?php /*
+    <form id="delete" action="../actions/action_delete_ticket.php" method="post">
+      <button type="submit" name="submit">delete ticket</button>
+    </form>
+    */?>
 
     <input type="checkbox" id="sidebar">
     <label class="sidebar" for="sidebar"></label>
@@ -56,7 +61,7 @@ function output_header(Session $session)
         if ($session->isLoggedIn()) { ?>
           <li><a href="../pages/newTicket.php">New</a><a href="../pages/newTicket.php">Ticket</a></li>
         <?php } else { ?>
-          <li><a href="../pages/newTicket.php">New</a><a href="../pages/newTicket.php">Ticket</a></li>
+          <li><a href="../pages/login.php">New</a><a href="../pages/login.php">Ticket</a></li>
         <?php } ?>
         <?php
         if ($session->isLoggedIn()) { ?>

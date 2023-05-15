@@ -17,10 +17,10 @@ $user = Client::getClientWithPassword($db, $_POST['email'], $_POST['password']);
 if (empty($_POST['email']) || empty($_POST['password'])) {
   die(header('Location: ' . $_SERVER['HTTP_REFERER']));
 } else if ($user == NULL) {
-  $session->addMessage('error', 'Wrong email or password');
+  $session->addMessage('error', 'Email or password not correct');
   die(header('Location: ' . $_SERVER['HTTP_REFERER']));
 } else if (!valid_input_list(array($_POST['email']))) {
-  $session->addMessage('error', 'Invalid input!');
+  $session->addMessage('error', 'Invalid email!');
   die(header('Location: ' . $_SERVER['HTTP_REFERER']));
 } else {
   $session->setId($user->id);
