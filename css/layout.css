@@ -211,11 +211,19 @@ input#sidebar:checked~section {
     grid-row: 2/5;
 }
 
+section#main-page{
+    padding-left: 0px;
+}
+
 section#main-page div.steps{
     display: flex;
     flex-direction: row;
-    margin-right: 35px;
+    margin-right: auto;
+    margin-left:auto;
     justify-content: space-between;
+    width:90%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 section#main-page div.step{
@@ -224,6 +232,28 @@ section#main-page div.step{
     padding: 10px;
 }
 
+section#main-page div.tickets{
+    margin-top: auto;
+    margin-bottom: auto ;
+    margin-left: 25px;
+}
+
+section#main-page h3{
+    margin:0px;
+    padding-left: 25px;
+    font-size: 25px;
+}
+
+article.faq{
+    display: flex;
+    flex-direction: column; 
+    margin-top: auto;
+    margin-bottom: auto;   
+}
+article.faq a{
+    margin-right: auto;
+    margin-left: auto;
+}
 
 
 section#client-tickets h2 {
@@ -237,7 +267,13 @@ section#client-tickets:nth-child(3) {
     display: flex;
     align-items: center;
 }
+div.recent-tickets{
+    display: flex;
+    flex-direction: column;
+    margin-left:45px;
+    margin-right: auto;;
 
+}
 div.tickets {
     display: flex;
     min-height: 10em;

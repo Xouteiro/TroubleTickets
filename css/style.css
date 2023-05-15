@@ -123,10 +123,7 @@ div.username img {
 }
 
 a.ticket{
-    background-image: url('/images/white.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-color: #FFFFFF;
 }
 
 div.step{
@@ -140,11 +137,20 @@ div.step {
     width: 30em;
 }
 
-div.step img {
+div.step img,article.faq img {
+    display: flex;
     height: 8em;
     width: 8em;
     margin-left: auto;
     margin-right: auto;
+}
+
+article.faq a {
+    margin: auto;
+color: #cccccc;
+word-wrap: break-word;
+text-align: center;
+width: 75%;
 }
 
 span.arrow::after{
@@ -158,9 +164,10 @@ span.arrow{
 
 div.step p {
     margin: auto;
-    color: #F47458;
+    color: #cccccc;
     word-wrap: break-word;
     text-align: center;
+    width: 75%;
 }
 
 
@@ -238,7 +245,7 @@ section {
 }
 
 section h2 {
-    color: #212121;
+    color: #111111;
     margin: 0px;
 
 }

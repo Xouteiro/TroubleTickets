@@ -25,28 +25,24 @@ function output_main_page(Session $session)
     ?>
     <section id='main-page' class='main-page'>
 
-        <h3>How TroubleTickets works</h3>
         <div class='steps'>
             <div class='step'>
-            <img src='/images/ticket.png'  alt='ticket image'>
-                <p>1st - Open a ticket with a description of your problem</p>
+                <a href='/pages/newTicket.php'>
+                    <img src='/images/ticket.png' alt='ticket image'></a>
+                <p>Open a ticket with a description of your problem</p>
             </div>
             <span class='arrow'></span>
             <div class='step'>
                 <img src='/images/agent.png' alt='assigned image'>
-                <p>2nd - Your ticket will be assigned to one of our agents</p>
+                <p>Your ticket will be assigned to one of our agents</p>
             </div>
             <span class='arrow'></span>
             <div class='step'>
                 <img src='/images/chat.png' alt='chat image'>
-                <p>3rd - Talk to our agent until your problem is solved</p>
+                <p>Talk to our agent until your problem is solved</p>
             </div>
         </div>
-</div>
 
-
-
-        <h3>Most Recent Tickets</h3>
         <div class="tickets">
             <?php
             foreach ($recentTickets as $ticket) { ?>
@@ -66,9 +62,11 @@ function output_main_page(Session $session)
                 </a>
             <?php } ?>
         </div>
+        </div>
         <article class='faq'>
-            <h3>See if your problem already has a solution</h3>
-            <a href='../pages/faq.php'>Take a look at our Frequently Asked Questions</a>
+
+            <a href='../pages/faq.php'><img src='/images/faq.png' alt='ticket image'></a>
+            <a href='../pages/faq.php'>See if your question has already been asked in our FAQ</a>
         </article>
     </section>
 
