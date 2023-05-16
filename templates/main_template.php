@@ -42,7 +42,6 @@ function output_main_page(Session $session)
                 <p>Talk to our agent until your problem is solved</p>
             </div>
         </div>
-
         <div class="tickets">
             <?php
             foreach ($recentTickets as $ticket) { ?>
@@ -61,13 +60,18 @@ function output_main_page(Session $session)
                     <h6><?php echo  $message_to_use->date_created->format('d/m/Y H:i:s') ?></h6>
                 </a>
             <?php } ?>
+            <button class="slide-button" id='left' onclick="slideTicketsLeft()"><i></i></button>
+            <button class="slide-button" id='right' onclick="slideTicketsRight()"><i></i></button>
         </div>
-        </div>
+    
         <article class='faq'>
 
             <a href='../pages/faq.php'><img src='/images/faq.png' alt='ticket image'></a>
             <a href='../pages/faq.php'>See if your question has already been asked in our FAQ</a>
         </article>
+
+
+
     </section>
 
 
