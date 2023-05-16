@@ -156,18 +156,6 @@ document.addEventListener('click', function (event) {
   }
 })
 
-document.addEventListener('click', function (event) {
-  const target = event.target;
-  if (target.classList.contains('slide-button')) {
-    const ticketsContainer = target.closest('.tickets-container').querySelector('.tickets').querySelector('.left');
-    if (target.id === 'left') {
-      ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' });
-    } else if (target.id === 'right') {
-      ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' });
-    }
-    toggleSlideButtons(ticketsContainer);
-  }
-})
 
 function toggleSlideButtons(ticketsContainer) {
   const leftButton = ticketsContainer.parentElement.querySelector('#left');

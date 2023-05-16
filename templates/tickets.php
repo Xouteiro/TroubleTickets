@@ -84,8 +84,8 @@ function output_client_tickets(PDO $db, Session $session)
         <p>Click here to solve your problem </p>
         <h6>24 hours 7 days a week</h6>
       </a>
-      <button class="slide-button" id='left'><i></i></button>
-      <button class="slide-button" id='right'><i></i></button>
+      <button class="slide-button" id='left'><span id='left'></span></button>
+      <button class="slide-button" id='right'><span id='right'></span></button>
     </div>
   </div>
   
@@ -120,8 +120,8 @@ function output_client_tickets(PDO $db, Session $session)
 
       }
       ?>
-      <button class="slide-button" id='left'><i></i></button>
-      <button class="slide-button" id='right'><i></i></button>
+      <button class="slide-button" id='left'><span id='left'></span></button>
+      <button class="slide-button" id='right'><span id='right'></span></button>
     </div>
   </div>
   <div class='full-line'>
@@ -163,8 +163,8 @@ function output_client_tickets(PDO $db, Session $session)
 
       }
       ?>
-      <button class="slide-button" id='left'><i></i></button>
-      <button class="slide-button" id='right'><i></i></button>
+      <button class="slide-button" id='left'><span id='left'></span></button>
+      <button class="slide-button" id='right'><span id='right'></span></button>
     </div>
   </div>
 
