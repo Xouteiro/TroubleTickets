@@ -310,6 +310,7 @@ section#full-faq div.questions div.question:first-child {
 
 hr {
     opacity: 70%;
+    width:100%;
 }
 
 section#full-faq div.departments :hover {

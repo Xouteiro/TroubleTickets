@@ -101,6 +101,34 @@ if (newHashtag) {
   })
 }
 
+const departments = document.querySelectorAll('.departments h3[data-dep-id]');
+
+if (departments ) {
+  const faqs = document.querySelectorAll('.questions div[data-faq-id]');
+   departments.forEach(dep => {
+    dep.addEventListener('click', function () {
+      const depId = dep.getAttribute('data-dep-id');
+      if(depId != 0){
+        faqs.forEach(faq => {
+        const faqId = faq.getAttribute('data-faq-id');
+        if (depId != faqId) {
+          faq.style.display = 'none';       
+        }
+        if(depId == faqId){
+          faq.style.display = 'flex';
+          faq.style.flexDirection = 'column';
+        }
+      })
+    }else if(depId == 0){
+        faqs.forEach(faq => {
+        faq.style.display = 'flex';
+        faq.style.flexDirection = 'column';
+      })
+    }
+   })
+    })
+    }
+
 
 
 
@@ -157,3 +185,4 @@ function toggleSlideButtons(ticketsContainer) {
     rightButton.style.display = 'block';
   }
 }
+
