@@ -113,7 +113,7 @@ div.username img {
     width: 60px;
 }
 
- div.tickets{
+div.tickets {
     background-image: url('/images/lightgrey.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -122,11 +122,11 @@ div.username img {
     border-radius: 8px;
 }
 
-a.ticket{
+a.ticket {
     background-color: #FFFFFF;
 }
 
-div.step{
+div.step {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -137,7 +137,8 @@ div.step {
     width: 30em;
 }
 
-div.step img,article.faq img {
+div.step img,
+article.faq img {
     display: flex;
     height: 8em;
     width: 8em;
@@ -147,16 +148,17 @@ div.step img,article.faq img {
 
 article.faq a {
     margin: auto;
-color: #cccccc;
-word-wrap: break-word;
-text-align: center;
-width: 75%;
+    color: #cccccc;
+    word-wrap: break-word;
+    text-align: center;
+    width: 75%;
 }
 
-span.arrow::after{
-    content: "\27A1" ;
+span.arrow::after {
+    content: "\27A1";
 }
-span.arrow{
+
+span.arrow {
     align-self: center;
     font-size: 60px;
     padding: 10px;
@@ -586,7 +588,7 @@ input#show-department-tickets {
     border-color: #CFCFCF;
     width: 650px;
     height: 30px;
-  }
+}
 
 .textarea-ticket-message {
     color: white;
@@ -595,7 +597,7 @@ input#show-department-tickets {
     border-color: #CFCFCF;
     width: 650px;
     height: 150px;
-  }
+}
 
 .button-create-ticket {
     color: white;
@@ -605,8 +607,77 @@ input#show-department-tickets {
     width: 657px;
     height: 30px;
     margin-top: 10px;
-  }
+}
 
 footer {
     color: white;
+}
+
+#user_manager table {
+    border-radius: 8px;
+    background-color: #CFCFCF;
+    opacity: 78%;
+    margin-right: 25px;
+}
+
+a {
+    color: inherit;
+}
+
+#editer {
+    margin-top: 20px;
+}
+
+#client_editer {
+    background-color: #CFCFCF;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 5%;
+}
+
+#client_editer h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#client_editer form {
+    margin-bottom: 20px;
+    margin-right: 5%;
+}
+
+#client_editer label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#client_editer input[type="text"],
+#client_editer input[type="email"],
+#client_editer input[type="password"],
+#client_editer select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
+#client_editer button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #F47458;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1%;
+}
+
+#client_editer button[type="submit"]:hover {
+    background-color: #F47458;
+}
+
+#client_editer form[action$="action_delete_client.php"] {
+    text-align: right;
+}
+
+#client_editer h3 {
+    color: inherit;
 }

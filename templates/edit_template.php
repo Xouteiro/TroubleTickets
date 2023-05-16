@@ -20,8 +20,8 @@ function output_edit(PDO $db, Session $session)
 
     // Output the HTML for managing users
     ?>
-    <section id="user_manager">
-        <section id="client_manager">
+    <section id="editer">
+        <section id="client_editer">
             <h3>Edit Client Info</h3>
 
             <form action="../actions/action_edit_client.php" method="post">

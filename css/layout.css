@@ -21,7 +21,7 @@ header>h1 {
     justify-content: left;
     align-items: end;
     margin-bottom: 10px;
-    margin-left:25px;   
+    margin-left: 25px;
 }
 
 
@@ -196,7 +196,7 @@ nav#menu li:last-child {
 }
 
 
-section{
+section {
     display: flex;
     flex-direction: column;
     grid-column: 1/-1;
@@ -211,46 +211,47 @@ input#sidebar:checked~section {
     grid-row: 2/5;
 }
 
-section#main-page{
+section#main-page {
     padding-left: 0px;
 }
 
-section#main-page div.steps{
+section#main-page div.steps {
     display: flex;
     flex-direction: row;
     margin-right: auto;
-    margin-left:auto;
+    margin-left: auto;
     justify-content: space-between;
-    width:90%;
+    width: 90%;
     margin-top: auto;
     margin-bottom: auto;
 }
 
-section#main-page div.step{
+section#main-page div.step {
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
 
-section#main-page div.tickets{
+section#main-page div.tickets {
     margin-top: auto;
-    margin-bottom: auto ;
+    margin-bottom: auto;
     margin-left: 25px;
 }
 
-section#main-page h3{
-    margin:0px;
+section#main-page h3 {
+    margin: 0px;
     padding-left: 25px;
     font-size: 25px;
 }
 
-article.faq{
+article.faq {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin-top: auto;
-    margin-bottom: auto;   
+    margin-bottom: auto;
 }
-article.faq a{
+
+article.faq a {
     margin-right: auto;
     margin-left: auto;
 }
@@ -267,13 +268,16 @@ section#client-tickets:nth-child(3) {
     display: flex;
     align-items: center;
 }
-div.recent-tickets{
+
+div.recent-tickets {
     display: flex;
     flex-direction: column;
-    margin-left:45px;
-    margin-right: auto;;
+    margin-left: 45px;
+    margin-right: auto;
+    ;
 
 }
+
 div.tickets {
     display: flex;
     min-height: 10em;
@@ -285,27 +289,28 @@ section#client-tickets:nth-child(2) {
     align-items: center;
 }
 
-section#chat div.change-status{
+section#chat div.change-status {
     display: flex;
     margin-right: 65px;
     margin-left: 0px;
     align-self: center;
 }
 
-section#chat div.hashtags{
+section#chat div.hashtags {
     display: flex;
     margin-right: auto;
     margin-left: 50px;
     align-self: center;
     justify-content: space-between;
 }
-section#chat div.hashtags input{
+
+section#chat div.hashtags input {
     margin: 2px;
 }
 
 
 
-section#chat div.change-status#department{
+section#chat div.change-status#department {
     display: flex;
     margin-right: auto;
     margin-left: 5px;
@@ -327,17 +332,18 @@ section#faq {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    height:90%;
+    height: 90%;
 }
 
 
 section#full-faq div.departments {
-    
+
     padding-left: 10px;
     padding-right: 10px;
 }
 
-input#sidebar:checked~section#full-faq div.questions, input#sidebar:checked~section#chat div.change-status{
+input#sidebar:checked~section#full-faq div.questions,
+input#sidebar:checked~section#chat div.change-status {
     margin-right: 30px;
 }
 
@@ -394,7 +400,7 @@ section#chat div.text {
 }
 
 
-form#new-ticket{
+form#new-ticket {
     display: flex;
     flex-direction: column;
 }
@@ -410,13 +416,13 @@ footer {
 }
 
 
-div.full-line label{
+div.full-line label {
     margin-right: 30px;
-margin-left: auto;
-display: flex;
-align-self: end;
-margin-top: auto;
-margin-bottom: 5px;
+    margin-left: auto;
+    display: flex;
+    align-self: end;
+    margin-top: auto;
+    margin-bottom: 5px;
 
 }
 
@@ -426,4 +432,22 @@ footer p {
     display: flex;
     justify-content: left;
     align-items: flex-end;
+}
+
+section#user_manager {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+}
+
+section#user_manager th,
+section#user_manager td {
+    text-align: left;
+    padding: 8px;
+    width: 25%;
+}
+
+section#user_manager table {
+    border-collapse: collapse;
+    width: 100%;
 }
