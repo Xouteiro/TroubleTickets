@@ -160,7 +160,6 @@ span.arrow {
     align-self: center;
     font-size: 60px;
     padding: 10px;
-    color: #cccccc;
 }
 
 div.step p {
@@ -258,9 +257,6 @@ section h3 {
 section#full-faq div.departments {
     background-color: #CFCFCF;
     border-radius: 10px;
-    overflow-y: auto;
-    height: 38em;
-    padding-bottom: 15px;
 }
 
 section#full-faq div.questions {
@@ -269,12 +265,8 @@ section#full-faq div.questions {
     padding-left: 15px;
     padding-right: 15px;
     width: 75%;
-    height: 38em;
-    padding-top: 15px;
-    overflow-y: auto;
 
 }
-
 
 
 section#full-faq div.questions .question h4 {
@@ -309,11 +301,13 @@ section#full-faq div.departments h3:first-child {
     margin-top: 10px;
 }
 
+section#full-faq div.questions div.question:first-child {
+    margin-top: 15px;
+
+}
 
 hr {
-    display: block;
     opacity: 70%;
-    width: 100%;
 }
 
 section#full-faq div.departments :hover {
@@ -737,7 +731,7 @@ footer {
     opacity: 1;
   }
   
-  .slide-button#right {;
+  .slide-button#right {
     position: absolute;
     right: 0px;
     border-bottom-right-radius: 0.5em;
@@ -749,7 +743,7 @@ footer {
 
 .profile {
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #CFCFCF;
@@ -794,5 +788,4 @@ footer {
 
 .profile button[type="submit"]:hover {
     background-color: #F47458;
-}
 }

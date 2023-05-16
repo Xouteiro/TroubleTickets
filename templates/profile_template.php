@@ -7,7 +7,7 @@ function output_profile(PDO $db, Session $session)
     $client = Client::getClientById($db, $session->getId());
 
     ?>
-    <div class="profile">
+    <section class="profile">
         <h3>Profile</h3>
         <img src="https://picsum.photos/200" alt="profile picture">
         <form action="../actions/action_edit_profile.php" method="post">
@@ -19,7 +19,7 @@ function output_profile(PDO $db, Session $session)
             <label for="password">Password</label>
             <input type="password" name="password" id="password" value="<?= $client->password ?>">
             <button type="submit">Submit</button>
-    </div>
+    </section>
 
     <?php
 }
