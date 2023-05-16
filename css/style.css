@@ -117,7 +117,6 @@ div.tickets {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    margin-right: 25px;
     border-radius: 8px;
 }
 
@@ -362,7 +361,6 @@ div.tickets {
     border-radius: 8px;
     background-color: #CFCFCF;
     opacity: 78%;
-    margin-right: 25px;
 }
 
 div.tickets>p {
@@ -376,7 +374,7 @@ a.ticket {
 }
 
 a.ticket h4 {
-    margin: auto;
+    margin: 1px;
     text-align: center;
     color: #F47458;
 }
@@ -692,17 +690,14 @@ footer {
     margin: 0 2em 2em 2em;
 }
 
-div.tickets {
+.tickets-container .tickets {
     overflow: hidden;
     width: auto;
-    position: relative;
-}
+  }
 
 .slide-button {
-    position: absolute;
     height: 100%;
     width: 3em;
-    /* Adjust the width as needed */
     text-align: center;
     background-color: aqua;
     background-color: rgba(0, 0, 0, 0.2);
@@ -711,43 +706,47 @@ div.tickets {
     z-index: 3;
     opacity: 0;
     animation: fadeOut 0.5s;
-    top: 50%;
-    /* Position the buttons in the vertical center */
-    transform: translateY(-50%);
-    /* Adjust the vertical position */
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.slide-button:hover {
+  }
+  
+  .slide-button:hover {
     animation: fadeIn 0.5s;
     opacity: 1;
-}
-
-.slide-button>i {
+  }
+  
+  .slide-button>i {
     font-size: xx-large;
     opacity: 1;
-}
-
-.slide-button#left {
-
+  }
+  
+  .tickets-container {
+    position: relative;
+    margin-right: 25px;
+    margin-left: 25px;
+  }
+  
+  .slide-button#left {
+    display: none;
+    position: absolute;
     left: 0px;
     border-bottom-left-radius: 0.5em;
     border-top-left-radius: 0.5em;
     animation: fadeIn 0.5s;
     opacity: 1;
-    position: fixed;
-}
-
-.slide-button#right {
+  }
+  
+  .slide-button#right {;
+    position: absolute;
     right: 0px;
-
     border-bottom-right-radius: 0.5em;
     border-top-right-radius: 0.5em;
     animation: fadeIn 0.5s;
     opacity: 1;
-    position: fixed;
+  }
+  
+
 .profile {
     margin: 0 auto;
     padding: 20px;

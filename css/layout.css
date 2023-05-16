@@ -232,7 +232,7 @@ section#main-page div.step {
     padding: 10px;
 }
 
-section#main-page div.tickets {
+section#main-page div.tickets-container {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 25px;
@@ -282,8 +282,6 @@ div.tickets {
     min-height: 10em;
     align-items: center;
     height: 13em;
-    display: flex;
-    overflow-x:hidden;
     scroll-behavior: smooth;
 }
 

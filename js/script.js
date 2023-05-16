@@ -142,14 +142,33 @@ if (departments ) {
    })
     })
     }
-
-function slideTicketsLeft() {
-  const ticketsContainer = document.querySelector('.tickets');
-  ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' }); // Adjust the scroll amount as needed
-}
-
-// Function to slide tickets to the right
-function slideTicketsRight() {
-  const ticketsContainer = document.querySelector('.tickets');
-  ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' }); // Adjust the scroll amount as needed
-}
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+      if (target.classList.contains('slide-button')) {
+        const ticketsContainer = target.closest('.tickets-container').querySelector('.tickets');
+        if (target.id === 'left') {
+          ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' });
+        } else if (target.id === 'right') {
+          ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' });
+        }
+        toggleSlideButtons(ticketsContainer);
+      }
+    });
+    
+    function toggleSlideButtons(ticketsContainer) {
+      const leftButton = ticketsContainer.parentElement.querySelector('#left');
+      const rightButton = ticketsContainer.parentElement.querySelector('#right');
+    
+      if (ticketsContainer.scrollLeft === 0) {
+        leftButton.style.display = 'none';
+      } else {
+        leftButton.style.display = 'block';
+      }
+    
+      if (ticketsContainer.scrollLeft + ticketsContainer.clientWidth >= ticketsContainer.scrollWidth) {
+        rightButton.style.display = 'none';
+      } else {
+        rightButton.style.display = 'block';
+      }
+    }
+    
