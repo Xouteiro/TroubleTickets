@@ -22,7 +22,8 @@ function output_header(Session $session)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" >
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/text.css" rel="stylesheet">
     <link href="../css/layout.css" rel="stylesheet">
@@ -34,7 +35,7 @@ function output_header(Session $session)
     <header>
       <h1><a href="../pages/index.php">Trouble</a><a href="../pages/index.php">Tickets</a></h1>
     </header>
-    
+
 
     <input type="checkbox" id="sidebar">
     <label class="sidebar" for="sidebar"></label>
@@ -42,9 +43,11 @@ function output_header(Session $session)
     if ($session->isLoggedIn()) { ?>
       <div class="username">
         <img src="https://picsum.photos/200" alt="profile photo">
-        <h3>
-          <?php echo $client->username ?>
-        </h3>
+        <a href="profile.php">
+          <h3>
+            <?php echo $client->username ?>
+          </h3>
+        </a>
       </div>
     <?php } else { ?>
       <div class="filler"></div>
@@ -74,7 +77,7 @@ function output_header(Session $session)
         if ($session->isLoggedIn()) { ?>
           <li>
             <form action="../actions/action_logout.php" method="post" id="logout">
-            <label>
+              <label>
                 Logout
                 <input type="submit" style="display: none;">
               </label>
