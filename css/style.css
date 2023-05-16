@@ -3,7 +3,8 @@
     max-height: 100%;
 }
 
-html {
+html,
+body {
     background-image: url('/images/grey.jpg');
 }
 
@@ -154,6 +155,7 @@ article.faq a {
 
 span.arrow::after {
     content: "\27A1";
+    color: #cccccc;
 }
 
 span.arrow {
@@ -687,13 +689,12 @@ footer {
 .tickets-container .tickets {
     overflow: hidden;
     width: auto;
-  }
+}
 
 .slide-button {
     height: 100%;
     width: 3em;
     text-align: center;
-    background-color: aqua;
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
     cursor: pointer;
@@ -703,43 +704,52 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .slide-button:hover {
+}
+
+.slide-button:hover {
     animation: fadeIn 0.5s;
     opacity: 1;
-  }
-  
-  .slide-button>i {
+}
+
+.slide-button>i {
     font-size: xx-large;
     opacity: 1;
-  }
-  
-  .tickets-container {
+}
+
+.tickets-container {
     position: relative;
     margin-right: 25px;
     margin-left: 25px;
-  }
-  
-  .slide-button#left {
+}
+
+.slide-button#left {
     display: none;
     position: absolute;
     left: 0px;
     border-bottom-left-radius: 0.5em;
     border-top-left-radius: 0.5em;
-    animation: fadeIn 0.5s;
-    opacity: 1;
-  }
-  
-  .slide-button#right {
+
+}
+
+.slide-button#right {
     position: absolute;
     right: 0px;
     border-bottom-right-radius: 0.5em;
     border-top-right-radius: 0.5em;
-    animation: fadeIn 0.5s;
-    opacity: 1;
-  }
-  
+}
+
+span#right:after {
+    content: '\276F';
+    color: black;
+    font-size: 15px;
+}
+
+span#left:after {
+    content: '\276E';
+    color: black;
+    font-size: 15px;
+}
+
 
 .profile {
     margin: 0 auto;
@@ -789,3 +799,25 @@ footer {
 .profile button[type="submit"]:hover {
     background-color: #F47458;
 }
+
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  

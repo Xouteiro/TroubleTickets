@@ -58,8 +58,8 @@
                         </a>
                     <?php } ?>
 
-                    <button class="slide-button" id='left' ><i></i></button>
-                    <button class="slide-button" id='right' ><i></i></button>
+                    <button class="slide-button" id='left' ><span id='left'></span></button>
+                    <button class="slide-button" id='right' ><span id='right'></span></button>
                 </div>
 
             </div>

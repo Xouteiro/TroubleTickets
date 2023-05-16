@@ -338,9 +338,10 @@ section#faq {
 
 
 section#full-faq div.departments {
-
+    height: 37em;
     padding-left: 10px;
     padding-right: 10px;
+    overflow-y: auto;
 }
 
 input#sidebar:checked~section#full-faq div.questions,
@@ -349,7 +350,8 @@ input#sidebar:checked~section#chat div.change-status {
 }
 
 section#full-faq div.questions {
-
+    height: 37em;
+    overflow-y: auto;
     margin-right: 80px;
 }
 
