@@ -41,6 +41,8 @@ function output_departments(Session $session)
 
 ?>
   <div class="departments">
+      <h3 data-dep-id='0'>All</h3>
+      <hr>
     <?php
     foreach ($departments as $department) { ?>
       <h3 data-dep-id='<?php echo $department->id ?>'><?php echo $department->name ?></h3>
@@ -70,7 +72,7 @@ function output_faq()
   <div class='questions'>
     <?php
     foreach ($faqs as $faq) {   ?>
-      <div class="question" data-faq-id='<?php echo $faq->id ?>'>
+      <div class="question" data-faq-id='<?php echo $faq->department_id ?>'>
         <h4><?php echo $faq->question ?></h4>
         <p> <?php echo $faq->answer ?> </p>
         <hr>

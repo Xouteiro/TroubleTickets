@@ -273,8 +273,7 @@ div.recent-tickets {
     display: flex;
     flex-direction: column;
     margin-left: 45px;
-    margin-right: auto;
-    ;
+    margin-right: auto;;
 
 }
 
@@ -282,6 +281,10 @@ div.tickets {
     display: flex;
     min-height: 10em;
     align-items: center;
+    height: 13em;
+    display: flex;
+    overflow-x:hidden;
+    scroll-behavior: smooth;
 }
 
 section#client-tickets:nth-child(2) {
@@ -325,7 +328,7 @@ a.ticket {
     margin-left: 12px;
     width: 13em;
     height: 90%;
-
+    flex: 0 0 auto; /* Adjust the margin as needed */
 }
 
 section#faq {
