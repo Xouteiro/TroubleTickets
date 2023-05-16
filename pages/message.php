@@ -22,7 +22,7 @@
 
 
   output_header($session);
-  if($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAdmin($db, $user->id)){
+  if($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAgent($db, $user->id)){
     output_message($db, $ticket, $session); 
   }
   else{
