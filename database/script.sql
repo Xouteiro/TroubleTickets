@@ -1,5 +1,8 @@
 PRAGMA foreign_keys = ON;
 
+
+PRAGMA foreign_keys = ON;
+
 DROP TABLE IF EXISTS TICKET_HASHTAGS;
 DROP TABLE IF EXISTS MESSAGES;
 DROP TABLE IF EXISTS TICKETS;
@@ -82,16 +85,20 @@ FOREIGN KEY(hashtag_id) REFERENCES HASHTAGS(hashtag_id)
 
 INSERT INTO CLIENTS (username, password, email)
 VALUES
-    ('John', 'john', 'john@example.com'),
-    ('Jane', 'jane', 'jane@example.com'),
-    ('Bob', 'bob', 'bob@example.com'),
-    ('Sara', 'sara', 'sara@example.com'),
-    ('Alice', 'alice', 'alice@example.com'),
-    ('Charlie', 'charlie', 'charlie@example.com'),
-    ('Dave', 'dave', 'dave@example.com'),
-    ('Emily', 'emily', 'emily@example.com'),
-    ('Frank', 'frank', 'frank@example.com'),
-    ('Grace', 'grace', 'grace@example.com');
+    ('John Smith', 'john', 'john@example.com'),
+    ('Jane Johnson', 'jane', 'jane@example.com'),
+    ('Bob Brown', 'bob', 'bob@example.com'),
+    ('Sara Davis', 'sara', 'sara@example.com'),
+    ('Alice Wilson', 'alice', 'alice@example.com'),
+    ('Charlie Miller', 'charlie', 'charlie@example.com'),
+    ('Dave Anderson', 'dave', 'dave@example.com'),
+    ('Emily Thomas', 'emily', 'emily@example.com'),
+    ('Frank Lee', 'frank', 'frank@example.com'),
+    ('Grace Davis', 'grace', 'grace@example.com'),
+    ('Oliver Clark', 'oliver', 'oliver@example.com'),
+    ('Sophia Walker', 'sophia', 'sophia@example.com'),
+    ('Henry Turner', 'henry', 'henry@example.com'),
+    ('Lily Moore', 'lily', 'lily@example.com');
 
 INSERT INTO DEPARTMENTS (department_name)
 VALUES
@@ -99,60 +106,119 @@ VALUES
     ('Customer Support'),
     ('Billing'),
     ('Technical Support'),
-    ('Marketing');
+    ('Marketing'),
+    ('Product Development'),
+    ('Human Resources');
 
 INSERT INTO AGENTS (client_id, department_id)
 VALUES
-    (1,null),
-    (2, 2),
-    (3, 3),
-    (8, 3),
-    (9, 4),
-    (10, 5);
+(1, null),
+(2, 2),
+(3, 3),
+(8, 3),
+(9, 4),
+(10, 5),
+(11, 6),
+(12, 7);
 
 INSERT INTO ADMINS (client_id, agent_id)
 VALUES
-    (1, 1);
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8);
 
-INSERT INTO FAQS (department_id, question, answer) VALUES 
+INSERT INTO FAQS (department_id, question, answer) VALUES
 (1, 'How can I place an order?', 'You can place an order through our website or by calling our sales team.'),
+(1, 'Do you offer international shipping?', 'Yes, we offer international shipping to select countries.'),
 (2, 'What are your customer service hours?', 'Our customer service team is available 24/7.'),
-(3, 'How do I troubleshoot an issue with my product?', 'Please consult the user manual that came with your product or visit our support website for more information.'),
-(4, 'How can I sign up for your newsletter?', 'You can sign up for our newsletter on our website.'),
-(5, 'What forms of payment do you accept?', 'We accept credit cards, PayPal, and bank transfers.');
+(2, 'How can I track my order?', 'You can track your order by logging into your account on our website.'),
+(3, 'How do I update my billing information?', 'You can update your billing information in your account settings.'),
+(3, 'How can I cancel my subscription?', 'To cancel your subscription, please contact our billing department.'),
+(4, 'How do I troubleshoot an issue with my product?', 'Please consult the user manual that came with your product or visit our support website for more information.'),
+(4, 'Can I schedule a technical support call?', 'Yes, you can schedule a call with our technical support team by filling out the support request form on our website.'),
+(5, 'What forms of payment do you accept?', 'We accept credit cards, PayPal, and bank transfers.'),
+(5, 'How can I sign up for your newsletter?', 'You can sign up for our newsletter on our website.'),
+(6, 'How can I provide feedback or suggest a new feature?', 'You can provide feedback or suggest new features by filling out the feedback form on our website.'),
+(6, 'Are you accepting beta testers for new products?', 'Yes, we occasionally accept beta testers for our new products. Please contact our product development department for more information.'),
+(7, 'What is your company culture like?', 'Our company culture is focused on teamwork, innovation, and personal growth.'),
+(7, 'Do you have any job openings?', 'We regularly post job openings on our careers page. Please visit our website for more information.');
 
-INSERT INTO TICKETS (agent_id, client_id, department_id, status, title) VALUES 
-(NULL, 5, 1, 'Open', 'Issue with product delivery'),
-(NULL, 6, 2, 'Open', 'Billing inquiry'),
-(NULL, 7, 3, 'Not Assigned', 'Technical issue with software'),
-(NULL, 6, 4, 'Not Assigned', 'Marketing campaign feedback'),
-(NULL, 5, 5, 'Not Assigned', 'Billing dispute');
+INSERT INTO TICKETS (agent_id, client_id, department_id, status, title) VALUES
+(null, 5, 1, 'Open', 'Issue with product delivery'),
+(null, 6, 2, 'Open', 'Billing inquiry'),
+(null, 7, 3, 'Not Assigned', 'Technical issue with software'),
+(null, 6, 4, 'Not Assigned', 'Marketing campaign feedback'),
+(null, 5, 5, 'Not Assigned', 'Billing dispute'),
+(null, 9, 6, 'Open', 'Product feature suggestion'),
+(null, 10, 7, 'Open', 'Job application inquiry'),
+(null, 8, 2, 'Open', 'Request for refund'),
+(null, 9, 3, 'Open', 'Software installation issue'),
+(null, 10, 4, 'Not Assigned', 'Feedback on new product design'),
+(null, 5, 5, 'Not Assigned', 'Account billing discrepancy'),
+(null, 6, 6, 'Open', 'Inquiry about product availability');
 
-INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES 
+INSERT INTO MESSAGES (ticket_id, message_content, client_id) VALUES
 (1, 'My product has not arrived yet. When can I expect delivery?', 5),
 (2, 'I received an incorrect charge on my bill. Can you help me resolve this?', 6),
 (3, 'I am having trouble with the software crashing. What can I do to fix this?', 7),
 (4, 'I did not find the marketing campaign engaging. Do you have any plans to change it?', 6),
-(5, 'I was charged for services I did not receive. How can I dispute this?', 5);
+(5, 'I was charged for services I did not receive. How can I dispute this?', 5),
+(6, 'I have a suggestion for a new product feature. Can I share it with your team?', 9),
+(7, 'I am interested in applying for a job at your company. Are there any open positions?', 10),
+(8, 'I would like to request a refund for my recent purchase. The product did not meet my expectations.', 8),
+(9, 'I am having trouble installing the software on my computer. It keeps giving me an error message.', 9),
+(10, 'I have some feedback regarding the design of the new product. Is there a specific channel to provide input?', 10),
+(11, 'There is a discrepancy in my account billing. I have been charged for services I did not use.', 5),
+(12, 'I would like to know when the product will be back in stock. It has been out of stock for a while.', 6);
 
--- Populating Hashtags
-INSERT INTO HASHTAGS (hashtag_name)
-VALUES ('#buy');
-INSERT INTO HASHTAGS (hashtag_name)
-VALUES ('#pay');
+
+INSERT INTO HASHTAGS (hashtag_name) VALUES
+('#buy'),
+('#pay'),
+('#delivery'),
+('#billing'),
+('#software'),
+('#marketing'),
+('#product'),
+('#job');
 
 -- Populating Ticket_Hashtags
-INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
-VALUES (1, 1);
-INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id)
-VALUES (1, 2);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(1, 1),
+(1, 2),
+(1, 3);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(2, 4),
+(2, 5),
+(2, 6);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(3, 5),
+(3, 6);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(4, 6);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(5, 4),
+(5, 6);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(6, 6),
+(6, 7);
+
+INSERT INTO TICKET_HASHTAGS (ticket_id, hashtag_id) VALUES
+(7, 7),
+(7, 8);
 
 
+UPDATE TICKETS SET status = 'Not Assigned' WHERE agent_id IS NULL;
 
-UPDATE tickets
-SET status = 'Not Assigned'
-WHERE agent_id IS NULL;
-
-UPDATE tickets
-SET agent_id = NULL
-WHERE status IS 'Not Assigned';
+UPDATE TICKETS SET agent_id = NULL WHERE status IS 'Not Assigned'

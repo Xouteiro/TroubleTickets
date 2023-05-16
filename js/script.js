@@ -116,26 +116,40 @@ if(newHashtag){
 }
 
 const departments = document.querySelectorAll('.departments h3[data-dep-id]');
-const faqs = document.querySelectorAll('.question div[data-faq-id]');
 
-
-if (faqs && departments ) {
-  alert('in');
+if (departments ) {
+  const faqs = document.querySelectorAll('.questions div[data-faq-id]');
    departments.forEach(dep => {
     dep.addEventListener('click', function () {
       const depId = dep.getAttribute('data-dep-id');
-      alert(depId);
-      faqs.forEach(faq => {
+      if(depId != 0){
+        faqs.forEach(faq => {
         const faqId = faq.getAttribute('data-faq-id');
-        alert(depId)
-        alert(faqid);
         if (depId != faqId) {
-          faq.style.display = 'none';
-          alert('in 3');
+          faq.style.display = 'none';       
+        }
+        if(depId == faqId){
+          faq.style.display = 'flex';
+          faq.style.flexDirection = 'column';
         }
       })
+    }else if(depId == 0){
+        faqs.forEach(faq => {
+        faq.style.display = 'flex';
+        faq.style.flexDirection = 'column';
+      })
+    }
+   })
     })
+    }
 
-})
+function slideTicketsLeft() {
+  const ticketsContainer = document.querySelector('.tickets');
+  ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' }); // Adjust the scroll amount as needed
 }
 
+// Function to slide tickets to the right
+function slideTicketsRight() {
+  const ticketsContainer = document.querySelector('.tickets');
+  ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' }); // Adjust the scroll amount as needed
+}
