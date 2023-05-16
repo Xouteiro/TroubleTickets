@@ -114,3 +114,28 @@ if(newHashtag){
     resizeInput(this);
   })
 }
+
+const departments = document.querySelectorAll('.departments h3[data-dep-id]');
+const faqs = document.querySelectorAll('.question div[data-faq-id]');
+
+
+if (faqs && departments ) {
+  alert('in');
+   departments.forEach(dep => {
+    dep.addEventListener('click', function () {
+      const depId = dep.getAttribute('data-dep-id');
+      alert(depId);
+      faqs.forEach(faq => {
+        const faqId = faq.getAttribute('data-faq-id');
+        alert(depId)
+        alert(faqid);
+        if (depId != faqId) {
+          faq.style.display = 'none';
+          alert('in 3');
+        }
+      })
+    })
+
+})
+}
+

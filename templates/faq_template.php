@@ -17,7 +17,7 @@ function output_faq_page(Session $session)
     <section id="faq" class="faq">
 
       <?php output_departments($session); ?>
-      <?php output_faq_by_department(); //param: department
+      <?php output_faq(); //param: department
       ?>
     </section>
   </section>
@@ -43,17 +43,13 @@ function output_departments(Session $session)
   <div class="departments">
     <?php
     foreach ($departments as $department) { ?>
-      <h3><?php echo $department->name ?></h3>
+      <h3 data-dep-id='<?php echo $department->id ?>'><?php echo $department->name ?></h3>
       <hr>
     <?php } ?>
   </div>
 
 
 <?php
-  /*for(departments as department){
-    <button onCick="change_department()" class="department_change">echo department->name</button>//javascript
-}
-*/
 }
 
 ?>
@@ -62,7 +58,7 @@ function output_departments(Session $session)
 
 
 <?php
-function output_faq_by_department()
+function output_faq()
 {
   require_once(__DIR__ . '/../database/connection.db.php');
   require_once(__DIR__ . '/../database/faq.class.php');
@@ -73,15 +69,14 @@ function output_faq_by_department()
 ?>
   <div class='questions'>
     <?php
-    foreach ($faqs as $faq) {
-      /*if($faq->department != $department){*/   ?>
-      <div class="question">
+    foreach ($faqs as $faq) {   ?>
+      <div class="question" data-faq-id='<?php echo $faq->id ?>'>
         <h4><?php echo $faq->question ?></h4>
         <p> <?php echo $faq->answer ?> </p>
         <hr>
       </div>
 
-    <?php /*} */
+    <?php 
     } ?>
   </div>
 <?php
