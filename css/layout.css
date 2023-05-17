@@ -249,6 +249,7 @@ article.faq {
     flex-direction: column;
     margin-top: auto;
     margin-bottom: auto;
+    padding-top:15px;
 }
 
 article.faq a {
