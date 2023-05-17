@@ -33,7 +33,7 @@ function output_client_tickets(PDO $db, Session $session)
   $user = Client::getClientById($db, $session->getId());
   $agent = Agent::getAgentByClientId($db, $user->id);
 
-  $messages = Message::getMessages($db, 10);
+  $messages = Message::getMessages($db, 200);
   $message_to_use = new Message(0, 0, 0, '0', new DateTime());
   $OpenTickets = Ticket::getTicketsClientByStatus($db, $user->id, 'Open');
   $ClosedTickets = Ticket::getTicketsClientByStatus($db, $user->id, 'Closed');
