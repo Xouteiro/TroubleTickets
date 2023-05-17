@@ -753,15 +753,16 @@ span#left:after {
 
 
 .profile {
-    margin: 0 auto;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #CFCFCF;
+    opacity: 78%;
+    margin: 5%;
+    padding: 2%;
 }
 
 .profile h3 {
     margin-top: 0;
+    color: inherit;
 }
 
 .profile img {
@@ -788,7 +789,7 @@ span#left:after {
 
 .profile button[type="submit"] {
     display: block;
-    width: 100%;
+    width: 20%;
     padding: 8px;
     background-color: #F47458;
     color: #fff;
