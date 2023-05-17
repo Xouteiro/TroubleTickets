@@ -30,6 +30,7 @@ header>h1>a:last-of-type {
 
 a {
     text-decoration: none;
+    align-self: center;
 }
 
 .account form>input {
