@@ -117,15 +117,9 @@ if (newHashtag) {
 
 const departments = document.querySelectorAll('.departments h3[data-dep-id]');
 
-<<<<<<< HEAD
-
-if (faqs && departments) {
-  departments.forEach(dep => {
-=======
 if (departments ) {
   const faqs = document.querySelectorAll('.questions div[data-faq-id]');
    departments.forEach(dep => {
->>>>>>> bb3b51143666d34ba829fad8396b9bc48d8ba459
     dep.addEventListener('click', function () {
       const depId = dep.getAttribute('data-dep-id');
       if(depId != 0){
@@ -149,13 +143,9 @@ if (departments ) {
     })
     }
 
-<<<<<<< HEAD
-  })
-=======
 function slideTicketsLeft() {
   const ticketsContainer = document.querySelector('.tickets');
   ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' }); // Adjust the scroll amount as needed
->>>>>>> bb3b51143666d34ba829fad8396b9bc48d8ba459
 }
 
 // Function to slide tickets to the right
