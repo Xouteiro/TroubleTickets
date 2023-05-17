@@ -101,55 +101,79 @@ if (newHashtag) {
   })
 }
 
-
-
-
-function resizeInput(input) {
-  input.style.width = 7 + input.value.length + "ch";
-}
-
-if (newHashtag) {
-  resizeInput(newHashtag);
-  newHashtag.addEventListener('keyup', function () {
-    resizeInput(this);
-  })
-}
-
 const departments = document.querySelectorAll('.departments h3[data-dep-id]');
 
-if (departments ) {
+if (departments) {
   const faqs = document.querySelectorAll('.questions div[data-faq-id]');
-   departments.forEach(dep => {
+  departments.forEach(dep => {
     dep.addEventListener('click', function () {
       const depId = dep.getAttribute('data-dep-id');
-      if(depId != 0){
+      if (depId != 0) {
         faqs.forEach(faq => {
-        const faqId = faq.getAttribute('data-faq-id');
-        if (depId != faqId) {
-          faq.style.display = 'none';       
-        }
-        if(depId == faqId){
+          const faqId = faq.getAttribute('data-faq-id');
+          if (depId != faqId) {
+            faq.style.display = 'none';
+          }
+          if (depId == faqId) {
+            faq.style.display = 'flex';
+            faq.style.flexDirection = 'column';
+          }
+        })
+      } else if (depId == 0) {
+        faqs.forEach(faq => {
           faq.style.display = 'flex';
           faq.style.flexDirection = 'column';
-        }
-      })
-    }else if(depId == 0){
-        faqs.forEach(faq => {
-        faq.style.display = 'flex';
-        faq.style.flexDirection = 'column';
-      })
-    }
-   })
+        })
+      }
     })
-    }
+  })
+}
 
 function slideTicketsLeft() {
   const ticketsContainer = document.querySelector('.tickets');
   ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' }); // Adjust the scroll amount as needed
-}
 
-// Function to slide tickets to the right
-function slideTicketsRight() {
-  const ticketsContainer = document.querySelector('.tickets');
-  ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' }); // Adjust the scroll amount as needed
+
+
+  function resizeInput(input) {
+    input.style.width = 7 + input.value.length + "ch";
+  }
+
+  if (newHashtag) {
+    resizeInput(newHashtag);
+    newHashtag.addEventListener('keyup', function () {
+      resizeInput(this);
+    })
+  }
+
+  document.addEventListener('click', function (event) {
+    const target = event.target;
+    if (target.classList.contains('slide-button')) {
+      const ticketsContainer = target.closest('.tickets-container').querySelector('.tickets');
+      if (target.id === 'left') {
+        ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' });
+      } else if (target.id === 'right') {
+        ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' });
+      }
+      toggleSlideButtons(ticketsContainer);
+    }
+  })
+
+
+  function toggleSlideButtons(ticketsContainer) {
+    const leftButton = ticketsContainer.parentElement.querySelector('#left');
+    const rightButton = ticketsContainer.parentElement.querySelector('#right');
+
+    if (ticketsContainer.scrollLeft === 0) {
+      leftButton.style.display = 'none';
+    } else {
+      leftButton.style.display = 'block';
+    }
+
+    if (ticketsContainer.scrollLeft + ticketsContainer.clientWidth >= ticketsContainer.scrollWidth) {
+      rightButton.style.display = 'none';
+    } else {
+      rightButton.style.display = 'block';
+    }
+  }
 }
