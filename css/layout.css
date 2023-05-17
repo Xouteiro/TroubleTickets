@@ -274,7 +274,8 @@ div.recent-tickets {
     display: flex;
     flex-direction: column;
     margin-left: 45px;
-    margin-right: auto;;
+    margin-right: auto;
+    ;
 
 }
 
@@ -327,7 +328,8 @@ a.ticket {
     margin-left: 12px;
     width: 13em;
     height: 90%;
-    flex: 0 0 auto; /* Adjust the margin as needed */
+    flex: 0 0 auto;
+    /* Adjust the margin as needed */
 }
 
 section#faq {
@@ -453,5 +455,8 @@ section#user_manager td {
 
 section#user_manager table {
     border-collapse: collapse;
+    display: block;
     width: 100%;
+    height: 10em;
+    overflow-y: scroll;
 }
