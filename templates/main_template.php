@@ -22,7 +22,7 @@
         <section id='main-page' class='main-page'>
 
             <div class='steps'>
-                <div class='step'>
+                <div class='step active'>
                     <a href='/pages/newTicket.php'>
                         <img src='/images/ticket.png' alt='ticket image'></a>
                     <p>Open a ticket with a description of your problem</p>

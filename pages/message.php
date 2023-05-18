@@ -22,12 +22,19 @@
 
 
   output_header($session);
-  if($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAgent($db, $user->id)){
+  ?>
+    <?php 
+  if($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAgent($db, $user->id)){ ?>
+  <?php
     output_message($db, $ticket, $session); 
+
   }
   else{
     output_watch_message($db,$ticket,$session);
   }
+  ?>
+  
+  <?php
   output_footer();
 
 

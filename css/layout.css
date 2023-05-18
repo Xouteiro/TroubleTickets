@@ -222,12 +222,14 @@ section#main-page div.steps {
     margin-left: auto;
     justify-content: space-between;
     width: 90%;
-    margin-top: auto;
-    margin-bottom: auto;
+
+    height: 12em;
+    margin-top: 30px;
+margin-bottom: 30px;
 }
 
 section#main-page div.step {
-    display: flex;
+    display:flex;
     flex-direction: column;
     padding: 10px;
 }
@@ -236,6 +238,7 @@ section#main-page div.tickets-container {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 25px;
+    margin-right: 25px;
 }
 
 section#main-page h3 {

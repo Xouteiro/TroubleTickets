@@ -168,11 +168,14 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
       </div>
 
       <div class="message-input">
-        <form action="../actions/action_send_message.php" method="post">
-          <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
-          <input type="hidden" name="user_id" value="<?php echo $user->id ?>">
+        <form>
+          <input hidden id="agent_id" value="<?= $agent->id ?>">
+          <input hidden id="client_id" value="<?= $client->id ?>">
+          <input hidden id="user_id" value="<?= $user->id?>">
+          <input hidden id="ticket_id" value="<?= $ticket->id?>">
+          <input hidden id="username" value="<?= $user->username?>">
           <input type="text" name="message" id="message" placeholder="Enter your message here">
-          <input type="submit" id='send' value="Send">
+          <button id="send">Send</button>
         </form>
       </div>
 
