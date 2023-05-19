@@ -162,52 +162,53 @@ div.step p {
     text-align: center;
     width: 75%;
 }
+
 .main-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .steps {
+}
+
+.steps {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
     position: relative;
-  }
-  
-  .step {
+}
+
+.step {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  }
-  
-  .step.active {
+}
+
+.step.active {
     opacity: 1;
     z-index: 1;
-  }
-  
-  .step.slide-out {
+}
+
+.step.slide-out {
     transform: translateX(-50%);
     opacity: 0;
     z-index: 0;
-  }
-  
-  .step img {
+}
+
+.step img {
     max-width: 100%;
     height: auto;
-  }
-  
-  .step p {
+}
+
+.step p {
     margin-top: 10px;
     text-align: center;
-  }
-  
+}
 
-  
-  
+
+
+
 
 input#sidebar {
     display: none;
@@ -859,4 +860,19 @@ span.left:after {
     to {
         opacity: 0;
     }
+}
+
+.error {
+    color: white;
+    font-size: 12px;
+    margin-top: 5px;
+    position: absolute;
+    background-color: #3c3c3c;
+    padding: 1%;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    animation: fadeOut 8s ease forwards;
+    border: white 1px solid;
 }
