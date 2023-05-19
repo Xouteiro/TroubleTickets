@@ -608,7 +608,7 @@ input#show-department-tickets {
 }
 
 .selectdepartment {
-    color: white;
+    color: black;
     background-color: #CFCFCF;
     background-size: cover;
     background-repeat: no-repeat;
@@ -618,7 +618,7 @@ input#show-department-tickets {
 }
 
 .input-ticket-title {
-    color: white;
+    color: black;
     background-color: #CFCFCF;
     border-color: #CFCFCF;
     background-size: cover;
@@ -629,7 +629,7 @@ input#show-department-tickets {
 }
 
 .textarea-ticket-message {
-    color: white;
+    color: black;
     background-color: #CFCFCF;
     border-color: #CFCFCF;
     background-size: cover;
