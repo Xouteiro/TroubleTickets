@@ -13,7 +13,7 @@
 
         $db = getDataBaseConnection();
 
-        $recentTickets = Ticket::getTickets($db, 10);
+        $recentTickets = Ticket::getTickets($db, 200);
         $messages = Message::getMessages($db, 10);
         $message_to_use = new Message(0, 0, 0, '0', new DateTime());
 
