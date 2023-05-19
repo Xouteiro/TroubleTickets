@@ -13,7 +13,7 @@
 
         $db = getDataBaseConnection();
 
-        $recentTickets = Ticket::getTickets($db, 200);
+        $recentTickets = Ticket::getTickets($db, 10);
         $messages = Message::getMessages($db, 10);
         $message_to_use = new Message(0, 0, 0, '0', new DateTime());
 
@@ -58,18 +58,18 @@
                         </a>
                     <?php } ?>
 
-                    <button class="slide-button" id='left' ><span id='left'></span></button>
-                    <button class="slide-button" id='right' ><span id='right'></span></button>
+                    <button class="slide-button left" ><span class='left'></span></button>
+                    <button class="slide-button right" ><span class='right'></span></button>
                 </div>
 
             </div>
 
-            <article class='faq'>
+            <div class='faq'>
 
                 <a href='../pages/faq.php'><img src='/images/faq.png' alt='ticket image'></a>
                 <a href='../pages/faq.php'>See if your question has already been answered in our FAQ</a>
 
-            </article>
+            </div>
 
 
 

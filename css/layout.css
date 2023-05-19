@@ -247,7 +247,7 @@ section#main-page h3 {
     font-size: 25px;
 }
 
-article.faq {
+div.faq {
     display: flex;
     flex-direction: column;
     margin-top: auto;
@@ -255,7 +255,7 @@ article.faq {
     padding-top:15px;
 }
 
-article.faq a {
+div.faq a {
     margin-right: auto;
     margin-left: auto;
 }

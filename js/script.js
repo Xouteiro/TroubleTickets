@@ -147,19 +147,18 @@ document.addEventListener('click', function (event) {
   const target = event.target;
   if (target.classList.contains('slide-button')) {
     const ticketsContainer = target.closest('.tickets-container').querySelector('.tickets');
-    if (target.id === 'left') {
+    if (target.classList.contains('left')) {
       ticketsContainer.scrollBy({ left: -350, behavior: 'smooth' });
-    } else if (target.id === 'right') {
+    } else if (target.classList.contains('right')) {
       ticketsContainer.scrollBy({ left: 350, behavior: 'smooth' });
     }
     toggleSlideButtons(ticketsContainer);
   }
-})
-
+});
 
 function toggleSlideButtons(ticketsContainer) {
-  const leftButton = ticketsContainer.parentElement.querySelector('#left');
-  const rightButton = ticketsContainer.parentElement.querySelector('#right');
+  const leftButton = ticketsContainer.parentElement.querySelector('.left');
+  const rightButton = ticketsContainer.parentElement.querySelector('.right');
 
   if (ticketsContainer.scrollLeft === 0) {
     leftButton.style.display = 'none';
@@ -287,5 +286,4 @@ function showNextStep() {
   currentStepIndex = (currentStepIndex + 1) % steps.length;
   steps[currentStepIndex].classList.add('active');
   steps[currentStepIndex].classList.remove('slide-out');
-  
 }
