@@ -98,6 +98,15 @@ div.username {
 }
 
 
+form#new-ticket label {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+
+
+}
+
 
 
 
@@ -608,45 +617,65 @@ input#show-department-tickets {
     display: none;
 }
 
+form#new-ticket {
+    background-color: #CFCFCF;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 65px;
+}
+
 .selectdepartment {
     color: black;
-    background-color: #CFCFCF;
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     margin-right: 25px;
-    border-radius: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: none;
+    padding: 8px;
 }
 
 .input-ticket-title {
     color: black;
-    background-color: #CFCFCF;
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     margin-right: 25px;
-    border-radius: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: none;
+    padding: 8px;
 }
 
 .textarea-ticket-message {
     color: black;
-    background-color: #CFCFCF;
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     margin-right: 25px;
-    border-radius: 8px;
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    resize: none;
+    margin-bottom: 20px;
 }
 
 .button-create-ticket {
-    color: white;
+    display: block;
+    width: 15%;
+    padding: 8px;
     background-color: #F47458;
-    margin-top: 10px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin-right: 25px;
-    border-radius: 8px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: auto;
 }
 
 footer {
@@ -698,12 +727,13 @@ footer {
     padding: 10px;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 #client_editer button[type="submit"] {
     padding: 10px 20px;
     background-color: #F47458;
-    color: white;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -792,11 +822,13 @@ span.left:after {
 
 
 .profile {
+    display: flex;
     border-radius: 8px;
     background-color: #CFCFCF;
     opacity: 78%;
-    margin: 5%;
     padding: 2%;
+    height: 60%;
+    margin-right: 65px;
 }
 
 .profile h3 {
@@ -828,17 +860,29 @@ span.left:after {
 
 .profile button[type="submit"] {
     display: block;
-    width: 20%;
+    width: 15%;
     padding: 8px;
     background-color: #F47458;
-    color: #fff;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: auto;
+
+
 }
 
 .profile button[type="submit"]:hover {
     background-color: #F47458;
+}
+
+section.profile form {
+    padding-right: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 

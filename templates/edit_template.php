@@ -65,13 +65,14 @@ function output_edit(PDO $db, Session $session)
                     </select>
                 <?php } ?>
                 <button type="submit">Submit</button>
-            </form>
-
-            <form action="../actions/action_delete_client.php" method="post"
+                <form action="../actions/action_delete_client.php" method="post"
                 onsubmit="return confirm('Are you sure you want to delete this user?');">
                 <input type="hidden" name="id" value="<?= $client->id ?>">
                 <button type="submit">Delete User</button>
+                </form>
             </form>
+
+            
         </section>
     </section>
     <?php

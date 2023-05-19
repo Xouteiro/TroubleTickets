@@ -7,9 +7,10 @@ function output_profile(PDO $db, Session $session)
     $client = Client::getClientById($db, $session->getId());
 
     ?>
+    <section class="profile-page">
+    <h2>Edit Your Profile</h2>
     <section class="profile">
-        <h3>Profile</h3>
-        <img src="https://picsum.photos/200" alt="profile picture">
+
         <form action="../actions/action_edit_profile.php" method="post">
             <input type="hidden" name="id" value="<?= $client->id ?>">
             <label for="username">Username</label>
@@ -20,6 +21,6 @@ function output_profile(PDO $db, Session $session)
             <input type="password" name="password" id="password" value='' placeholder="Change your password here">
             <button type="submit">Submit</button>
     </section>
-
+    </section>
     <?php
 }
