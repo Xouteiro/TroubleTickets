@@ -31,7 +31,7 @@ function output_edit(PDO $db, Session $session)
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="<?= $client->email ?>">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="<?= $client->password ?>">
+                <input type="password" name="password" id="password" value="" placeholder="Change the password">
                 <label>
                     <input type="radio" name="client_type" value="admin" <?php if (Client::isAdmin($db, $client->id)) {
                         echo "checked";

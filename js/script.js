@@ -287,4 +287,5 @@ function showNextStep() {
   currentStepIndex = (currentStepIndex + 1) % steps.length;
   steps[currentStepIndex].classList.add('active');
   steps[currentStepIndex].classList.remove('slide-out');
+  
 }

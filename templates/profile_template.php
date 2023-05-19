@@ -17,7 +17,7 @@ function output_profile(PDO $db, Session $session)
             <label for="email">Email</label>
             <input type="email" name="email" id="email" value="<?= $client->email ?>">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="<?= $client->password ?>">
+            <input type="password" name="password" id="password" value='' placeholder="Change your password here">
             <button type="submit">Submit</button>
     </section>
 

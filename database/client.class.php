@@ -22,34 +22,42 @@ class Client
 
     static function updateUser(PDO $db, string $username, string $password, string $email, int $id)
     {
+        // Encode the password
+        $encodedPassword = password_hash($password, PASSWORD_BCRYPT);
+
         $stmt = $db->prepare('
-    UPDATE CLIENTS SET username = ?, password = ?, email = ?
-    WHERE client_id = ?
-    ');
+            UPDATE CLIENTS SET username = ?, password = ?, email = ?
+            WHERE client_id = ?
+        ');
         try {
-            $stmt->execute(array($username, $password, $email, $id));
+            $stmt->execute(array($username, $encodedPassword, $email, $id));
             return true;
         } catch (PDOException $e) {
             return false;
         }
     }
 
+    
+
 
 
     static function getClientWithPassword(PDO $db, string $email, string $password): ?Client
     {
         $stmt = $db->prepare(
-            'SELECT client_id, username, password, email FROM CLIENTS WHERE email = ? AND password = ?'
+            'SELECT client_id, username, password, email FROM CLIENTS WHERE email = ?'
         );
-        $stmt->execute(array($email, $password));
+        $stmt->execute(array($email));
 
         if ($user = $stmt->fetch()) {
-            return new Client(
-                intval($user['client_id']),
-                $user['username'],
-                $user['email'],
-                $user['password'],
-            );
+            // Verify the entered password with the stored encoded password
+            if (password_verify($password, $user['password'])) {
+                return new Client(
+                    intval($user['client_id']),
+                    $user['username'],
+                    $user['email'],
+                    $user['password']
+                );
+            }
         }
 
         return null;
@@ -107,9 +115,12 @@ class Client
 
     static function newClient($db, $username, $email, $password)
     {
+        // Encode the password
+        $encodedPassword = password_hash($password, PASSWORD_BCRYPT);
+
         $stmt = $db->prepare('INSERT INTO CLIENTS (username, password, email) values(?, ?, ?)');
         try {
-            $stmt->execute(array($username, $password, $email));
+            $stmt->execute(array($username, $encodedPassword, $email));
             return true;
         } catch (PDOException $e) {
             return false;

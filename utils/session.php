@@ -1,13 +1,17 @@
 <?php
 
-  require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../utils/security.php');
+require_once(__DIR__ . '/../database/connection.db.php');
 
   class Session {
     private array $messages;
 
     public function __construct() {
+      session_set_cookie_params(0, '/', 'localhost', true, true);
       session_start();
-
+      if (!isset($_SESSION['csrf'])) {
+        $_SESSION['csrf'] = generate_random_token();
+      }
       $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
       unset($_SESSION['messages']);
     }
@@ -46,6 +50,7 @@
     public function getMessages() {
       return $this->messages;
     }
+  
 
   
 

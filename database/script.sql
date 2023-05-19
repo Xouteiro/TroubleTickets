@@ -85,20 +85,20 @@ FOREIGN KEY(hashtag_id) REFERENCES HASHTAGS(hashtag_id)
 
 INSERT INTO CLIENTS (username, password, email)
 VALUES
-    ('John Smith', 'john', 'john@example.com'),
-    ('Jane Johnson', 'jane', 'jane@example.com'),
-    ('Bob Brown', 'bob', 'bob@example.com'),
-    ('Sara Davis', 'sara', 'sara@example.com'),
-    ('Alice Wilson', 'alice', 'alice@example.com'),
-    ('Charlie Miller', 'charlie', 'charlie@example.com'),
-    ('Dave Anderson', 'dave', 'dave@example.com'),
-    ('Emily Thomas', 'emily', 'emily@example.com'),
-    ('Frank Lee', 'frank', 'frank@example.com'),
-    ('Grace Davis', 'grace', 'grace@example.com'),
-    ('Oliver Clark', 'oliver', 'oliver@example.com'),
-    ('Sophia Walker', 'sophia', 'sophia@example.com'),
-    ('Henry Turner', 'henry', 'henry@example.com'),
-    ('Lily Moore', 'lily', 'lily@example.com');
+    ('John Smith', '$2y$10$ajaejfDUBmln6DoEAsgC3u9WT9oB2VYkx93gEsyEUMhLiL7FbHeO6', 'john@example.com'),
+    ('Jane Johnson', '$2y$10$cfsvf2mqM788C1EK8J.2h.VpdY7L/E/aTBapRUrRnM/z.kk9StRQy', 'jane@example.com'),
+    ('Bob Brown', '$2y$10$CVpJIJ86eRNo4IlcVvbQeOwCnJBJHdIZljKw/eBD0uSPwsq0nUrfy', 'bob@example.com'),
+    ('Sara Davis', '$2y$10$jmtAHMcuPZo3Hzv9daSvc.9d9PWJNrth7bn0ZgIrjadhiLp4n2Ey2', 'sara@example.com'),
+    ('Alice Wilson', '$2y$10$TwzdwkzdS5jfDWvKqM5vZO8R3kSYQRYAQEjRLtUg5cqhHSHpv4FV2', 'alice@example.com'),
+    ('Charlie Miller', '$2y$10$.YGgLfpgYtNH8fISc0oXJORK9ZZ78v92Fv2T/pLSMCGtABmt0ULBi', 'charlie@example.com'),
+    ('Dave Anderson', '$2y$10$emHhkPmHByVE2nczk7OWZOGHSWVd5l1jebFG6P9/f0Cjz0QkOP3ly', 'dave@example.com'),
+    ('Emily Thomas', '$2y$10$QrL9/0LGDKfudDwnO4mQ8uylWUZyEkKJWik6bBHH6rwPqMqw9PxQ.', 'emily@example.com'),
+    ('Frank Lee', '$2y$10$fsKhBexlihyG/KZ2/nhnu.wefGOXvAkqGwpZp5T.qLunaOrbWQ1GS', 'frank@example.com'),
+    ('Grace Davis', '$2y$10$e0Ln6iwvREMlOn9n4SQ2XO4PwcSmW6fIVdgVT2i.JzrETZUx.OZY.', 'grace@example.com'),
+    ('Oliver Clark', '$2y$10$L9PobSKCXKXMjlmC7FAYqufG8cf1i6t3A35Vpn5hOdJxtXxmMtAoS', 'oliver@example.com'),
+    ('Sophia Walker', '$2y$10$yMxfKLh2gPyZSSUZWbrAAO0ZORdJuent2srKYXkL6fZB9r3qnbu/G', 'sophia@example.com'),
+    ('Henry Turner', '$2y$10$Vtan5l/tnkp51JlZBDlHYeHk40e8yjjUqIrvcU5CBg1nWQDSLa83i', 'henry@example.com'),
+    ('Lily Moore', '$2y$10$Ot5ubVWSW64x.aeu1ZZ46e7hrcG7sSxbwsc6JCbcoJjGjMMKVBjpS', 'lily@example.com');
 
 INSERT INTO DEPARTMENTS (department_name)
 VALUES

@@ -67,7 +67,8 @@
             <article class='faq'>
 
                 <a href='../pages/faq.php'><img src='/images/faq.png' alt='ticket image'></a>
-                <a href='../pages/faq.php'>See if your question has already been asked in our FAQ</a>
+                <a href='../pages/faq.php'>See if your question has already been answered in our FAQ</a>
+
             </article>
 
 

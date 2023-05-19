@@ -12,11 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    Client::updateUser($db, $username, $password, $email, $id);
-
-    header('Location: ../pages/profile.php?id=' . $id . '&success=1');
-    exit();
+    if (!empty($id) && !empty($username) && !empty($email) && !empty($password)) {
+        Client::updateUser($db, $username, $password, $email, $id);
+        
+        header('Location: ../pages/profile.php?id=' . $id . '&success=1');
+        exit();
+    } else {
+        
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit();
+    }
 }
-
-
 ?>
