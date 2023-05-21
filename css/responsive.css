@@ -1,0 +1,178 @@
+@media (max-width: 60em) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        margin-top: 20px;
+        margin-left: 0px;
+        padding-left: 25px;
+        margin-right: auto;
+        width: 100%;
+        height: 50%;
+
+    }
+    .account input {
+        width: 70%;
+      }
+
+    div.username {
+        padding-bottom: 10px;
+    }
+
+    input#sidebar:checked~.sidebar {
+        margin-top: 20px;
+        padding-left: 25px;
+        padding-top: 10px;
+
+    }
+
+    input#sidebar:checked~#menu {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 100%;
+    }
+
+    input#sidebar:checked~nav#menu ul {
+        padding: 10px 0px;
+        margin: 5px 0px;
+    }
+
+    input#sidebar:checked~nav#menu ul li {
+        padding: 0px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        width: 100%;
+        height: 100%;
+    }
+
+    ´ div.steps {
+        margin-top: 10px;
+    }
+
+
+    div.full-line label.show-department-tickets {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+
+    div.full-line label {
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 22px;
+        letter-spacing: 0.03em;
+    }
+
+    label.show-department-tickets::before {
+        content: "\2610";
+        color: #F47458;
+        font-size: 20px;
+    }
+
+    section#faq.faq {
+        padding-left: 0px;
+        padding-top: 15px;
+    }
+
+    section#full-faq.full-faq h3 {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: 0.03em;
+    }
+
+    section#full-faq div.departments {
+        width: 16em;
+    }
+
+    section#full-faq div.questions {
+        height: 37em;
+        overflow-y: auto;
+        margin-right: 50px;
+    }
+
+    section#chat.chat div.full-line:first-child {
+        flex-direction: column;;
+    }
+    input#sidebar:checked ~ section#chat div.change-status {
+        margin-right: auto;
+      }
+
+    section#chat.chat div#red.full-line,
+    section#chat.chat div#green.full-line,
+    section#chat.chat div#yellow.full-line {
+        display: grid;
+        grid-template-columns: 9ch 16ch auto;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    section#chat div#red.full-line h3:first-child,
+    section#chat.chat div#green.full-line h3:first-child,
+    section#chat.chat div#yellow.full-line h3:first-child {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        width: fit-content;
+    }
+
+    section#chat div#red.full-line h3:nth-child(2),
+    section#chat.chat div#green.full-line h3:nth-child(2),
+    section#chat.chat div#yellow.full-line h3:nth-child(2) {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        width: fit-content;
+    }
+
+    section#chat span.dot {
+        display: none;
+        grid-column: 3/-1;
+        grid-row: 1/2;
+
+    }
+
+    section#chat div.hashtags {
+        grid-column: 1/-1;
+        grid-row: 2/3;
+        margin-right: auto;
+        margin-left: 0px;
+    }
+
+    section#chat div.change-status {
+        grid-column: 1/-1;
+        grid-row: 3/-1;
+    }
+
+
+    section#chat.chat h2 {
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 50px;
+    }
+
+
+    section#chat div.client-message,
+    section#chat div.agent-message {
+        background-color: #b3b3b3;
+        width: 80%;
+        word-wrap: break-word;
+        margin-top: 15px;
+        border-radius: 8px;
+    }
+
+    footer {
+        margin-top: auto;
+        margin-bottom: 5px;
+    }
+
+    footer p {
+        margin-left: 25px;
+
+    }
+
+
+
+
+}

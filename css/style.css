@@ -295,6 +295,7 @@ section {
 section h2 {
     color: #111111;
     margin: 0px;
+    padding-right: 10px;
 
 }
 
@@ -384,7 +385,7 @@ section#client-tickets>h3:nth-of-type(2)::after {
     content: '\1F510';
 }
 
-section#client-tickets>div:nth-of-type(4)>h3::after {
+section#client-tickets>div.full-line>h3::after {
     content: '\231B';
 }
 
@@ -666,7 +667,6 @@ form#new-ticket {
 
 .button-create-ticket {
     display: block;
-    width: 15%;
     padding: 8px;
     background-color: #F47458;
     color: black;
@@ -860,7 +860,6 @@ span.left:after {
 
 .profile button[type="submit"] {
     display: block;
-    width: 15%;
     padding: 8px;
     background-color: #F47458;
     color: black;
@@ -906,7 +905,7 @@ section.profile form {
     }
 }
 
-.error {
+.error, .success {
     color: white;
     font-size: 12px;
     margin-top: 5px;
