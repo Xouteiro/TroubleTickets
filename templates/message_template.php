@@ -13,8 +13,9 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
   require_once(__DIR__ . '/../database/department.class.php');
   require_once(__DIR__ . '/../database/hashtag.class.php');
 
-
+ if ($session->isLoggedIn()) { 
   $user = Client::getClientById($db, $session->getId());
+ }
   $client = Client::getClientById($db, $ticket->client_id);
   if ($ticket->status != 'Not Assigned') {
     $agent = Client::getClientById($db, $ticket->agent_id);
@@ -30,7 +31,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
     <?php }
     if (Client::isAgent($db, $user->id)) { ?>
       <div class='full-line'>
-        <h2><?php echo $ticket->title . ' -&nbsp;' ?> </h2>
+        <h2><?php echo $ticket->title ?> </h2>
         <div class='change-status' id='department'>
           <form action="../actions/action_change_department.php" method="post">
             <input type="hidden" name="ticket_id" value="<?php echo $ticket->id ?>">
@@ -174,7 +175,7 @@ function output_message(PDO $db, Ticket $ticket, Session $session)
           <input hidden id="user_id" value="<?= $user->id?>">
           <input hidden id="ticket_id" value="<?= $ticket->id?>">
           <input hidden id="username" value="<?= $user->username?>">
-          <input type="text" name="message" id="message" placeholder="Enter your message here">
+          <input type="text" name="message" id="message" placeholder="Enter your message here" autocomplete="off">
           <button id="send">Send</button>
         </form>
       </div>
@@ -205,7 +206,7 @@ function output_watch_message(PDO $db, Ticket $ticket, Session $session)
   require_once(__DIR__ . '/../database/hashtag.class.php');
 
 
-  $user = Client::getClientById($db, $session->getId());
+
   $client = Client::getClientById($db, $ticket->client_id);
   if ($ticket->status != 'Not Assigned') {
     $agent = Client::getClientById($db, $ticket->agent_id);

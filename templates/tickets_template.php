@@ -47,7 +47,7 @@ function output_client_tickets(PDO $db, Session $session)
   <?php if (Client::isAgent($db, $user->id)) { ?>
     <div class='department'>
       <h3 data-agent-dep="<?php echo $agent->department_id; ?>"><?php echo '&nbsp;';
-                                                                echo (Department::getDepartmentById($db, $agent->department_id)->name  ?? 'Administrator\'s') . ' Department' ?></h3>
+      echo (Department::getDepartmentById($db, $agent->department_id)->name  ?? 'Administrator\'s') . ' Department' ?></h3>
     </div>
   <?php } ?>
   <h3>Open</h3>
@@ -60,7 +60,7 @@ function output_client_tickets(PDO $db, Session $session)
 
       foreach ($OpenTickets as $ticket) { ?>
         <a href="../pages/message.php?id=<?= urlencode(strval($ticket->id)) ?>" class='ticket'>
-          <h4><?php echo $ticket->title //ticket title 
+          <h4><?php echo $ticket->title 
               ?> </h4>
           <h5><?php echo Department::getDepartmentById($db, $ticket->department_id)->name; ?></h5>
           <?php foreach ($messages as $message) {
@@ -97,7 +97,7 @@ function output_client_tickets(PDO $db, Session $session)
       if (Client::isAgent($db, $user->id)) {
         $ClosedTickets = $ClosedAgentTickets;
       }
-      if (count($ClosedTickets) == 0) { //adicionar aqui opção de criar ticket
+      if (count($ClosedTickets) == 0) {
       ?>
         <p>No tickets here yet!</p>
       <?php
@@ -141,7 +141,7 @@ function output_client_tickets(PDO $db, Session $session)
       if (!Client::isAgent($db, $user->id)) {
         $UnassignedTickets = $UnassignedClientTickets;
       }
-      if (count($UnassignedTickets) == 0) { //adicionar aqui opção de criar ticket
+      if (count($UnassignedTickets) == 0) { 
       ?>
         <p>No tickets here yet!</p>
       <?php

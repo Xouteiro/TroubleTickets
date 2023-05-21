@@ -7,18 +7,13 @@ require_once(__DIR__ . '/../database/agent.class.php');
 
 function output_edit(PDO $db, Session $session)
 {
-    // Check if the user is authenticated as an admin
     if (!Client::isAdmin($db, $session->getId())) {
         header('HTTP/1.1 403 Forbidden');
         exit('Access denied. You must be an admin to access this page.');
     }
 
     $client = Client::getClientById($db, $_GET['id']);
-
-    // Fetch departments
     $departments = Department::getDepartments($db, 10);
-
-    // Output the HTML for managing users
     ?>
     <section id="editer">
         <section id="client_editer">

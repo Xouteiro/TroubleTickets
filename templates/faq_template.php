@@ -17,7 +17,7 @@ function output_faq_page(Session $session)
     <section id="faq" class="faq">
 
       <?php output_departments($session); ?>
-      <?php output_faq(); //param: department
+      <?php output_faq(); 
       ?>
     </section>
   </section>

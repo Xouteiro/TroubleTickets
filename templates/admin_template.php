@@ -7,7 +7,6 @@ require_once(__DIR__ . '/../database/client.class.php');
 
 function output_admin(PDO $db, Session $session)
 {
-    // Check if the user is authenticated as an admin
     if (!Client::isAdmin($db, $session->getId())) {
         header('HTTP/1.1 403 Forbidden');
         exit('Access denied. You must be an admin to access this page.');
@@ -15,8 +14,6 @@ function output_admin(PDO $db, Session $session)
     $clients = Client::getOnlyClients($db, 20);
     $agents = Client::getOnlyAgents($db, 20);
     $admins = Client::getOnlyAdmins($db, 20);
-
-    // Output the HTML for managing users
     ?>
 
     <section id="user_manager">

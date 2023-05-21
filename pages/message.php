@@ -15,8 +15,9 @@
   $session = new Session();
 
   $db = getDatabaseConnection();
-
+ if ($session->isLoggedIn()) { 
   $user = Client::getClientById($db, $session->getId());
+ }
   $id = $_GET['id'];
   $ticket = Ticket::getTicketById($db, intval($id));
 
@@ -24,7 +25,7 @@
   output_header($session);
   ?>
     <?php 
-  if($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAgent($db, $user->id)){ ?>
+  if(($ticket->client_id == $user->id || $ticket->agent_id == $user->id || Client::isAgent($db, $user->id)) && $session->isLoggedIn()){ ?>
   <?php
     output_message($db, $ticket, $session); 
 

@@ -24,7 +24,7 @@ function output_login(Session $session)
 function output_register(Session $session)
 { ?>
   <div class="account">
-    <h2>Create new account</h2>
+    <h2>Register</h2>
     <form id="register" action="../actions/action_register.php" method="post">
       <div class='full-input'>
         <label for="username">Username</label>

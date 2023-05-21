@@ -14,7 +14,7 @@ function output_main_page(Session $session)
     $db = getDataBaseConnection();
 
     $recentTickets = Ticket::getTickets($db, 200);
-    $messages = Message::getMessages($db, 10);
+    $messages = Message::getMessages($db, 200);
     $message_to_use = new Message(0, 0, 0, '0', new DateTime());
 
 
@@ -23,9 +23,13 @@ function output_main_page(Session $session)
 
         <div class='steps'>
             <div class='step active'>
-                <a href='/pages/newTicket.php'>
-                    <img src='/images/ticket.png' alt='ticket image'></a>
-                <p>Open a ticket with a description of your problem</p>
+                <?php if ($session->isLoggedIn()) { ?>
+                    <a href='/pages/login.php'>
+                    <?php } else { ?>
+                        <a href='/pages/newTicket.php'>
+                        <?php } ?>
+                        <img src='/images/ticket.png' alt='ticket image'></a>
+                        <p>Open a ticket with a description of your problem</p>
             </div>
             <span class='arrow'></span>
             <div class='step'>
@@ -45,7 +49,7 @@ function output_main_page(Session $session)
                     <a href="../pages/message.php?id=<?= urlencode(strval($ticket->id)) ?>" class='ticket'>
                         <h4>
                             <?php echo $ticket->title //ticket title 
-                                        ?>
+                            ?>
                         </h4>
                         <h5>
                             <?php echo Department::getDepartmentById($db, $ticket->department_id)->name; ?>
@@ -57,7 +61,7 @@ function output_main_page(Session $session)
                                     <?php echo substr($message->message, 0, 200);
                                     $message_to_use = $message; ?>
                                 </p>
-                                <?php break;
+                        <?php break;
                             }
                         } ?>
                         <h6>
@@ -66,24 +70,24 @@ function output_main_page(Session $session)
                     </a>
                 <?php } ?>
 
-                    <button class="slide-button left" ><span class='left'></span></button>
-                    <button class="slide-button right" ><span class='right'></span></button>
-                </div>
+                <button class="slide-button left"><span class='left'></span></button>
+                <button class="slide-button right"><span class='right'></span></button>
+            </div>
 
         </div>
 
-            <div class='faq'>
+        <div class='faq'>
 
             <a href='../pages/faq.php'><img src='/images/faq.png' alt='ticket image'></a>
             <a href='../pages/faq.php'>See if your question has already been answered in our FAQ</a>
 
-                    </div>
+        </div>
 
 
 
     </section>
 
 
-    <?php
+<?php
 }
 ?>
