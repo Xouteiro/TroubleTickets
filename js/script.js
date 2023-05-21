@@ -61,9 +61,9 @@ if (newHashtag) {
   newHashtag.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
       let hashtagName = newHashtag.value;
-      hashtagName = hashtagName.replace(/#/g, ''); // remove any "#" symbols except for the first one
+      hashtagName = hashtagName.replace(/#/g, ''); 
       if (!hashtagName.startsWith('#')) {
-        hashtagName = '#' + hashtagName; // add the "#" symbol
+        hashtagName = '#' + hashtagName; 
       }
       const ticketId = document.querySelector('h3[data-ticketid]').getAttribute('data-ticketid');
       const xhr = new XMLHttpRequest();
@@ -76,7 +76,6 @@ if (newHashtag) {
           const response = JSON.parse(xhr.responseText);
           console.log(response);
           if (response.hashtag_id == "0") {
-            // Hashtag already exists, don't add it again
             newHashtag.value = '';
             return;
           }
@@ -198,8 +197,7 @@ if (sendMessage) {
         const data = await response.json();
 
         if (data.status === "success") {
-          // Handle success case
-          if (userId == agentId) {
+          if (userId == agentId || (userId != clientId && agentId == 0)) {
             const placeToInsert = document.querySelector(".text");
             const agentMessageDiv = document.createElement('div');
             agentMessageDiv.classList.add('agent-message');

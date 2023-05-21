@@ -124,13 +124,8 @@ VALUES
 INSERT INTO ADMINS (client_id, agent_id)
 VALUES
 (1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8);
+(2, 2);
+
 
 INSERT INTO FAQS (department_id, question, answer) VALUES
 (1, 'How can I place an order?', 'You can place an order through our website or by calling our sales team.'),

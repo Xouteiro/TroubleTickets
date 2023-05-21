@@ -62,6 +62,7 @@ echo json_encode($response);
 // Function to reopen the closed ticket
 function reopenTicket($db, $ticket_id, $user, $message, &$response) {
     $status = 'Open';
+    $ticket = Ticket::getTicketById($db, $ticket_id);
     $title = $ticket->title;
 
     if (Ticket::updateTicket($db, $ticket_id, $ticket->agent_id, $ticket->client_id, $ticket->department_id, $status, $title)) {
@@ -81,9 +82,9 @@ function reopenTicket($db, $ticket_id, $user, $message, &$response) {
     $response["redirect"] = $_SERVER['HTTP_REFERER'];
 }
 
-// Function to assign the ticket to the agent
 function assignTicket($db, $ticket_id, $user, $message, &$response) {
     $status = 'Open';
+    $ticket = Ticket::getTicketById($db, $ticket_id);
     $title = $ticket->title;
 
     if (Ticket::updateTicket($db, $ticket_id, $user->id, $ticket->client_id, $ticket->department_id, $status, $title)) {
@@ -104,7 +105,6 @@ function assignTicket($db, $ticket_id, $user, $message, &$response) {
     }
 }
 
-// Function to create a new message for the ticket
 function createMessage($db, $ticket_id, $user, $message, &$response) {
     $now = new DateTime('now', new DateTimeZone('Europe/Lisbon'));
 
